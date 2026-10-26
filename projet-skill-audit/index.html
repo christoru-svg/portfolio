@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industrialiser l'audit ergonomique — Christopher De Paola</title>
+  <meta name="description" content="Étude de cas : transformer un audit heuristique fait à la main en skill Claude réutilisable par toute l'équipe produit.">
+  <meta property="og:title" content="Industrialiser l'audit ergonomique — Christopher De Paola">
+  <meta property="og:image" content="/assets/img/skill-audit-hero.png">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="/">Christopher De Paola</a>
+      <a class="nav__back" href="/#projets">← Tous les projets</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-hero__grid">
+          <div>
+            <span class="eyebrow eyebrow--line">Étude de cas · 2026</span>
+            <h1 class="case-hero__title">Industrialiser l'audit ergonomique <em>d'un rituel manuel à une skill IA</em></h1>
+          </div>
+          <div>
+            <p class="case-hero__lead">Comment j'ai transformé mon processus d'audit heuristique, fait entièrement à la main sur Oodrive Sign, en une skill IA réutilisable par toute l'équipe produit.</p>
+            <dl class="case-meta">
+              <div><dt>Client</dt><dd>Oodrive (interne)</dd></div>
+              <div><dt>Rôle</dt><dd>Product designer</dd></div>
+              <div><dt>Durée</dt><dd>~1 semaine</dd></div>
+              <div><dt>Statut</dt><dd>Utilisé par l'équipe</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 48px;">
+        <div class="case-cover"><img src="/assets/img/skill-audit-hero.png" alt="Couverture de l'audit ergonomique Oodrive Meet" width="1188" height="504"></div>
+      </div>
+    </section>
+
+    <article class="case-body">
+      <section class="case-section">
+        <span class="eyebrow">01 · Contexte</span>
+        <h2 class="case-section__title">Un audit heuristique solide, mais impossible à reproduire à l'identique</h2>
+        <p>Chez Oodrive, l'audit ergonomique (une évaluation heuristique selon la méthode de Nielsen) est un outil régulier pour challenger l'expérience d'un produit avant une itération majeure. Le premier que j'ai mené, sur Oodrive Sign, a été fait entièrement à la main : une page Figma avec la grille des 10 heuristiques, des captures d'écran collées une par une, un score calculé au cas par cas, puis un support PowerPoint refait de zéro pour la restitution.</p>
+        <p>Un travail solide, mais long et difficile à reproduire à l'identique d'un audit à l'autre. Chaque nouvelle évaluation repartait de rien.</p>
+        <p class="callout"><strong>À retenir :</strong> le premier audit (Oodrive Sign) a été fait à 100 % à la main : grille Figma, captures collées une à une, PowerPoint refait de zéro pour la restitution.</p>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">02 · Problème</span>
+        <h2 class="case-section__title">Refaire à chaque fois le même travail de méthode</h2>
+        <p>Quelques mois plus tard, un nouveau besoin utilisateur a justifié un audit du même type sur Oodrive Meet. C'était l'occasion de ne pas refaire le même chemin, mais rien dans le processus existant ne le permettait vraiment.</p>
+        <ul class="bullets">
+          <li>Aucune trame réutilisable : grille, échelle de sévérité et calcul de score redéfinis à chaque audit</li>
+          <li>Un support de restitution (PowerPoint) repris de zéro à chaque nouvelle évaluation</li>
+          <li>Une méthode qui reste dans la tête d'une seule personne, non partageable avec le reste de l'équipe produit</li>
+        </ul>
+        <blockquote class="quote">
+          <p>« Ne plus refaire à chaque fois le travail de méthode, et transformer le savoir-faire acquis sur l'audit Oodrive Sign en un processus réutilisable par n'importe quel designer de l'équipe. »</p>
+          <footer>Objectif du projet</footer>
+        </blockquote>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">03 · Solution</span>
+        <h2 class="case-section__title">Une skill Claude qui encapsule toute la méthode</h2>
+        <p>Plutôt que de garder la méthode dans ma tête, je l'ai transformée en skill : un ensemble d'instructions et de ressources que Claude suit à chaque nouvel audit. On y trouve la définition des 10 heuristiques et de l'échelle de sévérité, la formule de calcul d'un score global comparable d'un audit à l'autre, la structure du rapport Word, les pièges Figma déjà rencontrés, et un template de restitution Figma Slides à la charte Oodrive.</p>
+        <ul class="bullets">
+          <li>Grille Figma remplie et annotée directement sur les maquettes, avec page de synthèse et score</li>
+          <li>Rapport Word structuré : synthèse en tête, méthodologie et détail en fin de document</li>
+          <li>Restitution Figma Slides à la charte Oodrive, ou support PowerPoint selon le contexte</li>
+        </ul>
+        <figure class="figure">
+          <img src="/assets/img/skill-audit-solution.png" alt="Page de synthèse de l'audit avec score global et répartition par sévérité" loading="lazy" width="1420" height="590">
+          <figcaption>Score global, répartition par sévérité et notes clés, toujours affichés ensemble, jamais un chiffre isolé.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">04 · Méthode</span>
+        <h2 class="case-section__title">Comment le projet a été mené</h2>
+        <p>La skill n'est pas née d'une réflexion abstraite sur l'audit idéal : elle est née d'un second audit réel, mené en parallèle de sa propre construction.</p>
+        <div class="timeline">
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 1 · Audit de référence</p>
+            <h3 class="timeline__title">Oodrive Sign, fait à la main</h3>
+            <p>Grille Figma, captures d'écran collées une par une, score calculé au cas par cas, support PowerPoint refait de zéro. La méthode fonctionne, mais reste entièrement manuelle.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 2 · Audit Oodrive Meet</p>
+            <h3 class="timeline__title">Réutiliser le gabarit, déléguer l'évaluation</h3>
+            <p>Reprise du gabarit Figma existant, captures d'écran transmises à Claude pour mener l'évaluation heuristique complète : un constat par écran et par heuristique, une sévérité assumée, une recommandation actionnable.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 3 · Industrialisation</p>
+            <h3 class="timeline__title">Capturer la méthode dans une skill</h3>
+            <p>Transformation du processus en skill réutilisable (heuristiques, échelle de sévérité, formule de score, gabarits de restitution), puis vérification de chaque livrable au même niveau d'exigence qu'un rendu manuel.</p>
+          </div>
+        </div>
+
+        <div class="lead-block">
+          <span class="eyebrow">Dimension lead</span>
+          <h3>Passer d'un outil personnel à un outil d'équipe</h3>
+          <p>Au-delà d'un audit ponctuel, l'objectif était de faire gagner du temps à toute l'équipe produit, pas seulement à moi. La méthode est désormais packagée dans un fichier réutilisable par n'importe quel designer, sans avoir à redécouvrir les mêmes pièges (bugs de mapping Figma, structure de rapport, formule de score).</p>
+          <p style="margin-top: 14px;">Le même fichier de méthode peut aussi être injecté dans les agents IA natifs de Figma, pour lancer un audit heuristique sans repasser par une conversation externe.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">05 · Résultats</span>
+        <h2 class="case-section__title">Ce que l'audit Oodrive Meet a produit, en chiffres</h2>
+        <p>Le résultat est directement comparable à un audit mené à la main, avec en plus une méthode de calcul qui rend le score comparable à celui d'un futur audit sur un autre produit.</p>
+        <!-- À ajouter : le temps gagné (audit manuel : X jours, avec la skill : Y) et le nombre de designers qui l'ont réutilisée -->
+        <div class="results">
+          <div class="result">
+            <p class="result__value">77</p>
+            <p class="result__unit">/100</p>
+            <p class="result__label">Score global de l'audit, zone « Bon »</p>
+          </div>
+          <div class="result">
+            <p class="result__value">11</p>
+            <p class="result__unit">constats</p>
+            <p class="result__label">Constats confirmés, dont 3 majeurs et aucun bloquant</p>
+          </div>
+          <div class="result">
+            <p class="result__value">18</p>
+            <p class="result__unit">écrans</p>
+            <p class="result__label">Écrans audités sur le parcours de création et d'invitation à une réunion</p>
+          </div>
+        </div>
+        <div class="retro">
+          <span class="eyebrow">Ce que je ferais différemment</span>
+          <p>Le fichier Figma de restitution s'est révélé être un catalogue de près de 40 mises en page génériques plutôt qu'un gabarit pré-rempli : choisir les bonnes slides a pris plus de temps que prévu. La prochaine version de la skill documentera explicitement ce catalogue.</p>
+        </div>
+      </section>
+    </article>
+
+    <section class="others">
+      <div class="container">
+        <span class="eyebrow">Autres projets</span>
+        <div class="others__grid">
+          <a class="other" href="/projet-refonte-oodrive-sign/"><h3>Refonte Oodrive Sign</h3><p>Simplifier une plateforme de signature électronique perçue comme complexe.</p></a>
+          <a class="other" href="/dotation-gift/"><h3>Une nouvelle dotation cadeau</h3><p>Sécuriser une bascule de 33,1 M€ vers une offre cadeau 100 % digitale.</p></a>
+          <a class="other" href="/projet-myoodrivesign/"><h3>myOodriveSign</h3><p>Une application mobile pour signer ses documents en quelques instants, en mobilité.</p></a>
+          <a class="other" href="/projet-lexis-nexis/"><h3>Lexis 360 Intelligence</h3><p>Aider des professionnels du droit à retrouver leurs repères dans un nouvel outil.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand">Christopher De Paola</span>
+      <p class="footer__quote">« If we want users to like our software we should design it to behave like a likeable person. » <span>— Alan Cooper</span></p>
+      <div class="footer__links">
+        <a href="/#projets">← Tous les projets</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
