@@ -78,3 +78,64 @@
     Promise.all(imgs.map(loaded)).then(function () { build(gallery, shots); }, function () {});
   });
 })();
+
+/* Zoom : un clic (ou Entrée) sur un écran l'ouvre en grand. Un clic sur l'image agrandie
+   l'affiche à sa taille réelle ; Échap, le bouton × ou un clic à côté referment. */
+
+(function () {
+  var selector = ".shot img, .figure img";
+  var dialog, view, caption;
+
+  function setup() {
+    dialog = document.createElement("dialog");
+    dialog.className = "lightbox";
+    dialog.setAttribute("aria-label", "Image agrandie");
+    dialog.innerHTML =
+      '<button class="lightbox__close" type="button" aria-label="Fermer">×</button>' +
+      '<div class="lightbox__inner"><img alt=""><p class="lightbox__caption"></p></div>';
+    view = dialog.querySelector("img");
+    caption = dialog.querySelector(".lightbox__caption");
+
+    dialog.querySelector(".lightbox__close").addEventListener("click", function () { dialog.close(); });
+    dialog.addEventListener("click", function (e) {
+      if (e.target === view) dialog.classList.toggle("is-full");
+      else if (!e.target.closest(".lightbox__caption")) dialog.close();
+    });
+    dialog.addEventListener("close", function () { dialog.classList.remove("is-full"); });
+    document.body.append(dialog);
+  }
+
+  function open(img) {
+    if (!dialog) setup();
+    var figure = img.closest("figure");
+    var text = figure && figure.querySelector("figcaption");
+    view.src = img.currentSrc || img.src;
+    view.alt = img.alt;
+    caption.textContent = text ? text.textContent : img.alt;
+    dialog.showModal();
+  }
+
+  function zoomable(img) {
+    return !img.closest(".compare, .gallery--compare") && !img.closest(".shot[data-missing]");
+  }
+
+  document.querySelectorAll(selector).forEach(function (img) {
+    if (!zoomable(img)) return;
+    img.classList.add("zoomable");
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    img.setAttribute("aria-label", "Agrandir : " + img.alt);
+  });
+
+  document.addEventListener("click", function (e) {
+    var img = e.target.closest(selector);
+    if (img && img.classList.contains("zoomable")) open(img);
+  });
+  document.addEventListener("keydown", function (e) {
+    var img = e.target;
+    if ((e.key === "Enter" || e.key === " ") && img.classList && img.classList.contains("zoomable")) {
+      e.preventDefault();
+      open(img);
+    }
+  });
+})();
