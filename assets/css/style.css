@@ -294,6 +294,33 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .compare__range:focus-visible ~ .compare__handle::after { outline: 2px solid var(--accent); outline-offset: 3px; }
 
+/* Zoom sur les écrans (construit par assets/js/gallery.js) */
+.zoomable { cursor: zoom-in; }
+.lightbox {
+  width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh;
+  margin: 0; padding: 0; border: 0; background: transparent;
+}
+.lightbox::backdrop { background: rgba(15, 15, 14, 0.88); }
+.lightbox__inner {
+  box-sizing: border-box; width: 100%; height: 100%; overflow: auto;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 64px 24px 24px;
+}
+.lightbox__inner img {
+  max-width: 100%; max-height: calc(100vh - 140px);
+  border-radius: 8px; background: var(--surface); cursor: zoom-in;
+}
+.lightbox.is-full .lightbox__inner { display: block; }
+.lightbox.is-full .lightbox__inner img { max-width: none; max-height: none; margin: 0 auto; cursor: zoom-out; }
+.lightbox__caption { margin-top: 14px; max-width: 720px; font-size: 14px; line-height: 1.5; color: #e8e8e4; text-align: center; }
+.lightbox.is-full .lightbox__caption { margin: 14px auto 0; }
+.lightbox__close {
+  position: fixed; top: 16px; right: 16px; z-index: 1;
+  width: 40px; height: 40px; border: 0; border-radius: 50%;
+  background: var(--surface); color: var(--ink);
+  font-size: 24px; line-height: 1; cursor: pointer;
+}
+
 /* Emplacement vide, visible uniquement en local */
 .shot__todo {
   display: flex; flex-direction: column; justify-content: center; gap: 6px;
