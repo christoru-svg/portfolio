@@ -31,3 +31,50 @@
     else img.addEventListener("error", function () { missing(img); });
   });
 })();
+
+/* Avant / après : une galerie gallery--compare devient un curseur à faire glisser,
+   une fois ses deux images chargées. Sans JavaScript, les deux écrans restent côte à côte. */
+
+(function () {
+  function loaded(img) {
+    return new Promise(function (resolve, reject) {
+      if (img.complete) return img.naturalWidth ? resolve() : reject();
+      img.addEventListener("load", resolve);
+      img.addEventListener("error", reject);
+    });
+  }
+
+  function build(gallery, shots) {
+    var stage = document.createElement("div");
+    stage.className = "compare";
+    gallery.insertBefore(stage, shots[0]);
+    stage.append(shots[0], shots[1]);
+
+    var range = document.createElement("input");
+    range.type = "range";
+    range.min = 0;
+    range.max = 100;
+    range.value = 50;
+    range.className = "compare__range";
+    range.setAttribute("aria-label", "Comparer l'avant et l'après");
+    range.addEventListener("input", function () {
+      stage.style.setProperty("--pos", range.value + "%");
+    });
+
+    var handle = document.createElement("div");
+    handle.className = "compare__handle";
+    handle.setAttribute("aria-hidden", "true");
+
+    stage.append(range, handle);
+    gallery.classList.add("is-slider");
+  }
+
+  document.querySelectorAll(".gallery--compare").forEach(function (gallery) {
+    var shots = gallery.querySelectorAll(":scope > .shot");
+    if (shots.length !== 2) return;
+    var imgs = [shots[0].querySelector("img"), shots[1].querySelector("img")];
+    if (!imgs[0] || !imgs[1]) return;
+    imgs.forEach(function (img) { img.loading = "eager"; });
+    Promise.all(imgs.map(loaded)).then(function () { build(gallery, shots); }, function () {});
+  });
+})();
