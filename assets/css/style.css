@@ -179,6 +179,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .card__links a { font-size: 13px; font-weight: 500; border-bottom: 1px solid var(--ink); }
 .card__links a:hover { color: var(--accent); border-color: var(--accent); }
 .card .tag { align-self: flex-start; margin-bottom: 16px; }
+.card__use + .card__use { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+.card__use-title { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--ink); margin: 0 0 6px; }
+.card__use .card__time { margin-top: 10px; padding-top: 0; }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); padding: 40px 0; }
@@ -424,6 +427,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .lead-block p { color: #c9c9c4 !important; font-size: 15px !important; }
 
 .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+.results--4 { grid-template-columns: repeat(2, 1fr); }
 .result {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px 20px; text-align: center;
