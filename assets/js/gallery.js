@@ -37,6 +37,7 @@
    une fois ses deux images chargées. Sans JavaScript, les deux écrans restent côte à côte. */
 
 (function () {
+  var en = document.documentElement.lang === "en";
   function loaded(img) {
     return new Promise(function (resolve, reject) {
       if (img.complete) return img.naturalWidth ? resolve() : reject();
@@ -128,6 +129,7 @@
    l'affiche à sa taille réelle ; Échap, le bouton × ou un clic à côté referment. */
 
 (function () {
+  var en = document.documentElement.lang === "en";
   var selector = ".shot img, .figure img";
   var dialog, view, caption;
 
