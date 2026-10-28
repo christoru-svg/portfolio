@@ -209,11 +209,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .motion [data-reveal].is-visible .word { opacity: 1; transform: none; }
 
 /* Méthode : étapes */
-.steps-section.is-pinned .steps-track { height: 230vh; }
-.steps-section.is-pinned .steps-sticky { position: sticky; top: 64px; padding-top: 24px; }
-.motion .steps .card { transition: opacity 0.4s, transform 0.4s, border-color 0.4s; }
-.motion .steps.has-active .card:not(.is-active) { opacity: 0.45; transform: scale(0.98); }
-.motion .steps .card.is-active { border-color: var(--accent); }
+.motion .steps .card { transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.4s; }
+.motion .steps .card.is-active { border-color: var(--accent); transform: translateY(-4px); }
 
 .scene { display: none; }
 .motion .scene {

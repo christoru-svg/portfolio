@@ -1,7 +1,7 @@
 /* Animations de la page d'accueil.
    - Titres de section révélés mot par mot.
-   - Méthode : l'étape au centre de l'écran s'active et joue sa mini-scène
-     (épinglée pendant le scroll sur grand écran).
+   - Méthode : l'étape survolée (ou, sur mobile, celle au centre de l'écran)
+     s'active et joue sa mini-scène.
    - IA : barres avant / après pour le temps gagné.
    Si l'utilisateur demande de réduire les animations, rien ne s'exécute
    et la page s'affiche telle quelle. */
@@ -92,28 +92,30 @@
     if (build) build(scene);
   });
 
-  /* ---------- Méthode : étape active au scroll ---------- */
-  var section = document.querySelector(".steps-section");
-  if (!section) return;
+  /* ---------- Méthode : étape active ----------
+     Avec une souris : l'étape survolée. Sur écran tactile : l'étape
+     dont le centre est le plus proche du centre de l'écran. */
+  var steps = document.querySelector(".steps");
+  if (!steps) return;
 
-  var track = section.querySelector(".steps-track");
-  var steps = section.querySelector(".steps");
   var cards = Array.prototype.slice.call(steps.children);
-  var pinMedia = window.matchMedia("(min-width: 1001px) and (min-height: 820px)");
-  var current = null;
+  var hoverMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var current = -1;
   var ticking = false;
 
-  function activeIndex() {
+  function setActive(index) {
+    if (index === current) return;
+    current = index;
+    cards.forEach(function (card, i) { card.classList.toggle("is-active", i === index); });
+  }
+
+  cards.forEach(function (card, i) {
+    card.addEventListener("mouseenter", function () { if (hoverMedia.matches) setActive(i); });
+    card.addEventListener("mouseleave", function () { if (hoverMedia.matches) setActive(-1); });
+  });
+
+  function centerIndex() {
     var vh = window.innerHeight;
-
-    if (pinMedia.matches) {
-      var rect = track.getBoundingClientRect();
-      if (rect.top > vh * 0.4 || rect.bottom < 0) return -1;
-      var progress = -rect.top / (rect.height - vh);
-      return progress < 0.34 ? 0 : progress < 0.67 ? 1 : 2;
-    }
-
-    // Cartes empilées : celle dont le centre est le plus proche du centre de l'écran
     var best = -1, bestDistance = vh * 0.45;
     cards.forEach(function (card, i) {
       var r = card.getBoundingClientRect();
@@ -123,30 +125,16 @@
     return best;
   }
 
-  function update() {
-    ticking = false;
-    var index = activeIndex();
-    if (index === current) return;
-    current = index;
-    steps.classList.toggle("has-active", index >= 0);
-    cards.forEach(function (card, i) { card.classList.toggle("is-active", i === index); });
-  }
-
-  function requestUpdate() {
-    if (ticking) return;
+  function onScroll() {
+    if (hoverMedia.matches || ticking) return;
     ticking = true;
-    window.requestAnimationFrame(update);
+    window.requestAnimationFrame(function () {
+      ticking = false;
+      setActive(centerIndex());
+    });
   }
 
-  function setPinned() {
-    section.classList.toggle("is-pinned", pinMedia.matches);
-    current = null;
-    requestUpdate();
-  }
-
-  if (pinMedia.addEventListener) pinMedia.addEventListener("change", setPinned);
-  else pinMedia.addListener(setPinned);
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  window.addEventListener("resize", requestUpdate);
-  setPinned();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
 })();
