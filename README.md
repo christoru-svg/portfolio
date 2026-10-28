@@ -10,6 +10,7 @@ projet-refonte-oodrive-sign/      Étude de cas Oodrive Sign
 dotation-gift/                    Étude de cas Swile Gift
 projet-myoodrivesign/             Étude de cas myOodriveSign
 projet-skill-audit/               Étude de cas skill Claude
+projet-design-system/             Étude de cas refonte du design system
 projet-lexis-nexis/               Étude de cas Lexis 360
 assets/css/style.css              Styles (couleurs et polices en haut du fichier)
 assets/img/                       Images
