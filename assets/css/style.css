@@ -144,7 +144,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: background 0.2s;
 }
 .project:hover { background: var(--subtle); }
-.project__num { font-family: var(--serif); font-size: 18px; color: var(--border); }
+.project__num { font-family: var(--serif); font-size: 18px; color: var(--muted); }
 .project:hover .project__num { color: var(--accent); }
 .project__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 .project__title { font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 10px; }
