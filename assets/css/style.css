@@ -276,7 +276,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .footer__brand { font-family: var(--serif); font-size: 15px; white-space: nowrap; }
 .footer__quote { font-size: 13px; line-height: 1.6; color: var(--muted); font-style: italic; text-align: center; max-width: 520px; }
-.footer__quote span { color: var(--faint); font-style: normal; }
+.footer__quote span { color: var(--muted); font-style: normal; }
 .footer__links { display: flex; gap: 20px; font-size: 13px; font-weight: 600; color: var(--accent); white-space: nowrap; }
 
 /* ==========================================================================
