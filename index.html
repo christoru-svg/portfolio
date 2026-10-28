@@ -13,6 +13,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://christopher-de-paola.vercel.app/">
   <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="fr" href="https://christopher-de-paola.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://christopher-de-paola.vercel.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://christopher-de-paola.vercel.app/">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,8 +37,12 @@
         <a href="#methode">Méthode</a>
         <a href="#ia">IA</a>
         <a href="#engagement">Talks</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a class="nav__cta" href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">LinkedIn →</a>
+      <div class="nav__end">
+        <a class="nav__cta" href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">LinkedIn →</a>
+        <a class="nav__lang" href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+      </div>
     </div>
   </header>
 
@@ -47,7 +54,10 @@
           <span class="eyebrow eyebrow--line">Product designer senior · Paris</span>
           <h1 class="hero__title">Je conçois des produits <em>SaaS B2B</em>, de la recherche utilisateur à la mise en production.</h1>
           <p class="hero__lead">J'associe entretiens, tests et pilotage pour livrer des parcours accessibles et mesurables, en lien avec les équipes produit, tech et business.</p>
-          <a class="btn" href="#projets">Voir les projets</a>
+          <div class="btns">
+            <a class="btn" href="#projets">Voir les projets</a>
+            <a class="btn btn--ghost" href="/assets/cv-christopher-de-paola.pdf" download>Télécharger mon CV <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
         <div class="hero__photo">
           <img src="/assets/img/portrait.png" alt="Christopher De Paola en conférence" width="508" height="607">
@@ -319,6 +329,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Ce que je cherche -->
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="eyebrow">Ce que je cherche</span>
+        <h2 class="section__title">Mon prochain poste</h2>
+        <p class="section__lead">Je cherche un poste de Senior Product Designer en CDI, sur un produit SaaS B2B complexe, où la recherche utilisateur, l'accessibilité et l'IA font partie du travail au quotidien.</p>
+
+        <div class="seeking">
+          <div class="seeking__item">
+            <p class="seeking__label">Poste</p>
+            <p class="seeking__value">Senior Product Designer, en CDI</p>
+          </div>
+          <div class="seeking__item">
+            <p class="seeking__label">Lieu</p>
+            <p class="seeking__value">Paris ou full remote</p>
+          </div>
+          <div class="seeking__item">
+            <p class="seeking__label">Contextes</p>
+            <p class="seeking__value">SaaS B2B complexe, accessibilité, produits avec de l'IA</p>
+          </div>
+        </div>
+
+        <div class="btns seeking__cta">
+          <a class="btn" href="mailto:chris.depaola.toru@gmail.com">M'écrire un email</a>
+          <a class="btn btn--ghost" href="/assets/cv-christopher-de-paola.pdf" download>Télécharger mon CV (PDF) <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -327,6 +366,7 @@
       <p class="footer__quote">« If we want users to like our software we should design it to behave like a likeable person. » <span>— Alan Cooper</span></p>
       <div class="footer__links">
         <a href="mailto:chris.depaola.toru@gmail.com">Email</a>
+        <a href="/assets/cv-christopher-de-paola.pdf" download>CV</a>
         <a href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">Me contacter sur LinkedIn →</a>
       </div>
     </div>

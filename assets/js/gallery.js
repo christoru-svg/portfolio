@@ -4,6 +4,7 @@
    - en ligne, masquée (et la galerie aussi si elle est vide), pour ne jamais publier d'emplacement vide. */
 
 (function () {
+  var en = document.documentElement.lang === "en";
   var isLocal = location.protocol === "file:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
 
   function missing(img) {
@@ -15,7 +16,7 @@
     if (isLocal) {
       var todo = document.createElement("div");
       todo.className = "shot__todo";
-      todo.innerHTML = "<strong>Écran à ajouter</strong><span></span><code></code>";
+      todo.innerHTML = "<strong>" + (en ? "Screen to add" : "Écran à ajouter") + "</strong><span></span><code></code>";
       todo.querySelector("span").textContent = img.alt;
       todo.querySelector("code").textContent = img.getAttribute("src");
       img.replaceWith(todo);
@@ -56,7 +57,7 @@
     range.max = 100;
     range.value = 50;
     range.className = "compare__range";
-    range.setAttribute("aria-label", "Comparer l'avant et l'après");
+    range.setAttribute("aria-label", en ? "Compare before and after" : "Comparer l'avant et l'après");
     range.addEventListener("input", function () {
       stage.style.setProperty("--pos", range.value + "%");
     });
@@ -133,9 +134,9 @@
   function setup() {
     dialog = document.createElement("dialog");
     dialog.className = "lightbox";
-    dialog.setAttribute("aria-label", "Image agrandie");
+    dialog.setAttribute("aria-label", en ? "Enlarged image" : "Image agrandie");
     dialog.innerHTML =
-      '<button class="lightbox__close" type="button" aria-label="Fermer">×</button>' +
+      '<button class="lightbox__close" type="button" aria-label="' + (en ? "Close" : "Fermer") + '">×</button>' +
       '<div class="lightbox__inner"><img alt=""><p class="lightbox__caption"></p></div>';
     view = dialog.querySelector("img");
     caption = dialog.querySelector(".lightbox__caption");
@@ -168,7 +169,7 @@
     img.classList.add("zoomable");
     img.tabIndex = 0;
     img.setAttribute("role", "button");
-    img.setAttribute("aria-label", "Agrandir : " + img.alt);
+    img.setAttribute("aria-label", (en ? "Enlarge: " : "Agrandir : ") + img.alt);
   });
 
   document.addEventListener("click", function (e) {

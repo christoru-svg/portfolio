@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oodrive design system overhaul — Christopher De Paola</title>
+  <meta name="description" content="Case study: convincing product leadership to overhaul Oodrive's design system, with a phased plan without a freeze and three capacity scenarios.">
+  <meta property="og:title" content="Oodrive design system overhaul — Christopher De Paola">
+  <meta property="og:image" content="https://christopher-de-paola.vercel.app/assets/img/design-system-hero.png">
+  <meta property="og:description" content="Case study: convincing product leadership to overhaul Oodrive's design system, with a phased plan without a freeze and three capacity scenarios.">
+  <meta property="og:url" content="https://christopher-de-paola.vercel.app/en/projet-design-system/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://christopher-de-paola.vercel.app/en/projet-design-system/">
+  <link rel="alternate" hreflang="fr" href="https://christopher-de-paola.vercel.app/projet-design-system/">
+  <link rel="alternate" hreflang="en" href="https://christopher-de-paola.vercel.app/en/projet-design-system/">
+  <link rel="alternate" hreflang="x-default" href="https://christopher-de-paola.vercel.app/projet-design-system/">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="/en/">Christopher De Paola</a>
+      <div class="nav__end">
+        <a class="nav__back" href="/en/#projets">← All projects</a>
+        <a class="nav__lang" href="/projet-design-system/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-hero__grid">
+          <div>
+            <span class="eyebrow eyebrow--line">Case study · 2026</span>
+            <h1 class="case-hero__title">Overhauling Oodrive's design system <em>without freezing the product roadmap</em></h1>
+          </div>
+          <div>
+            <p class="case-hero__lead">How I turned a shared observation (scattered libraries and a lot of custom CSS) into a phased overhaul plan, presented to and decided on with our CPO.</p>
+            <dl class="case-meta">
+              <div><dt>Client</dt><dd>Oodrive (internal)</dd></div>
+              <div><dt>Role</dt><dd>Design system lead designer</dd></div>
+              <div><dt>Duration</dt><dd>Q4 2025 → Q4 2026</dd></div>
+              <div><dt>Status</dt><dd>In progress</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 48px;">
+        <div class="case-cover"><img src="/assets/img/design-system-hero.png" alt="Cover of the “Design System V1” pitch presented to product leadership" width="1247" height="529"></div>
+      </div>
+    </section>
+
+    <article class="case-body">
+      <section class="case-section">
+        <span class="eyebrow">01 · Context</span>
+        <h2 class="case-section__title">Libraries that existed, but no system</h2>
+        <p>Oodrive wasn't starting from scratch: on the design side, one Figma library per platform (Web, iOS, Android) plus an icon and illustration library; on the tech side, a front-end component library. But each one lived its own life, with no shared foundations and no contribution rules.</p>
+        <p>In Q4 2025, I led an audit of what existed (interfaces and code) to identify critical components and choose the structure and platform for the future design system.</p>
+        <p class="callout"><strong>Key takeaway:</strong> the challenge wasn't designing components, it was getting buy-in that a design system is a product investment, with a capacity cost and a measurable return.</p>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">02 · Problem</span>
+        <h2 class="case-section__title">UI debt slowing down every feature</h2>
+        <p>The audit confirmed what teams felt day to day: without a shared system, every new feature reinvents part of its interface.</p>
+        <ul class="bullets">
+          <li>UI inconsistencies from one product and platform to another</li>
+          <li>Frequent back-and-forth between design and development on features</li>
+          <li>A lot of custom CSS: more than two months of delay on a signature feature in summer 2025</li>
+          <li>Difficulty planning ahead for a future desktop app</li>
+          <li>More costly collaboration with external vendors</li>
+        </ul>
+        <blockquote class="quote">
+          <p>“Systems solve the easy problems so Products can solve hard problems more easily.”</p>
+          <footer>Nathan Curtis, the closing quote of the pitch</footer>
+        </blockquote>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">03 · Solution</span>
+        <h2 class="case-section__title">A single source of truth, from Figma to Storybook</h2>
+        <p>Rather than yet another library, I proposed a single foundation, synced between the design library (Figma) and the tech library (Storybook), with a clear goal for the first half of 2026: ship a solid design system foundation. The expected benefits: 20 to 30% faster time-to-market, more consistency, scalability and more efficient teams.</p>
+        <ul class="bullets">
+          <li>Six categories: overview, foundations, guidelines, UI components, page templates and layouts, governance</li>
+          <li>UI components with a flattened structure, to make them easier to use and keep the system scalable</li>
+          <li>Tokenized foundations: colors (palette and roles), typography, spacing, radius, shadows, elevations, grid, iconography</li>
+        </ul>
+        <figure class="figure">
+          <img src="/assets/img/design-system-fondations.png" alt="Foundations tree: color, typography, spacing, radius, shadow, elevation, grid, iconography and theme tokens" loading="lazy" width="645" height="494">
+          <figcaption>The foundations tree: everything starts from tokens.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">04 · Approach</span>
+        <h2 class="case-section__title">A phased approach, without a freeze</h2>
+        <p>Freezing features while rebuilding the interface wasn't an option. So each phase comes with a simple rule that frames ongoing work rather than stopping it.</p>
+        <div class="timeline">
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 1 · Q4 2025</p>
+            <h3 class="timeline__title">Audit and prioritization</h3>
+            <p>Understand what exists, identify critical components, choose the structure and platform. Rule: every new feature reuses the existing components identified.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 2 · Foundations</p>
+            <h3 class="timeline__title">Tokens and shared basics</h3>
+            <p>Colors, typography, spacing, radius and themes. Rule: no new structural UI feature until the foundations are stable.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 3 · Two parallel streams</p>
+            <h3 class="timeline__title">Components on one side, rules and contribution on the other</h3>
+            <p>Real feature needs feed the components, while documentation, versioning and the contribution process take shape. Rule: every UI change is documented and versioned.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 4 · Q4 2026</p>
+            <h3 class="timeline__title">Measurement and improvement</h3>
+            <p>KPIs, team feedback and continuous adjustments: design system priorities are driven by data and feedback from the field.</p>
+          </div>
+        </div>
+
+        <div class="lead-block">
+          <span class="eyebrow">Leadership</span>
+          <h3>Giving product leadership real decision levers</h3>
+          <p>Rather than asking for “resources,” I presented the CPO with three costed scenarios, each with its capacity, expected results by the end of June, what would need to be deprioritized and its risks: distributed contribution across several designers, developers and UX writers; a dedicated pair of owners, one designer and one developer; or intermittent capacity.</p>
+          <p style="margin-top: 14px;">The CPO approved the first scenario, distributed contribution: design system adoption on half of new features on the design side, the foundations and the first three components, UX writing and accessibility guidelines, and contribution rules, in exchange for freezing non-critical initiatives.</p>
+          <p style="margin-top: 14px;">Other priorities then pulled the team away, and the project switched to the second scenario, the dedicated pair of owners. Because every scenario had been costed up front, this fallback happened without renegotiating the project: we already knew what we were keeping (the foundations, a base for what comes next) and what we were willing to lose (slower adoption, fewer components in the short term).</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">05 · Results</span>
+        <h2 class="case-section__title">Where the project stands</h2>
+        <p>Even with reduced capacity, the project moved forward: the foundations are available in Storybook and a first component has shipped. We're now tackling the priority components, alongside major roadmap initiatives. That's exactly the “without a freeze” principle set out in the pitch: the design system grows with the product, not instead of it.</p>
+        <!-- À compléter : taux d'adoption réel et gain de time-to-market mesuré, quand ils seront disponibles -->
+        <div class="results">
+          <div class="result">
+            <p class="result__value">1</p>
+            <p class="result__unit">foundation</p>
+            <p class="result__label">Tokenized foundations available in Storybook</p>
+          </div>
+          <div class="result">
+            <p class="result__value">1</p>
+            <p class="result__unit">component</p>
+            <p class="result__label">First component shipped on these foundations, priority ones in progress</p>
+          </div>
+          <div class="result">
+            <p class="result__value">-20 to 30</p>
+            <p class="result__unit">%</p>
+            <p class="result__label">Targeted time-to-market, to be measured on upcoming features</p>
+          </div>
+        </div>
+        <div class="retro">
+          <span class="eyebrow">What I'd do differently</span>
+          <!-- Proposition à reformuler avec ton propre retour d'expérience -->
+          <p>The ideal scenario relied on several part-time contributors, the resource most exposed to shifting priorities. Today, I would present the dedicated pair of owners as the backbone of the project, and distributed contribution as an accelerator to switch on when the roadmap allows.</p>
+        </div>
+      </section>
+    </article>
+
+    <section class="others">
+      <div class="container">
+        <span class="eyebrow">More projects</span>
+        <div class="others__grid">
+          <a class="other" href="/en/projet-refonte-oodrive-sign/"><h3>Oodrive Sign redesign</h3><p>Simplifying an e-signature platform perceived as complex.</p></a>
+          <a class="other" href="/en/dotation-gift/"><h3>A new digital gift offer</h3><p>Securing a €33.1M switch to a 100% digital gift offer.</p></a>
+          <a class="other" href="/en/projet-myoodrivesign/"><h3>myOodriveSign</h3><p>A mobile app to sign documents in moments, on the go.</p></a>
+          <a class="other" href="/en/projet-skill-audit/"><h3>Claude skill for UX audits</h3><p>A manual audit method turned into a skill the whole product team can reuse.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand">Christopher De Paola</span>
+      <p class="footer__quote">« If we want users to like our software we should design it to behave like a likeable person. » <span>— Alan Cooper</span></p>
+      <div class="footer__links">
+        <a href="/en/#projets">← All projects</a>
+        <a href="mailto:chris.depaola.toru@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/gallery.js" defer></script>
+</body>
+</html>

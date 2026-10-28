@@ -12,8 +12,10 @@ projet-myoodrivesign/             Étude de cas myOodriveSign
 projet-skill-audit/               Étude de cas skill Claude
 projet-design-system/             Étude de cas refonte du design system
 projet-lexis-nexis/               Étude de cas Lexis 360
+en/                               Version anglaise (même structure : en/index.html, en/projet-…/)
 assets/css/style.css              Styles (couleurs et polices en haut du fichier)
 assets/img/                       Images
+assets/cv-christopher-de-paola.pdf  CV téléchargeable (accueil, section Contact et pied de page)
 ```
 
 ## Modifier le site
@@ -35,6 +37,12 @@ Pour remplir un emplacement, exporte l'écran depuis Figma (PNG en 2x) et dépos
 
 Variantes de galerie : `gallery--2` et `gallery--3` (colonnes), `gallery--phones` (écrans mobiles), `gallery--wide` (plus large que le texte), `gallery--compare` (avant / après : devient un curseur à faire glisser, avec les deux écrans côte à côte si JavaScript est désactivé). Un `data-label="Avant"` ou `data-label="Après"` sur une `figure` ajoute une étiquette.
 
+## Version anglaise
+
+Chaque page française a son équivalent dans `en/`, au même chemin. Le bouton EN / FR de la navigation passe de l'une à l'autre. Quand tu modifies un texte en français, pense à reporter la modification dans la page anglaise.
+
+Pour remplacer le CV, dépose le nouveau PDF sous le même nom : `assets/cv-christopher-de-paola.pdf`.
+
 ## Voir le site en local
 
 ```bash
@@ -49,4 +57,7 @@ Les endroits marqués `À ajouter` dans le code :
 
 - `projet-lexis-nexis/index.html` : le lien vers le prototype Figma
 - `projet-myoodrivesign/index.html` : des données d'usage depuis le lancement
-- `projet-skill-audit/index.html` : le temps gagné grâce à la skill
+- `projet-skill-audit/index.html` : le nombre de designers qui ont réutilisé la skill
+- `projet-design-system/index.html` : le taux d'adoption et le gain de time-to-market mesuré, et le paragraphe « Ce que je ferais différemment » à reformuler avec tes mots
+
+Les mêmes commentaires sont présents dans les pages de `en/`.
