@@ -79,6 +79,50 @@
   });
 })();
 
+/* Prototypes : chaque .proto__step est un écran ; sa zone .proto__hotspot mène à l'écran
+   suivant (data-go="end" affiche la fin du parcours, data-go="1" revient au premier écran). */
+
+(function () {
+  document.querySelectorAll(".proto").forEach(function (proto) {
+    var steps = proto.querySelectorAll(".proto__step");
+    var caption = proto.querySelector(".proto__caption");
+    var current = 0;
+
+    function show(i) {
+      current = i;
+      proto.classList.remove("is-ended");
+      steps.forEach(function (step, n) {
+        step.classList.toggle("is-active", n === i);
+        step.inert = n !== i;
+      });
+      caption.innerHTML = "<strong>" + (i + 1) + " / " + steps.length + "</strong>";
+      caption.append(" " + steps[i].dataset.caption);
+    }
+
+    function end() {
+      proto.classList.add("is-ended");
+      steps[current].inert = true;
+      caption.innerHTML = "";
+      caption.append(proto.dataset.endCaption || "");
+      proto.querySelector(".proto__end .proto__restart").focus();
+    }
+
+    proto.addEventListener("click", function (e) {
+      var hotspot = e.target.closest(".proto__hotspot");
+      if (hotspot) {
+        var go = hotspot.dataset.go;
+        if (go === "end") end();
+        else show(go ? Number(go) - 1 : current + 1);
+        var next = proto.querySelector(".proto__step.is-active .proto__hotspot");
+        if (next && go !== "end" && e.detail === 0) next.focus();
+      }
+      if (e.target.closest(".proto__restart")) show(0);
+    });
+
+    show(0);
+  });
+})();
+
 /* Zoom : un clic (ou Entrée) sur un écran l'ouvre en grand. Un clic sur l'image agrandie
    l'affiche à sa taille réelle ; Échap, le bouton × ou un clic à côté referment. */
 
