@@ -90,25 +90,37 @@
           <img src="/assets/img/myoodrivesign-card.png" alt="Écrans de l'application myOodriveSign" loading="lazy" width="1532" height="504">
           <figcaption>Un parcours pensé pour la mobilité : peu d'étapes, peu de friction.</figcaption>
         </figure>
-        <div class="gallery gallery--phones gallery--wide">
-          <figure class="shot">
-            <img src="/assets/img/myoodrivesign-liste.png" alt="Liste des documents à signer, à valider et à prévalider" width="788" height="1704" loading="lazy">
-            <figcaption>Tout ce qui attend une action</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="/assets/img/myoodrivesign-apercu.png" alt="Aperçu d'un document avant signature" width="788" height="1704" loading="lazy">
-            <figcaption>Aperçu du document</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="/assets/img/myoodrivesign-signature.png" alt="Validation de la signature par la biométrie du téléphone" width="788" height="1704" loading="lazy">
-            <figcaption>Validation par biométrie</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="/assets/img/myoodrivesign-confirmation.png" alt="Confirmation de signature" width="788" height="1704" loading="lazy">
-            <figcaption>Confirmation</figcaption>
-          </figure>
-          <p class="gallery__caption">Le parcours mobile, écran par écran.</p>
+        <div class="proto proto--phone" data-end-caption="">
+          <div class="proto__device">
+            <div class="proto__screen" style="--ratio: 788 / 1704">
+          <div class="proto__step is-active" data-caption="Les documents qui attendent une action : touchez le premier">
+            <img src="/assets/img/myoodrivesign-liste.png" alt="myOodriveSign : liste des documents à traiter" width="788" height="1704" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 2.0%; --y: 26.4%; --w: 96.0%; --h: 14.8%" aria-label="Ouvrir le premier document"></button>
+          </div>
+          <div class="proto__step" data-caption="Aperçu du document avant signature">
+            <img src="/assets/img/myoodrivesign-apercu.png" alt="myOodriveSign : aperçu du document" width="788" height="1704" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 50.5%; --y: 92.3%; --w: 46.0%; --h: 6.3%" aria-label="Signer"></button>
+          </div>
+          <div class="proto__step" data-caption="Acceptation des conditions, puis signature">
+            <img src="/assets/img/myoodrivesign-signature.png" alt="myOodriveSign : acceptation avant signature" width="788" height="1704" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 50.5%; --y: 92.3%; --w: 46.0%; --h: 6.3%" aria-label="Signer"></button>
+          </div>
+          <div class="proto__step" data-caption="Validation par l'empreinte du téléphone">
+            <img src="/assets/img/myoodrivesign-empreinte.png" alt="myOodriveSign : validation par empreinte" width="788" height="1704" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 38.0%; --y: 74.5%; --w: 24.0%; --h: 11.0%" aria-label="Poser son doigt sur le capteur"></button>
+          </div>
+          <div class="proto__step" data-caption="Confirmation : le document est signé">
+            <img src="/assets/img/myoodrivesign-confirmation.png" alt="myOodriveSign : confirmation de signature" width="788" height="1704" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 4.1%; --y: 92.3%; --w: 91.9%; --h: 6.3%" data-go="1" aria-label="Signer un autre document"></button>
+          </div>
+            </div>
+          </div>
+          <div class="proto__bar">
+            <p class="proto__caption" aria-live="polite"></p>
+            <button class="proto__restart" type="button">Recommencer</button>
+          </div>
         </div>
+        <p class="gallery__caption proto__note">Le parcours mobile, de la liste à la signature. Touchez la zone bleue pour avancer.</p>
       </section>
 
       <section class="case-section">
