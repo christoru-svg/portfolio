@@ -32,7 +32,7 @@ Chaque étude de cas contient des galeries d'écrans (`<div class="gallery">`). 
 
 Pour remplir un emplacement, exporte l'écran depuis Figma (PNG en 2x) et dépose-le dans `assets/img/` sous le nom indiqué. Pense à relire la légende (`figcaption`) et à anonymiser les noms et emails clients.
 
-Variantes de galerie : `gallery--2` et `gallery--3` (colonnes), `gallery--phones` (écrans mobiles), `gallery--wide` (plus large que le texte), `gallery--compare` (même cadrage pour un avant / après). Un `data-label="Avant"` ou `data-label="Après"` sur une `figure` ajoute une étiquette.
+Variantes de galerie : `gallery--2` et `gallery--3` (colonnes), `gallery--phones` (écrans mobiles), `gallery--wide` (plus large que le texte), `gallery--compare` (avant / après : devient un curseur à faire glisser, avec les deux écrans côte à côte si JavaScript est désactivé). Un `data-label="Avant"` ou `data-label="Après"` sur une `figure` ajoute une étiquette.
 
 ## Voir le site en local
 
