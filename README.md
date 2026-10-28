@@ -14,6 +14,8 @@ projet-design-system/             Étude de cas refonte du design system
 projet-lexis-nexis/               Étude de cas Lexis 360
 en/                               Version anglaise (même structure : en/index.html, en/projet-…/)
 assets/css/style.css              Styles (couleurs et polices en haut du fichier)
+assets/js/home.js                 Animations de l'accueil (titres, étapes de la méthode, barres IA)
+assets/js/gallery.js              Galeries d'écrans et prototypes des études de cas
 assets/img/                       Images
 assets/cv-christopher-de-paola.pdf  CV téléchargeable (accueil, section Contact et pied de page)
 ```
@@ -42,6 +44,10 @@ Variantes de galerie : `gallery--2` et `gallery--3` (colonnes), `gallery--phones
 Chaque page française a son équivalent dans `en/`, au même chemin. Le bouton EN / FR de la navigation passe de l'une à l'autre. Quand tu modifies un texte en français, pense à reporter la modification dans la page anglaise.
 
 Pour remplacer le CV, dépose le nouveau PDF sous le même nom : `assets/cv-christopher-de-paola.pdf`.
+
+## Animations de l'accueil
+
+Elles sont gérées par `assets/js/home.js` et la partie « Animations de l'accueil » de `style.css`. Si un visiteur a activé « réduire les animations » sur son appareil, elles sont désactivées et la page s'affiche normalement.
 
 ## Voir le site en local
 

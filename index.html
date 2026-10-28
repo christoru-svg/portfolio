@@ -188,62 +188,69 @@
     </section>
 
     <!-- Méthode -->
-    <section class="section" id="methode">
-      <div class="container">
-        <span class="eyebrow">Méthodes</span>
-        <h2 class="section__title">Ma façon de travailler</h2>
+    <section class="section steps-section" id="methode">
+      <div class="steps-track">
+        <div class="steps-sticky">
+          <div class="container">
+            <span class="eyebrow">Méthodes</span>
+            <h2 class="section__title">Ma façon de travailler</h2>
 
-        <div class="cards cards--3">
-          <article class="card">
-            <span class="card__step">01</span>
-            <h3 class="card__title">Discovery</h3>
-            <p class="card__intro">Comprendre avant de concevoir. Poser le bon problème.</p>
-            <ul class="card__list">
-              <li>Interviews et entretiens qualitatifs</li>
-              <li>Questionnaires quantitatifs</li>
-              <li>Audit ergonomique (Bastien &amp; Scapin, Nielsen)</li>
-              <li>Ateliers design sprint, How Might We</li>
-              <li>Analyse des usages et données</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Dovetail · Notion · Miro · Maze</p>
-            </div>
-          </article>
+            <div class="cards cards--3 steps">
+              <article class="card">
+                <span class="card__step">01</span>
+                <h3 class="card__title">Discovery</h3>
+                <p class="card__intro">Comprendre avant de concevoir. Poser le bon problème.</p>
+                <div class="scene" data-scene="discovery" aria-hidden="true"></div>
+                <ul class="card__list">
+                  <li>Interviews et entretiens qualitatifs</li>
+                  <li>Questionnaires quantitatifs</li>
+                  <li>Audit ergonomique (Bastien &amp; Scapin, Nielsen)</li>
+                  <li>Ateliers design sprint, How Might We</li>
+                  <li>Analyse des usages et données</li>
+                </ul>
+                <div class="card__tools">
+                  <p class="card__tools-label">Outils</p>
+                  <p class="card__tools-list">Dovetail · Notion · Miro · Maze</p>
+                </div>
+              </article>
 
-          <article class="card">
-            <span class="card__step">02</span>
-            <h3 class="card__title">Conception</h3>
-            <p class="card__intro">Co-concevoir des solutions testables et centrées utilisateurs.</p>
-            <ul class="card__list">
-              <li>User flows et cas nominaux</li>
-              <li>Wireframes basse et haute fidélité</li>
-              <li>Prototypes interactifs</li>
-              <li>Design system et composants</li>
-              <li>Alignement PM, PO, tech et business</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Figma · FigJam · Storybook</p>
-            </div>
-          </article>
+              <article class="card">
+                <span class="card__step">02</span>
+                <h3 class="card__title">Conception</h3>
+                <p class="card__intro">Co-concevoir des solutions testables et centrées utilisateurs.</p>
+                <div class="scene" data-scene="conception" aria-hidden="true"></div>
+                <ul class="card__list">
+                  <li>User flows et cas nominaux</li>
+                  <li>Wireframes basse et haute fidélité</li>
+                  <li>Prototypes interactifs</li>
+                  <li>Design system et composants</li>
+                  <li>Alignement PM, PO, tech et business</li>
+                </ul>
+                <div class="card__tools">
+                  <p class="card__tools-label">Outils</p>
+                  <p class="card__tools-list">Figma · FigJam · Storybook</p>
+                </div>
+              </article>
 
-          <article class="card">
-            <span class="card__step">03</span>
-            <h3 class="card__title">Delivery</h3>
-            <p class="card__intro">Sécuriser la mise en production, mesurer l'impact.</p>
-            <ul class="card__list">
-              <li>Tests utilisateurs (SUS, think-aloud)</li>
-              <li>Synthèses et livrables actionnables</li>
-              <li>Handoff produit et développement</li>
-              <li>Lotissement et priorisation de la roadmap</li>
-              <li>Diffusion de la culture produit</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Figma · Maze · Jira · Confluence</p>
+              <article class="card">
+                <span class="card__step">03</span>
+                <h3 class="card__title">Delivery</h3>
+                <p class="card__intro">Sécuriser la mise en production, mesurer l'impact.</p>
+                <div class="scene" data-scene="delivery" aria-hidden="true"></div>
+                <ul class="card__list">
+                  <li>Tests utilisateurs (SUS, think-aloud)</li>
+                  <li>Synthèses et livrables actionnables</li>
+                  <li>Handoff produit et développement</li>
+                  <li>Lotissement et priorisation de la roadmap</li>
+                  <li>Diffusion de la culture produit</li>
+                </ul>
+                <div class="card__tools">
+                  <p class="card__tools-label">Outils</p>
+                  <p class="card__tools-list">Figma · Maze · Jira · Confluence</p>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -264,11 +271,13 @@
               <h4 class="card__use-title">Synthèse de recherche utilisateur</h4>
               <p class="card__text">L'IA traite les verbatims bruts pour faire ressortir les motifs récurrents. Je relis, requalifie et construis les insights : l'analyse reste la mienne.</p>
               <p class="card__time">1 heure au lieu d'une demi-journée</p>
+              <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
             <div class="card__use">
               <h4 class="card__use-title">Wireframes de discovery</h4>
               <p class="card__text">À partir des insights, je génère des variantes basse fidélité. Je sélectionne, critique et affine : l'IA explore, moi je tranche.</p>
               <p class="card__time">1 heure au lieu de 4</p>
+              <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
           </article>
           <article class="card">
@@ -289,11 +298,13 @@
               <h4 class="card__use-title">Audits ergonomiques et d'accessibilité</h4>
               <p class="card__text">Une première passe automatisée sur les parcours et les composants du design system (contraste, hiérarchie, taille de cible, labels ARIA…). Je valide et priorise, l'IA produit le rapport structuré.</p>
               <p class="card__time">2 jours au lieu d'1 semaine</p>
+              <div class="gain" style="--ratio: 0.4" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
             <div class="card__use">
               <h4 class="card__use-title">Navigation clavier et labels ARIA</h4>
               <p class="card__text">À partir des specs Figma, je génère les règles de navigation au clavier et les attributs ARIA de chaque composant, directement exploitables par les développeurs front.</p>
               <p class="card__time">2 heures au lieu de 8</p>
+              <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
           </article>
         </div>
@@ -306,7 +317,7 @@
         <span class="eyebrow">Engagement</span>
         <h2 class="section__title">Inclusion &amp; accessibilité</h2>
 
-        <div class="cards cards--2">
+        <div class="cards cards--2 cards--tilt">
           <article class="card">
             <span class="tag tag--accent">Talk public</span>
             <h3 class="card__title">La place des personnes trans dans le digital</h3>
@@ -371,5 +382,6 @@
       </div>
     </div>
   </footer>
+  <script src="/assets/js/home.js" defer></script>
 </body>
 </html>

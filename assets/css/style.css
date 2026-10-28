@@ -199,6 +199,81 @@ ul { margin: 0; padding: 0; list-style: none; }
 .seeking__value { font-family: var(--serif); font-size: 22px; line-height: 1.3; }
 .seeking__cta { margin-top: 40px; }
 
+/* ---------- Animations de l'accueil (assets/js/home.js) ----------
+   Tout dépend de la classe .motion, posée par le script seulement si
+   l'utilisateur n'a pas demandé de réduire les animations. */
+.motion [data-reveal] .word {
+  display: inline-block; opacity: 0; transform: translateY(0.45em);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.motion [data-reveal].is-visible .word { opacity: 1; transform: none; }
+
+/* Méthode : étapes */
+.steps-section.is-pinned .steps-track { height: 230vh; }
+.steps-section.is-pinned .steps-sticky { position: sticky; top: 64px; padding-top: 24px; }
+.motion .steps .card { transition: opacity 0.4s, transform 0.4s, border-color 0.4s; }
+.motion .steps.has-active .card:not(.is-active) { opacity: 0.45; transform: scale(0.98); }
+.motion .steps .card.is-active { border-color: var(--accent); }
+
+.scene { display: none; }
+.motion .scene {
+  display: block; position: relative; height: 120px; margin: 0 0 24px;
+  border-radius: 8px; background: var(--subtle); overflow: hidden;
+}
+.postit {
+  position: absolute; left: var(--sx); top: var(--sy); width: 28px; height: 20px; border-radius: 3px;
+  transition: left 0.8s cubic-bezier(0.3, 1.3, 0.5, 1), top 0.8s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.postit--1 { background: #d6deff; }
+.postit--2 { background: #ffe3a3; }
+.postit--3 { background: #cdebdc; }
+.is-active .postit { left: var(--gx); top: var(--gy); }
+
+.wf {
+  position: absolute; background: var(--faint); border-radius: 3px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.wf--1 { left: 12px; right: 12px; top: 12px; height: 14px; }
+.wf--2 { left: 12px; top: 34px; bottom: 12px; width: 38%; transition-delay: 0.2s; }
+.wf--3 { left: calc(38% + 20px); right: 12px; top: 34px; height: 30px; transition-delay: 0.35s; }
+.wf--4 { left: calc(38% + 20px); right: 12px; top: 72px; bottom: 12px; background: var(--accent); transition-delay: 0.5s; }
+.is-active .wf { opacity: 1; transform: none; }
+
+.lot { position: absolute; top: 24px; bottom: 26px; width: 28%; border: 1px dashed var(--faint); border-radius: 6px; }
+.lot__label, .scene__note {
+  position: absolute; font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted); white-space: nowrap;
+}
+.lot__label { top: 6px; }
+.scene__note { left: 4%; bottom: 7px; opacity: 0; transition: opacity 0.4s; }
+.is-active .scene__note { opacity: 1; transition-delay: 1.2s; }
+.ticket {
+  position: absolute; left: var(--sx); top: var(--sy); width: 30px; height: 12px; border-radius: 3px;
+  background: var(--faint);
+  transition: left 0.7s cubic-bezier(0.3, 1.3, 0.5, 1), top 0.7s cubic-bezier(0.3, 1.3, 0.5, 1), background 0.4s;
+}
+.is-active .ticket { left: var(--gx); top: var(--gy); }
+.is-active .ticket--live { background: var(--accent); transition-delay: 0s, 0s, 0.9s; }
+
+/* IA : temps gagné */
+.gain { display: none; }
+.motion .gain { display: grid; gap: 6px; margin-top: 10px; }
+.gain__bar { height: 6px; width: 0; border-radius: 3px; transition: width 1.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.gain__bar--before { background: var(--faint); opacity: 0.6; }
+.gain__bar--after { background: var(--accent); transition-duration: 0.7s; transition-delay: 0.2s; }
+.gain.is-visible .gain__bar--before { width: 100%; }
+.gain.is-visible .gain__bar--after { width: calc(var(--ratio) * 100%); }
+
+/* Engagement : cartes posées de travers, redressées au survol */
+@media (hover: hover) and (min-width: 761px) {
+  .motion .cards--tilt .card { position: relative; transition: transform 0.7s cubic-bezier(0.3, 1.6, 0.4, 1); }
+  .motion .cards--tilt .card:nth-child(1) { transform: rotate(-1.5deg) translateY(6px); }
+  .motion .cards--tilt .card:nth-child(2) { transform: rotate(1.2deg) translateY(-4px); }
+  .motion .cards--tilt .card:hover,
+  .motion .cards--tilt .card:focus-within { transform: rotate(0) scale(1.02); z-index: 1; }
+}
+
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); padding: 40px 0; }
 .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
