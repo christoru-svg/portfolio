@@ -23,6 +23,17 @@ assets/img/                       Images
 
 Sur GitHub, tu peux modifier un fichier directement dans le navigateur (icône crayon). Vercel redéploie automatiquement à chaque modification.
 
+## Ajouter des écrans
+
+Chaque étude de cas contient des galeries d'écrans (`<div class="gallery">`). Chaque emplacement attend une image dans `assets/img/`, avec un nom précis.
+
+- **En local**, un emplacement sans image s'affiche en pointillés avec le nom du fichier attendu.
+- **En ligne**, un emplacement sans image est masqué. Tu peux donc publier le site même si tous les écrans ne sont pas encore là.
+
+Pour remplir un emplacement, exporte l'écran depuis Figma (PNG en 2x) et dépose-le dans `assets/img/` sous le nom indiqué. Pense à relire la légende (`figcaption`) et à anonymiser les noms et emails clients.
+
+Variantes de galerie : `gallery--2` et `gallery--3` (colonnes), `gallery--phones` (écrans mobiles), `gallery--wide` (plus large que le texte), `gallery--compare` (même cadrage pour un avant / après). Un `data-label="Avant"` ou `data-label="Après"` sur une `figure` ajoute une étiquette.
+
 ## Voir le site en local
 
 ```bash
@@ -35,7 +46,6 @@ Puis ouvre http://localhost:8420.
 
 Les endroits marqués `À ajouter` dans le code :
 
-- `index.html` : ton adresse email dans le footer
 - `projet-lexis-nexis/index.html` : le lien vers le prototype Figma
 - `projet-myoodrivesign/index.html` : des données d'usage depuis le lancement
 - `projet-skill-audit/index.html` : le temps gagné grâce à la skill

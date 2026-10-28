@@ -231,6 +231,42 @@ ul { margin: 0; padding: 0; list-style: none; }
 .figure img { border-radius: 12px; border: 1px solid var(--border); width: 100%; }
 .figure figcaption { margin-top: 10px; font-size: 13px; font-style: italic; color: var(--muted); text-align: center; }
 
+/* Galerie d'écrans : voir assets/js/gallery.js pour les emplacements vides */
+.gallery { display: grid; gap: 16px; margin: 32px 0 0; }
+.gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gallery--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gallery--phones { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.gallery--wide {
+  --wide: min(1040px, calc(100vw - 2 * var(--gutter)));
+  width: var(--wide);
+  margin-left: calc(50% - var(--wide) / 2);
+}
+.gallery__caption { grid-column: 1 / -1; font-size: 13px; font-style: italic; color: var(--muted); text-align: center; }
+
+.shot { margin: 0; position: relative; }
+.shot--full { grid-column: 1 / -1; }
+.shot img { width: 100%; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); }
+.gallery--phones .shot img { border-radius: 20px; }
+.gallery--compare .shot img { aspect-ratio: 3 / 2; object-fit: cover; object-position: top center; }
+.shot figcaption { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.shot[data-label]::before {
+  content: attr(data-label);
+  position: absolute; top: 12px; left: 12px; z-index: 1;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 4px; background: var(--dark); color: #fff;
+}
+.shot[data-label="Après"]::before { background: var(--accent); }
+
+/* Emplacement vide, visible uniquement en local */
+.shot__todo {
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  min-height: 180px; padding: 20px;
+  border: 2px dashed var(--faint); border-radius: 12px; background: var(--subtle);
+  font-size: 13px; line-height: 1.5; color: var(--muted);
+}
+.gallery--phones .shot__todo { min-height: 320px; border-radius: 20px; }
+.shot__todo code { font-size: 12px; font-weight: 600; color: var(--accent); word-break: break-all; }
+
 .quote {
   margin: 32px 0 0; padding: 28px 32px;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -322,6 +358,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   .case-section__title { font-size: 26px; }
   .lead-block { padding: 28px 24px; }
   .results { grid-template-columns: 1fr; }
+  .gallery--2, .gallery--3 { grid-template-columns: 1fr; }
+  .gallery--phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .others__grid { grid-template-columns: 1fr; }
 }
 
