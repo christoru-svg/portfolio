@@ -107,21 +107,38 @@
           </figure>
           <p class="gallery__caption">Mes documents : des alertes en tête de page pour voir tout de suite ce qui demande une action.</p>
         </div>
-        <div class="gallery gallery--3 gallery--wide">
-          <figure class="shot">
-            <img src="/assets/img/oodrive-sign-1clic-documents.png" alt="Parcours 1 clic, étape 1 : import des documents par glisser-déposer" width="2000" height="1338" loading="lazy">
-            <figcaption>1. Import des documents, avec alerte quand un document ne peut pas être traité</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="/assets/img/oodrive-sign-1clic-signataires.png" alt="Parcours 1 clic, étape 2 : signataires, message et niveau de sécurité sur un seul écran" width="2000" height="1433" loading="lazy">
-            <figcaption>2. Signataires, message et niveau de sécurité sur un seul écran</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="/assets/img/oodrive-sign-1clic-encarts.png" alt="Parcours 1 clic, étape 3 : confirmation d'envoi avec page de signature automatique" width="2000" height="1433" loading="lazy">
-            <figcaption>3. Envoi : les pavés de signature sont placés automatiquement</figcaption>
-          </figure>
-          <p class="gallery__caption">Le parcours de signature en 1 clic, pensé pour les 85 % d'usages simples.</p>
+        <div class="proto proto--laptop" data-end-caption="Document envoyé : le parcours complet tient en 3 écrans.">
+          <div class="proto__device">
+            <div class="proto__screen" style="--ratio: 2000 / 1495">
+          <div class="proto__step is-active" data-caption="Accueil : cliquez sur « Faire signer en 1 clic »">
+            <img src="/assets/img/oodrive-sign-accueil-apres.png" alt="Accueil d'Oodrive Sign" width="2000" height="1495" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 2.3%; --y: 26.0%; --w: 23.6%; --h: 27.2%" aria-label="Faire signer en 1 clic"></button>
+          </div>
+          <div class="proto__step" data-caption="Import des documents, avec une alerte quand un document ne peut pas être traité">
+            <img src="/assets/img/oodrive-sign-1clic-documents.png" alt="Parcours 1 clic : import des documents" width="2000" height="1338" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 44.9%; --y: 82.0%; --w: 10.1%; --h: 6.0%" aria-label="Continuer"></button>
+          </div>
+          <div class="proto__step" data-caption="Signataires, message et niveau de sécurité sur un seul écran">
+            <img src="/assets/img/oodrive-sign-1clic-signataires.png" alt="Parcours 1 clic : signataires, message et niveau de sécurité" width="2000" height="1433" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 88.9%; --y: 92.4%; --w: 9.6%; --h: 5.5%" aria-label="Envoyer"></button>
+          </div>
+          <div class="proto__step" data-caption="Envoi : les pavés de signature sont placés automatiquement">
+            <img src="/assets/img/oodrive-sign-1clic-encarts.png" alt="Parcours 1 clic : confirmation d'envoi" width="2000" height="1433" loading="lazy">
+            <button class="proto__hotspot" type="button" style="--x: 50.0%; --y: 54.3%; --w: 8.0%; --h: 5.5%" data-go="end" aria-label="Confirmer l'envoi"></button>
+          </div>
+          <div class="proto__end">
+            <p>Document envoyé en 3 écrans</p>
+            <button class="proto__restart" type="button">Recommencer</button>
+          </div>
+            </div>
+          </div>
+        <div class="proto__base"></div>
+          <div class="proto__bar">
+            <p class="proto__caption" aria-live="polite"></p>
+            <button class="proto__restart" type="button">Recommencer</button>
+          </div>
         </div>
+        <p class="gallery__caption proto__note">Le parcours de signature en 1 clic, pensé pour les 85 % d'usages simples. Cliquez sur la zone bleue pour avancer.</p>
         <div class="gallery gallery--wide">
           <figure class="shot">
             <img src="/assets/img/oodrive-sign-signature-groupee.png" alt="Signature groupée : une fenêtre signale au signataire les autres documents qui l'attendent" width="2000" height="1371" loading="lazy">
