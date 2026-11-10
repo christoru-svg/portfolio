@@ -14,6 +14,9 @@
   --faint: #c0c0bc;
   --accent: #1a4cff;
   --accent-soft: #eef1ff;
+  --accent-hover: #0f3ae0;
+  --on-accent: #ffffff;
+  --overlay: rgba(255, 255, 255, 0.94);
   --dark: #0f0f0e;
   --live: #1f8a4c;
   --live-soft: #e3f4ea;
@@ -27,6 +30,43 @@
   --gutter: 40px;
   --radius: 12px;
 }
+
+/* Mode sombre : activé par le bouton du menu (assets/js/theme.js),
+   ou par défaut si le système est en sombre. */
+:root[data-theme="dark"] {
+  --bg: #111110;
+  --bg-nav: rgba(17, 17, 16, 0.88);
+  --surface: #1a1a18;
+  --subtle: #232321;
+  --border: #2e2e2b;
+  --ink: #f3f3ef;
+  --text: #d2d2cc;
+  --muted: #a3a39b;
+  --faint: #4a4a46;
+  --accent: #8aa0ff;
+  --accent-soft: #1e2747;
+  --accent-hover: #a9b9ff;
+  --on-accent: #0b0b0a;
+  --overlay: rgba(17, 17, 16, 0.94);
+  --dark: #1f1f1d;
+  --live: #5cc98a;
+  --live-soft: #173324;
+  --warn: #f0ae4e;
+  --warn-soft: #3a2a12;
+  color-scheme: dark;
+}
+
+/* Bouton clair / sombre */
+.theme-toggle {
+  display: grid; place-items: center; width: 32px; height: 28px; padding: 0;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--faint); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .icon-sun,
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 *,
 *::before,
@@ -56,7 +96,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .skip-link {
   position: absolute; left: 16px; top: -48px; z-index: 100;
-  background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 8px;
+  background: var(--accent); color: var(--on-accent); padding: 8px 14px; border-radius: 8px;
 }
 .skip-link:focus { top: 12px; }
 
@@ -97,12 +137,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-size: 14px; font-weight: 500;
   padding: 12px 20px; border-radius: 8px;
   transition: background 0.15s;
 }
-.btn:hover { background: #0f3ae0; }
+.btn:hover { background: var(--accent-hover); }
 .btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--border); }
 .btn--ghost:hover { background: var(--subtle); }
 .btns { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -451,7 +491,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   display: grid; place-items: center;
   width: 40px; height: 40px; border-radius: 50%;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-size: 18px; font-weight: 700; letter-spacing: 2px;
   box-shadow: 0 2px 8px rgba(15, 15, 14, 0.25);
 }
@@ -499,7 +539,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .proto__end {
   position: absolute; inset: 0; z-index: 2;
   display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-  padding: 24px; text-align: center; background: rgba(255, 255, 255, 0.94);
+  padding: 24px; text-align: center; background: var(--overlay);
 }
 .proto.is-ended .proto__end { display: flex; }
 .proto__end p { font-family: var(--serif); font-size: 26px; line-height: 1.25; color: var(--ink); }
@@ -515,7 +555,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--surface); color: var(--ink); font: inherit; font-weight: 500; cursor: pointer;
 }
 .proto__restart:hover { border-color: var(--accent); color: var(--accent); }
-.proto__end .proto__restart { background: var(--accent); border-color: var(--accent); color: #fff; }
+.proto__end .proto__restart { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .proto__note { margin-top: 14px; }
 @media (max-width: 760px) {
   .proto--laptop .proto__device { border-radius: 12px 12px 4px 4px; }
@@ -631,6 +671,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 760px) {
   :root { --gutter: 16px; }
   .nav__links { display: none; }
+  .nav__brand { white-space: nowrap; }
+  .nav__end { gap: 12px; }
+  .nav__back { white-space: nowrap; }
   .hero { padding: 40px 0 48px; }
   .hero__grid { grid-template-columns: 1fr; gap: 32px; }
   .hero__photo { width: 160px; order: -1; }
@@ -662,6 +705,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   .gallery--2, .gallery--3 { grid-template-columns: 1fr; }
   .gallery--phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .others__grid { grid-template-columns: 1fr; }
+}
+
+/* Petits téléphones : le lien retour reste dans le pied de page */
+@media (max-width: 420px) {
+  .nav__back { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
