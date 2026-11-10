@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workout Log, a gym log that listens to your back — Christopher De Paola</title>
+  <meta name="description" content="Case study: designing and shipping in one week a strength-training app adapted to a herniated disc, built around one insight: discomfort shows up the next day.">
+  <meta property="og:title" content="Workout Log, a gym log that listens to your back — Christopher De Paola">
+  <meta property="og:image" content="https://christopher-de-paola.vercel.app/assets/img/workout-log-hero.jpg">
+  <meta property="og:description" content="Case study: designing and shipping in one week a strength-training app adapted to a herniated disc, built around one insight: discomfort shows up the next day.">
+  <meta property="og:url" content="https://christopher-de-paola.vercel.app/en/projet-workout-log/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://christopher-de-paola.vercel.app/en/projet-workout-log/">
+  <link rel="alternate" hreflang="fr" href="https://christopher-de-paola.vercel.app/projet-workout-log/">
+  <link rel="alternate" hreflang="en" href="https://christopher-de-paola.vercel.app/en/projet-workout-log/">
+  <link rel="alternate" hreflang="x-default" href="https://christopher-de-paola.vercel.app/projet-workout-log/">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="/en/">Christopher De Paola</a>
+      <div class="nav__end">
+        <a class="nav__back" href="/en/#projets">← All projects</a>
+        <a class="nav__lang" href="/projet-workout-log/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-hero__grid">
+          <div>
+            <span class="eyebrow eyebrow--line">Case study · 2026</span>
+            <h1 class="case-hero__title">Workout Log <em>a gym log that listens to your back</em></h1>
+          </div>
+          <div>
+            <p class="case-hero__lead">How I designed and shipped, in one week, a strength-training app adapted to my herniated disc, built around one simple insight: discomfort doesn't show up during the exercise, but the next day.</p>
+            <dl class="case-meta">
+              <div><dt>Context</dt><dd>Personal project</dd></div>
+              <div><dt>Role</dt><dd>Product designer, from art direction to code</dd></div>
+              <div><dt>Duration</dt><dd>1 week</dd></div>
+              <div><dt>Status</dt><dd>Live, used at the gym</dd></div>
+            </dl>
+            <div class="btns" style="margin-top: 24px;">
+              <a class="btn" href="https://christoru-svg.github.io/workoutlog/" target="_blank" rel="noopener">Open the app (in French) <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 48px;">
+        <div class="case-cover"><img src="/assets/img/workout-log-hero.jpg" alt="Three Workout Log screens: the morning pain chart, the workout in progress and the next-day check-in" width="1188" height="504"></div>
+      </div>
+    </section>
+
+    <article class="case-body">
+      <section class="case-section">
+        <span class="eyebrow">01 · Context</span>
+        <h2 class="case-section__title">A physiotherapy program, and apps built for performance</h2>
+        <p>I have an L5‑S1 herniated disc. My physiotherapist gave me a precise program: two sessions a week, sets of 15 at moderate load, core work for the transverse and obliques, and back extensions on a 45° bench.</p>
+        <p>The training apps I was using are built for performance. They highlight total volume and personal records, and offer nothing to track pain or follow a medical instruction.</p>
+        <p class="callout"><strong>Key takeaway:</strong> the user was me. The safeguard was my physiotherapist: the app never presents an exercise as "safe" on its own, every status comes from her.</p>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">02 · Problem</span>
+        <h2 class="case-section__title">Discomfort shows up the next day, and no app asks about it</h2>
+        <p>Using those apps, I noticed my discomfort almost never appeared during the exercise. It came the next morning, when I woke up. An app that only measures the workout misses the one piece of information that matters for my back.</p>
+        <ul class="bullets">
+          <li>The physiotherapist's instructions stay on a sheet of paper, far from the moment of effort</li>
+          <li>Highlighting total volume pushes you to load up, the opposite of the goal</li>
+          <li>No link between a workout, its exercises and the pain of the following days</li>
+        </ul>
+        <blockquote class="quote">
+          <p>"Progress without paying for it the next day: only increase the load if my back stays calm in the days that follow."</p>
+          <footer>Project goal</footer>
+        </blockquote>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">03 · Identity</span>
+        <h2 class="case-section__title">Calm, clean, readable from a meter away</h2>
+        <p>Before writing any code, I set out the art direction, four key screens and five user flows in a proposal page. Three choices shape the identity.</p>
+        <ul class="bullets">
+          <li><strong>Traffic-light colors reserved for the physio status:</strong> green, amber and red are never decorative. When you see them, they are about your back.</li>
+          <li><strong>Atkinson Hyperlegible:</strong> a typeface designed for low vision, so it stays readable at the gym, sweaty, with the phone lying on a bench.</li>
+          <li><strong>A logo that says what the app is:</strong> a first spine-shaped idea read like a gauge. The final version pairs a dumbbell with two notebook lines.</li>
+        </ul>
+        <figure class="figure">
+          <img src="/assets/img/workout-log-da.png" alt="Art direction: cobalt palette with the three physio status colors, and the three typefaces" loading="lazy" width="2560" height="1320">
+          <figcaption>Palette and typography: the traffic-light colors are reserved for the physiotherapist's instructions.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="/assets/img/workout-log-logo.png" alt="Logo evolution: a spine read like a gauge, then a dumbbell above two notebook lines" loading="lazy" width="3200" height="1280">
+          <figcaption>From the spine, read like a gauge at 10%, to the dumbbell and its notebook lines.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">04 · Solution</span>
+        <h2 class="case-section__title">Two check-ins: during the exercise, and the next morning</h2>
+        <p>I analysed the training app I was using. I kept its workout cards and the accordion overview during the session. I adapted the rest: consistency and pain come before total volume, and every exercise shows its full format and its physio instruction.</p>
+        <ul class="bullets">
+          <li><strong>During the workout:</strong> one big "Log set" button, the rest time between each set, "Last time: 30 kg × 15", and a "It pulls" button to flag discomfort on a set.</li>
+          <li><strong>The next morning:</strong> a 30-second check-in. Morning pain compared with before and right after the workout, stiffness, leg symptoms, and what else may have played a part outside the gym.</li>
+          <li><strong>Progression tied to the next days:</strong> the app only suggests +2.5 kg after two easy sessions with next-day pain below the threshold set with the physiotherapist.</li>
+          <li><strong>Leads, not diagnoses:</strong> when one workout leads to more painful mornings, the app lists the exercises specific to it, to show the physiotherapist.</li>
+        </ul>
+        <div class="gallery gallery--phones gallery--wide">
+          <figure class="shot">
+            <img src="/assets/img/workout-log-seance.jpg" alt="Workout in progress: timer at the top, open exercise with a load suggestion, last performance and sets" width="780" height="1688" loading="lazy">
+            <figcaption>The workout: sticky timer, rest between sets, last performance.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/workout-log-bilan-j1.jpg" alt="Next-day check-in: morning pain compared with before and right after, stiffness and factors" width="780" height="1688" loading="lazy">
+            <figcaption>The next-day check-in: pain "cold", next to before and right after.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/workout-log-carnet-pistes.jpg" alt="Log: morning pain chart per workout with the threshold, and a lead to watch" width="780" height="1688" loading="lazy">
+            <figcaption>The lead to watch: mornings after workout A are more painful.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/workout-log-bibliotheque.jpg" alt="Exercise library filtered on lower back, with physio status and muscle groups" width="780" height="1688" loading="lazy">
+            <figcaption>The library: physio status, muscle groups and one pictogram per exercise.</figcaption>
+          </figure>
+          <p class="gallery__caption">The app interface is in French.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">05 · Method</span>
+        <h2 class="case-section__title">Ship fast, audit, then iterate after every workout</h2>
+        <p>Rather than static mockups, I prototyped directly in real code, with an AI coding assistant (Claude Code). I made every design decision and approved every iteration; the AI let me test my choices at the gym within the first week.</p>
+        <div class="timeline">
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 1 · Framing</p>
+            <h3 class="timeline__title">Art direction and user flows proposal</h3>
+            <p>Art direction, four key screens, five user flows (setup, adding an exercise, creating a workout, workout in progress, summary for the physiotherapist) and a data model.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 2 · MVP</p>
+            <h3 class="timeline__title">An installable, offline-first PWA</h3>
+            <p>Installable without an app store and usable without signal in the gym basement. Tested flow by flow before each release.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 3 · Audit</p>
+            <h3 class="timeline__title">Nielsen and technical audit, priorities fixed</h3>
+            <p>An evaluation against Nielsen's 10 heuristics, with a technical part. Six priorities fixed: a double tap that logged two sets, no way to add an exercise mid-workout, no onboarding, screen-reader accessibility…</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">Phase 4 · Usage iterations</p>
+            <h3 class="timeline__title">Every real workout brings feedback</h3>
+            <p>Gestures (long press, swipe to delete with undo), free workout, side-by-side plank timer, estimated duration, pain logging at any time, discomfort alerts. Some ideas were also removed, like offering all 16 illustrations for every new exercise.</p>
+          </div>
+        </div>
+
+        <div class="lead-block">
+          <span class="eyebrow">The incident</span>
+          <h3>Losing my data, and making safety a first-class feature</h3>
+          <p>Clearing my browser data wiped all my workouts. The export reminder I had planned wasn't enough. I added automatic cloud sync (Google sign-in, Firebase) and a shareable backup copy to Drive.</p>
+          <p style="margin-top: 14px;">For a health tracking app, data safety isn't a settings option: it's a promise made to the user from the very first screen.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">06 · Results</span>
+        <h2 class="case-section__title">A live app, in one week</h2>
+        <p>The app is used at the gym twice a week. These figures describe the project, not yet an impact measured with other users.</p>
+        <div class="results results--4">
+          <div class="result">
+            <p class="result__value">1</p>
+            <p class="result__unit">week</p>
+            <p class="result__label">From the art direction proposal to the app installed on my phone</p>
+          </div>
+          <div class="result">
+            <p class="result__value">16</p>
+            <p class="result__unit">releases</p>
+            <p class="result__label">Shipped in one week, each one tested before going live</p>
+          </div>
+          <div class="result">
+            <p class="result__value">4</p>
+            <p class="result__unit">moments</p>
+            <p class="result__label">When pain is tracked: before, during, right after and the next day</p>
+          </div>
+          <div class="result">
+            <p class="result__value">6</p>
+            <p class="result__unit">priorities</p>
+            <p class="result__label">From the Nielsen and technical audit, all fixed</p>
+          </div>
+        </div>
+        <div class="retro">
+          <span class="eyebrow">What I'd do differently</span>
+          <p>I would handle data backup from the very first version, not after an incident. I would also have other people in lower-back rehabilitation test the app earlier: being your own user speeds everything up, but forces you to separate what you feel from what generalises.</p>
+        </div>
+      </section>
+    </article>
+
+    <section class="others">
+      <div class="container">
+        <span class="eyebrow">More projects</span>
+        <div class="others__grid">
+          <a class="other" href="/en/projet-refonte-oodrive-sign/"><h3>Oodrive Sign redesign</h3><p>Simplifying an e-signature platform perceived as complex.</p></a>
+          <a class="other" href="/en/projet-myoodrivesign/"><h3>myOodriveSign</h3><p>A mobile app to sign documents in moments, on the go.</p></a>
+          <a class="other" href="/en/projet-skill-audit/"><h3>Claude skill for UX audits</h3><p>Turning a hand-built audit into a skill the whole product team can reuse.</p></a>
+          <a class="other" href="/en/projet-design-system/"><h3>Design system overhaul</h3><p>Convincing product leadership to invest in a single design system without freezing the roadmap.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand">Christopher De Paola</span>
+      <p class="footer__quote">« If we want users to like our software we should design it to behave like a likeable person. » <span>—&nbsp;Alan&nbsp;Cooper</span></p>
+      <div class="footer__links">
+        <a href="/en/#projets">← All projects</a>
+        <a href="mailto:chris.depaola.toru@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/gallery.js" defer></script>
+</body>
+</html>
