@@ -36,6 +36,7 @@
         <a href="#projets">Projets</a>
         <a href="#methode">Méthode</a>
         <a href="#ia">IA</a>
+        <a href="#labo">Labo</a>
         <a href="#engagement">Talks</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -62,6 +63,16 @@
         <div class="hero__photo">
           <img src="/assets/img/portrait.png" alt="Christopher De Paola en conférence" width="508" height="607">
         </div>
+      </div>
+      <div class="container">
+        <a class="now" href="#labo">
+          <span class="now__label"><span class="pulse" aria-hidden="true"></span>En ce moment</span>
+          <span class="now__items">
+            <span><strong>Pense-Frigo</strong> · en test avec mes premiers utilisateurs</span>
+            <span><strong>Workout Log</strong> · mon carnet de muscu pour le dos</span>
+          </span>
+          <span class="now__cta">Voir le labo <span aria-hidden="true">↓</span></span>
+        </a>
       </div>
     </section>
 
@@ -318,6 +329,71 @@
               <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Labo : projets perso -->
+    <section class="section" id="labo">
+      <div class="container">
+        <span class="eyebrow">Labo · projets perso</span>
+        <h2 class="section__title">Ce que je construis pour moi</h2>
+        <p class="section__lead">Des applis nées de problèmes que je vis au quotidien. Je les conçois et je les code avec Claude, et j'y applique la même démarche qu'au travail : observer, prototyper, tester, itérer.</p>
+
+        <div class="labs">
+          <a class="lab" href="/projet-workout-log/">
+            <div class="lab__head">
+              <span class="status"><span class="pulse" aria-hidden="true"></span>En usage</span>
+              <span class="lab__since">depuis nov. 2026</span>
+            </div>
+            <h3 class="lab__title">Workout Log<span class="lab__sub">Un carnet de muscu pensé pour une hernie L5-S1</span></h3>
+            <p class="lab__problem"><strong>Le problème :</strong> reprendre la muscu sans aggraver mon dos. Je voulais suivre les consignes de ma kiné et voir l'effet de chaque séance sur ma douleur, jusqu'au lendemain.</p>
+            <div class="lab__phones">
+              <div class="lab__phone"><img src="/assets/img/workout-log-bilan-j1.jpg" alt="Bilan du lendemain : douleur au réveil comparée à avant et juste après la séance" loading="lazy" width="780" height="1688"></div>
+              <div class="lab__phone"><img src="/assets/img/workout-log-carnet-pistes.jpg" alt="Carnet : douleur au réveil sur 8 séances et piste à surveiller" loading="lazy" width="780" height="1688"></div>
+            </div>
+            <div>
+              <p class="lab__learn-title">Ce que j'en retiens</p>
+              <ul class="card__list">
+                <li>Le bilan du lendemain matin dit si la séance était bonne, pas le ressenti pendant l'effort.</li>
+                <li>Pour une app de santé, la sauvegarde des données est une promesse dès le premier écran.</li>
+              </ul>
+            </div>
+            <div class="lab__foot">
+              <div class="lab__tags"><span class="tag tag--accent">Santé</span><span class="tag">PWA</span><span class="tag">Claude Code</span></div>
+              <span class="lab__more">Voir l'étude de cas →</span>
+            </div>
+          </a>
+
+          <a class="lab" href="/projet-pense-frigo/">
+            <div class="lab__head">
+              <span class="status status--test"><span class="pulse" aria-hidden="true"></span>En test utilisateurs</span>
+              <span class="lab__since">depuis oct. 2026</span>
+            </div>
+            <h3 class="lab__title">Pense-Frigo<span class="lab__sub">Bon jusqu'au bout</span></h3>
+            <p class="lab__problem"><strong>Le problème :</strong> je rachetais ce que j'avais déjà et je jetais ce que j'oubliais au fond du frigo. Je voulais voir d'un coup d'œil ce qui presse, sans ouvrir la porte.</p>
+            <div class="lab__phones">
+              <div class="lab__phone"><img src="/assets/img/pense-frigo-stock.jpg" alt="Stock du frigo avec l'encart « À manger en premier »" loading="lazy" width="375" height="812"></div>
+              <div class="lab__phone"><img src="/assets/img/pense-frigo-scan.jpg" alt="Scan d'un ticket de caisse : 3 produits trouvés à vérifier" loading="lazy" width="375" height="812"></div>
+            </div>
+            <div>
+              <p class="lab__learn-title">Ce que j'en retiens</p>
+              <ul class="card__list">
+                <li>Personne ne saisit ses courses à la main : le scan du ticket de caisse avec l'IA change tout.</li>
+                <li>Guide d'entretien, questionnaire et roadmap priorisée, comme pour un vrai produit.</li>
+              </ul>
+            </div>
+            <div class="lab__foot">
+              <div class="lab__tags"><span class="tag tag--accent">Quotidien</span><span class="tag">PWA</span><span class="tag">API Claude</span></div>
+              <span class="lab__more">Voir l'étude de cas →</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaway"><h3>Je suis mon propre terrain</h3><p>J'utilise ces applis tous les jours, comme une diary study menée sur moi-même.</p></div>
+          <div class="takeaway"><h3>Du problème à l'appli</h3><p>Je fais tout le chemin : cadrage, maquettes, code, mise en ligne et retours testeurs.</p></div>
+          <div class="takeaway"><h3>Ce que je ramène au travail</h3><p>Une meilleure compréhension des contraintes techniques, et des prototypes plus réalistes.</p></div>
         </div>
       </div>
     </section>

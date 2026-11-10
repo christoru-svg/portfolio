@@ -36,6 +36,7 @@
         <a href="#projets">Projects</a>
         <a href="#methode">Process</a>
         <a href="#ia">AI</a>
+        <a href="#labo">Lab</a>
         <a href="#engagement">Talks</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -62,6 +63,16 @@
         <div class="hero__photo">
           <img src="/assets/img/portrait.png" alt="Christopher De Paola speaking at a conference" width="508" height="607">
         </div>
+      </div>
+      <div class="container">
+        <a class="now" href="#labo">
+          <span class="now__label"><span class="pulse" aria-hidden="true"></span>Right now</span>
+          <span class="now__items">
+            <span><strong>Pense-Frigo</strong> · being tested by my first users</span>
+            <span><strong>Workout Log</strong> · my gym log for a bad back</span>
+          </span>
+          <span class="now__cta">See the lab <span aria-hidden="true">↓</span></span>
+        </a>
       </div>
     </section>
 
@@ -318,6 +329,71 @@
               <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab: side projects -->
+    <section class="section" id="labo">
+      <div class="container">
+        <span class="eyebrow">Lab · side projects</span>
+        <h2 class="section__title">What I build for myself</h2>
+        <p class="section__lead">Apps born from problems I run into every day. I design and code them with Claude, and I bring the same approach as at work: observe, prototype, test, iterate.</p>
+
+        <div class="labs">
+          <a class="lab" href="/en/projet-workout-log/">
+            <div class="lab__head">
+              <span class="status"><span class="pulse" aria-hidden="true"></span>In use</span>
+              <span class="lab__since">since Nov 2026</span>
+            </div>
+            <h3 class="lab__title">Workout Log<span class="lab__sub">A gym log designed around an L5-S1 disc herniation</span></h3>
+            <p class="lab__problem"><strong>The problem:</strong> getting back to the gym without making my back worse. I wanted to follow my physio's instructions and see how each session affected my pain, all the way to the next morning.</p>
+            <div class="lab__phones">
+              <div class="lab__phone"><img src="/assets/img/workout-log-bilan-j1.jpg" alt="Next-morning check-in: pain on waking compared with before and right after the session" loading="lazy" width="780" height="1688"></div>
+              <div class="lab__phone"><img src="/assets/img/workout-log-carnet-pistes.jpg" alt="Log: pain on waking over 8 sessions and a pattern to watch" loading="lazy" width="780" height="1688"></div>
+            </div>
+            <div>
+              <p class="lab__learn-title">What I learned</p>
+              <ul class="card__list">
+                <li>The next-morning check-in tells you whether a session went well, not how it felt during the effort.</li>
+                <li>For a health app, keeping data safe is a promise made from the very first screen.</li>
+              </ul>
+            </div>
+            <div class="lab__foot">
+              <div class="lab__tags"><span class="tag tag--accent">Health</span><span class="tag">PWA</span><span class="tag">Claude Code</span></div>
+              <span class="lab__more">Read the case study →</span>
+            </div>
+          </a>
+
+          <a class="lab" href="/en/projet-pense-frigo/">
+            <div class="lab__head">
+              <span class="status status--test"><span class="pulse" aria-hidden="true"></span>User testing</span>
+              <span class="lab__since">since Oct 2026</span>
+            </div>
+            <h3 class="lab__title">Pense-Frigo<span class="lab__sub">Good to the last bite</span></h3>
+            <p class="lab__problem"><strong>The problem:</strong> I kept buying what I already had and throwing away what I forgot at the back of the fridge. I wanted to see what needs eating first, without opening the door.</p>
+            <div class="lab__phones">
+              <div class="lab__phone"><img src="/assets/img/pense-frigo-stock.jpg" alt="Fridge stock with the “Eat first” card" loading="lazy" width="375" height="812"></div>
+              <div class="lab__phone"><img src="/assets/img/pense-frigo-scan.jpg" alt="Scanning a till receipt: 3 products found, ready to check" loading="lazy" width="375" height="812"></div>
+            </div>
+            <div>
+              <p class="lab__learn-title">What I learned</p>
+              <ul class="card__list">
+                <li>Nobody types in their groceries by hand: scanning the till receipt with AI changes everything.</li>
+                <li>Interview guide, survey and a prioritised roadmap, just like a real product.</li>
+              </ul>
+            </div>
+            <div class="lab__foot">
+              <div class="lab__tags"><span class="tag tag--accent">Everyday life</span><span class="tag">PWA</span><span class="tag">Claude API</span></div>
+              <span class="lab__more">Read the case study →</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaway"><h3>I am my own field study</h3><p>I use these apps every day, like a diary study run on myself.</p></div>
+          <div class="takeaway"><h3>From problem to app</h3><p>I go all the way: framing, design, code, release and tester feedback.</p></div>
+          <div class="takeaway"><h3>What I bring back to work</h3><p>A better grasp of technical constraints, and more realistic prototypes.</p></div>
         </div>
       </div>
     </section>

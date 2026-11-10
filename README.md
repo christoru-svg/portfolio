@@ -13,6 +13,7 @@ projet-skill-audit/               Étude de cas skill Claude
 projet-design-system/             Étude de cas refonte du design system
 projet-lexis-nexis/               Étude de cas Lexis 360
 projet-workout-log/               Étude de cas Workout Log (app personnelle)
+projet-pense-frigo/               Étude de cas Pense-Frigo (app personnelle, section Labo)
 en/                               Version anglaise (même structure : en/index.html, en/projet-…/)
 assets/css/style.css              Styles (couleurs et polices en haut du fichier)
 assets/js/home.js                 Animations de l'accueil (titres, étapes de la méthode, barres IA)

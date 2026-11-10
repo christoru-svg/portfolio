@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pense-Frigo, an anti-waste app, good to the last bite — Christopher De Paola</title>
+  <meta name="description" content="Case study: an anti-waste app that remembers what is in your fridge. Scan your till receipt and it tells you what to eat first.">
+  <meta property="og:title" content="Pense-Frigo, an anti-waste app, good to the last bite — Christopher De Paola">
+  <meta property="og:image" content="https://christopher-de-paola.vercel.app/assets/img/pense-frigo-stock.jpg">
+  <meta property="og:description" content="Case study: an anti-waste app that remembers what is in your fridge. Scan your till receipt and it tells you what to eat first.">
+  <meta property="og:url" content="https://christopher-de-paola.vercel.app/en/projet-pense-frigo/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://christopher-de-paola.vercel.app/en/projet-pense-frigo/">
+  <link rel="alternate" hreflang="fr" href="https://christopher-de-paola.vercel.app/projet-pense-frigo/">
+  <link rel="alternate" hreflang="en" href="https://christopher-de-paola.vercel.app/en/projet-pense-frigo/">
+  <link rel="alternate" hreflang="x-default" href="https://christopher-de-paola.vercel.app/projet-pense-frigo/">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="/en/">Christopher De Paola</a>
+      <div class="nav__end">
+        <a class="nav__back" href="/en/#labo">← Back to the lab</a>
+        <a class="nav__lang" href="/projet-pense-frigo/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="case-hero">
+      <div class="container">
+        <div class="case-hero__grid">
+          <div>
+            <span class="eyebrow eyebrow--line">Lab · side project · 2026</span>
+            <h1 class="case-hero__title">Pense-Frigo <em>good to the last bite</em></h1>
+          </div>
+          <div>
+            <p class="case-hero__lead">An anti-waste app that remembers what is in your fridge. Scan your till receipt and it tells you what to eat first.</p>
+            <dl class="case-meta">
+              <div><dt>Context</dt><dd>Personal project</dd></div>
+              <div><dt>Role</dt><dd>Research, design and code</dd></div>
+              <div><dt>Since</dt><dd>October 2026</dd></div>
+              <div><dt>Status</dt><dd>User testing</dd></div>
+            </dl>
+            <div class="btns" style="margin-top: 24px;">
+              <a class="btn" href="https://christoru-svg.github.io/mamie-gio/" target="_blank" rel="noopener">Open the app (in French) <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 48px;">
+        <div class="gallery gallery--phones" style="margin-top: 0;">
+          <figure class="shot"><img src="/assets/img/pense-frigo-stock.jpg" alt="Fridge stock with the “Eat first” card and filters by storage area" width="375" height="812"></figure>
+          <figure class="shot"><img src="/assets/img/pense-frigo-scan.jpg" alt="Scanning a till receipt: 3 products found, ready to check" width="375" height="812"></figure>
+          <figure class="shot"><img src="/assets/img/pense-frigo-recettes.jpg" alt="Recipes using the products that expire soon" width="375" height="812"></figure>
+          <figure class="shot"><img src="/assets/img/pense-frigo-sombre.jpg" alt="The app in dark mode" width="300" height="650"></figure>
+        </div>
+      </div>
+    </section>
+
+    <article class="case-body">
+      <section class="case-section">
+        <span class="eyebrow">01 · Context</span>
+        <h2 class="case-section__title">I bought what I already had and threw away what I forgot</h2>
+        <p>Food waste came from two places: products forgotten at the back of the fridge, and opened products when you no longer remember when they were opened. Inventory apps exist, but people drop them quickly because logging groceries takes too long.</p>
+        <p>The project was first called “Frigo sans ouvrir”, knowing what is inside without opening the door. It became Pense-Frigo once the promise got clearer: finishing what you bought.</p>
+        <p class="callout"><strong>Key takeaway:</strong> the real barrier is not knowing what expires, it is the time it takes to fill in the app.</p>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">02 · Positioning</span>
+        <h2 class="case-section__title">Two promises competitors don't keep</h2>
+        <p>One-gesture logging, from a till receipt or a photo of the fridge, and tracking of opened products. The rest of the roadmap serves these two promises.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th scope="col">App</th><th scope="col">Strength</th><th scope="col">Weakness</th></tr></thead>
+            <tbody>
+              <tr><td>Frigopolis</td><td>Thorough inventory, offline, statistics</td><td>Barcode scanning one product at a time, cold tone</td></tr>
+              <tr><td>Fridgo</td><td>Mascot, friendly tone, recipes and shopping list</td><td>Anxious tone (“code red”), manual entry</td></tr>
+              <tr class="is-us"><td>Pense-Frigo</td><td>Receipt or fridge photo, opened products, reassuring tone</td><td>Still to build and validate</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">03 · Iterations</span>
+        <h2 class="case-section__title">Three styles in a few days</h2>
+        <p>The first version shipped on 15 October. In five days and 32 versions, the main screen changed three times, each time to put what needs eating first further forward.</p>
+        <div class="gallery gallery--3">
+          <figure class="shot">
+            <img src="/assets/img/pense-frigo-v1.jpg" alt="First version: a table of products with a Done button on each row" width="560" height="1213" loading="lazy">
+            <figcaption>1 · The table: functional, but everything looks alike and urgent items get lost.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/pense-frigo-v2.jpg" alt="Second version: to-do app style with a black “Eat first” card" width="450" height="974" loading="lazy">
+            <figcaption>2 · The to-do list: tick off a finished product, dates become easy to read.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/pense-frigo-stock.jpg" alt="Third version: pastel “Eat first” card and filters by storage area" width="375" height="812" loading="lazy">
+            <figcaption>3 · The urgent card: “Eat first” becomes the heart of the screen.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">04 · Scanning</span>
+        <h2 class="case-section__title">Filling your fridge in under a minute</h2>
+        <p>You take a photo of your till receipt, or of the inside of your fridge. Claude reads the lines, matches the products and estimates the dates. Nothing is added without a review screen, because receipt labels are abbreviated and vary from one store to another.</p>
+        <div class="gallery gallery--2" style="max-width: 520px; margin-inline: auto;">
+          <figure class="shot">
+            <img src="/assets/img/pense-frigo-scan-photo.jpg" alt="Scanner screen: take a photo or paste one of the receipt" width="375" height="812" loading="lazy">
+            <figcaption>Take a photo, or paste one of a digital receipt.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/pense-frigo-scan.jpg" alt="Review screen: 3 products found, with storage area and date to correct" width="375" height="812" loading="lazy">
+            <figcaption>Dates are shown as estimates, corrected in one gesture.</figcaption>
+          </figure>
+        </div>
+        <ul class="bullets">
+          <li>A small server keeps the API key, and the app stores everything on the phone.</li>
+          <li>Scanning uses the most accurate model, recipes a model about 40 times cheaper: a design decision as much as a cost one.</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">05 · Research</span>
+        <h2 class="case-section__title">Three hypotheses to confirm before going further</h2>
+        <ul class="bullets">
+          <li><strong>Logging is the barrier:</strong> people drop inventory apps because it takes too long.</li>
+          <li><strong>Opened products cause the most waste,</strong> more than products never opened.</li>
+          <li><strong>The fridge weighs on one person in the household,</strong> and it feels like a mental load.</li>
+        </ul>
+        <p style="margin-top: 20px;">To test them, I prepared an interview guide (ten 30-minute interviews with working couples and flatmates aged 25 to 40) and a 20-question survey to measure at a larger scale. In the app, a “Give feedback” page and anonymous analytics track how the first testers actually use it.</p>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">06 · Roadmap</span>
+        <h2 class="case-section__title">Each version has an exit criterion</h2>
+        <div class="timeline">
+          <div class="timeline__item">
+            <p class="timeline__label">V1 · in progress</p>
+            <h3 class="timeline__title">Prove the differentiation</h3>
+            <p>Receipt and fridge photo scanning, an “I opened it” button and remaining quantity, use-by versus best-before with a reassuring tone. V2 starts when most testers add their groceries by receipt or photo rather than by hand.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">V2</p>
+            <h3 class="timeline__title">Zero effort, every day</h3>
+            <p>A weekly review by swiping products, an automatic shopping list, at most one notification a day. V3 starts when users come back every week without a reminder.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__label">V3</p>
+            <h3 class="timeline__title">The household</h3>
+            <p>A fridge shared between household members, sync, and a yoghurt mascot that never makes you feel guilty. Sharing is planned in the data model from V1.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <span class="eyebrow">07 · What I learned</span>
+        <h2 class="case-section__title">Treating a side project like a real product</h2>
+        <ul class="bullets">
+          <li>Success is measured by how easy logging is, not by the number of features.</li>
+          <li>With AI, reviewing is part of the experience: the user always stays in control.</li>
+          <li>Coding it myself forces me to trade off cost, reliability and comfort, like a product team.</li>
+        </ul>
+      </section>
+    </article>
+
+    <section class="others">
+      <div class="container">
+        <span class="eyebrow">Other projects</span>
+        <div class="others__grid">
+          <a class="other" href="/en/projet-workout-log/"><h3>Workout Log</h3><p>A gym log that follows the physio's instructions and your back, all the way to the next morning.</p></a>
+          <a class="other" href="/en/projet-refonte-oodrive-sign/"><h3>Oodrive Sign redesign</h3><p>Simplifying an e-signature platform perceived as complex.</p></a>
+          <a class="other" href="/en/projet-skill-audit/"><h3>Claude skill for UX audits</h3><p>Turning a hand-built audit into a skill the whole product team can reuse.</p></a>
+          <a class="other" href="/en/projet-design-system/"><h3>Design system overhaul</h3><p>Convincing product leadership to invest in a single design system without freezing the roadmap.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand">Christopher De Paola</span>
+      <p class="footer__quote">« If we want users to like our software we should design it to behave like a likeable person. » <span>—&nbsp;Alan&nbsp;Cooper</span></p>
+      <div class="footer__links">
+        <a href="/en/#labo">← Back to the lab</a>
+        <a href="mailto:chris.depaola.toru@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/gallery.js" defer></script>
+</body>
+</html>
