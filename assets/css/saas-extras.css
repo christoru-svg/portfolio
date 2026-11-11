@@ -82,10 +82,10 @@ html.a11y-focus .focus-exit { display: inline-flex; }
 .stamp .tip::before { content: ""; position: absolute; left: calc(50% - 5px); top: -5px; width: 10px; height: 10px; background: var(--fg); transform: rotate(45deg); }
 .dtitle h1 { display: inline-block; vertical-align: middle; }
 .dtitle .chip { display: flex; width: fit-content; }
-.dtitle h1 + .stamp { margin-left: 14px; top: -4px; }
+.dtitle h1 + .stamp { margin-left: 24px; top: -4px; }
 .dtitle h1 + .stamp .tip { width: 300px; left: 0; transform: rotate(1deg); }
 .dtitle h1 + .stamp .tip::before { left: 24px; }
-@media (max-width: 860px) { .dtitle h1 + .stamp { margin: 8px 0 0; top: 0; } .dtitle h1 + .stamp .tip { width: min(300px, calc(100vw - 48px)); } }
+@media (max-width: 860px) { .dtitle h1 + .stamp { margin: 14px 0 0; top: 0; } .dtitle h1 + .stamp .tip { width: min(300px, calc(100vw - 48px)); } }
 .stamp:hover .tip, .stamp:focus-visible .tip, .stamp[aria-expanded="true"] .tip { visibility: visible; }
 .cat-hide { all: unset; position: relative; cursor: pointer; display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; transition: transform .2s ease; vertical-align: middle; transform-origin: 50% 90%; animation: catpeek 7s ease-in-out infinite; }
 .cat-hide svg { width: 28px; height: 28px; filter: drop-shadow(0 2px 3px rgb(0 0 0 / .18)); }
