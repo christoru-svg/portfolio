@@ -599,6 +599,11 @@ button.ext { font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; 
 .pv-hint { font-size: 13px; color: var(--muted); margin-right: auto; }
 .pv-frame { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
 .pv-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pv-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.pv-tabs button { all: unset; cursor: pointer; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; color: var(--muted); background: var(--surface); }
+.pv-tabs button[aria-selected="true"] { border-color: var(--accent); color: var(--accent); }
+.pv-tabs button:focus-visible { outline: 2px solid var(--accent); }
+@media (max-width: 860px) { .pview { grid-template-rows: auto; align-content: start; } .pv-frame { display: none; } .pv-hint { display: none; } }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -877,13 +882,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   var SITE = "/en/";
   var TXT = { toLight: "Switch to light mode", toDark: "Switch to dark mode" };
   var P = [
-    { id: "oodrive-sign", group: "projets", title: "Oodrive Sign redesign", client: "Oodrive Sign", role: "Lead designer", dur: "11 months · 2024–2025", status: "Release 1 live", tone: "ok", metric: "SUS 85 → 89", url: "projet-refonte-oodrive-sign/",
+    { id: "oodrive-sign", protos: [["Test 1 · Nov 2024", "https://www.figma.com/proto/hELvm9ZbgzUTrIavNG9pBv/Test-Sign-web-V5?node-id=1-4597&page-id=1%3A2&scaling=min-zoom&show-proto-sidebar=1"], ["Test 2 · Jan 2025", "https://www.figma.com/proto/hELvm9ZbgzUTrIavNG9pBv/Test-Sign-web-V5?node-id=393-9736&page-id=244%3A5806&scaling=min-zoom&show-proto-sidebar=1"], ["Exploration · flow A", "https://www.figma.com/proto/hELvm9ZbgzUTrIavNG9pBv/Test-Sign-web-V5?node-id=902-13087&page-id=902%3A13085&scaling=min-zoom&show-proto-sidebar=1"], ["Exploration · flow B", "https://www.figma.com/proto/hELvm9ZbgzUTrIavNG9pBv/Test-Sign-web-V5?node-id=902-44481&page-id=902%3A13085&scaling=min-zoom&show-proto-sidebar=1"]], group: "projets", title: "Oodrive Sign redesign", client: "Oodrive Sign", role: "Lead designer", dur: "11 months · 2024–2025", status: "Release 1 live", tone: "ok", metric: "SUS 85 → 89", url: "projet-refonte-oodrive-sign/",
       summary: "Make an e-signature platform, seen as complex and unpleasant, truly fit its users. From the audit to production, through three rounds of testing.",
       key: "85% of users only needed a simple flow, yet everyone went through a journey built for complex cases.",
       context: "The product had not been run with a structured product approach for several years. Users found it complex and visually unappealing.",
       problem: ["A home page with no real added value", "A single signing journey, built for complex cases, forced on 100% of users", "Pain points piling up with no trade-offs"],
       solution: ["A new home page with shortcuts to frequent actions", "A 1-click signing journey for 85% of users, shipped in several releases", "A bulk signing journey", "A visual redesign consistent with the other Oodrive products"],
-      phases: [["Q4 2024", "Exploration and framing", "Nielsen audit, CSM and sales interviews, design sprint, Crazy 8. First prototype tested: SUS 85."], ["Q1 2025", "Deep dive", "Second round of testing: SUS 87.25. Two features from field feedback, release planning for Q2."], ["Q2 2025", "Gradual launch", "Third round of testing: SUS 89. Release 1 shipped to production."]],
+      phases: [["Q4 2024", "Exploration and framing", "Nielsen audit, CSM and sales interviews, design sprint, Crazy 8. First prototype tested: SUS 85."], ["Q1 2025", "Deep dive", "Second round of testing: SUS 87.25. Two features from field feedback, release planning for Q2."], ["Q2 2025", "Gradual launch", "Third round of testing: SUS 89. Release 1 shipped to production."], ["Jan 2026", "Unprioritized exploration", "A single “Send a document for signature” entry point, with two creation flows compared on Maze: A, an all-in-one editor; B, a step-by-step flow. The change was ultimately not prioritized."]],
       results: [["85 → 89", "SUS score over 3 rounds (85, 87.25, 89)"], ["26", "Testers across the 3 rounds (9, 12, then 5)"], ["3", "Testing cycles, plus an initial design sprint"]],
       lead: "Bringing in a user-centered design culture, with ongoing collaboration with PM, PO, sales, CSM, data and developers.",
       retro: "I would have set up shorter, more frequent testing cycles earlier, to iterate faster from the start." },
@@ -928,7 +933,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       results: [["1 base", "Tokenized foundations in Storybook"], ["1", "First component shipped"], ["20–30%", "Faster time-to-market targeted"]],
       lead: "Three costed scenarios presented to the CPO. Falling back to the designer–developer pair happened without renegotiating the project.",
       retro: "Today I would present the designer–developer pair as the base, and distributed contribution as an accelerator." },
-    { id: "lexis", group: "projets", title: "Lexis 360 Intelligence", client: "LexisNexis (training)", role: "Product designer & Scrum Master", dur: "4 months · 2022", status: "Prototype V2", tone: "", proto: "https://www.figma.com/proto/TwwM6UOx8cGHFI3fciiQyX/Tests-utilisateurs?node-id=228-18741&scaling=min-zoom&page-id=9%3A7183&starting-point-node-id=228%3A18741&show-proto-sidebar=1", metric: "88.6% skipped onboarding", url: "projet-lexis-nexis/",
+    { id: "lexis", group: "projets", title: "Lexis 360 Intelligence", client: "LexisNexis (training)", role: "Product designer & Scrum Master", dur: "4 months · 2022", status: "Prototype V2", tone: "", protos: [["Prototype V1", "https://www.figma.com/proto/TwwM6UOx8cGHFI3fciiQyX/Tests-utilisateurs?node-id=228-18741&scaling=min-zoom&page-id=9%3A7183&starting-point-node-id=228%3A18741&show-proto-sidebar=1"]], metric: "88.6% skipped onboarding", url: "projet-lexis-nexis/",
       summary: "Help legal professionals discover the new version of their tool, when 88.6% skipped the guided tour.",
       key: "88.6% of users skipped the guided tour, seen as a waste of time.",
       context: "A project run with the DPN UX 2022 training program for LexisNexis, on a platform with over 16 million legal documents. On the client side, 5 stakeholders: UX lead, product managers and product designers.",
@@ -961,7 +966,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       retro: "For a health app, backing up data isn't a settings option." }
   ];
   var IMG = {
-    "oodrive-sign": ["oodrive-sign-hero", [["oodrive-sign-accueil-apres", "New home page: welcome line, scope and shortcut widgets"], ["oodrive-sign-accueil-avant", "Before: four creation tiles, no shortcuts"], ["oodrive-sign-documents-apres", "New My documents page: tabs, clickable alerts, customizable table"], ["oodrive-sign-documents-avant", "Before: filters in a column and a sparse table"], ["oodrive-sign-1clic-documents", "1-click journey: importing documents"], ["oodrive-sign-1clic-signataires", "1-click journey: signers, message and security level"], ["oodrive-sign-1clic-encarts", "1-click journey: sending confirmation"], ["oodrive-sign-signature-groupee", "Bulk signing: every pending document, signed at once"], ["oodrive-sign-audit", "UX audit: findings, recommendations and severity per screen"], ["oodrive-sign-priorisation", "ICE matrix to prioritize the 2025 roadmap"]]],
+    "oodrive-sign": ["oodrive-sign-hero", [["oodrive-sign-accueil-apres", "New home page: welcome line, scope and shortcut widgets"], ["oodrive-sign-accueil-avant", "Before: four creation tiles, no shortcuts"], ["oodrive-sign-documents-apres", "New My documents page: tabs, clickable alerts, customizable table"], ["oodrive-sign-documents-avant", "Before: filters in a column and a sparse table"], ["oodrive-sign-1clic-documents", "1-click journey: importing documents"], ["oodrive-sign-1clic-signataires", "1-click journey: signers, message and security level"], ["oodrive-sign-1clic-encarts", "1-click journey: sending confirmation"], ["oodrive-sign-signature-groupee", "Bulk signing: every pending document, signed at once"], ["oodrive-sign-audit", "UX audit: findings, recommendations and severity per screen"], ["oodrive-sign-priorisation", "ICE matrix to prioritize the 2025 roadmap", ["oodrive-sign-explo-accueil", "Unprioritized exploration: a single “Send a document for signature” entry point"], ["oodrive-sign-explo-parcours-a", "Unprioritized exploration, flow A: documents, preview and participants on one screen"]]]],
     "swile": ["gift-hero", [["gift-solution", "Prototype tested in real conditions with customers"]]],
     "myoodrivesign": ["myoodrivesign-hero", [["myoodrivesign-liste", "List of documents to process"], ["myoodrivesign-apercu", "Document preview"], ["myoodrivesign-signature", "Acceptance before signing"], ["myoodrivesign-empreinte", "Fingerprint validation"], ["myoodrivesign-confirmation", "Signing confirmation"], ["myoodrivesign-retours", "First customer feedback shared internally"]]],
     "skill-audit": ["skill-audit-hero", [["skill-audit-solution", "The scorecard: the score always shown with the breakdown of findings"], ["skill-audit-grille-figma", "Figma grid: one finding, one recommendation and one severity per heuristic"], ["skill-audit-rapport-word", "Word report: summary and score first, details after"], ["skill-audit-fichier-skill", "The skill file: the method in black and white"]]],
@@ -1114,7 +1119,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Lab" : "Projects") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Enlarge the screens"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Cover of the project ' + esc(p.title) + '"><button type="button" data-cover aria-label="Enlarge the cover"></button></div>') +
-      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.proto ? '<button type="button" class="ext primary-ext" data-proto>▶ Try prototype V1</button>' : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
+      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Role</span><span>" + esc(p.role) + "</span></div><div><span>Duration</span><span>" + esc(p.dur) + '</span></div><div><span>Key metric</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
       '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
       '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
@@ -1223,16 +1228,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   pv.setAttribute("role", "dialog"); pv.setAttribute("aria-modal", "true"); pv.setAttribute("aria-label", "Prototype V1 · Figma");
   pv.innerHTML = '<div class="pv-top"><b>Prototype V1 · Figma</b><span class="pv-hint">Click inside the prototype to move forward. It may take a few seconds to load.</span><a class="ext" id="pv-open" target="_blank" rel="noopener">Open in Figma ↗</a><button type="button" class="ib" data-pv-close aria-label="Close">✕</button></div><div class="pv-frame"></div>';
   appEl.appendChild(pv);
-  function protoOpen(url) {
-    if (MOBILE.matches) { window.open(url, "_blank", "noopener"); return; }
+  var pvTabs = document.createElement("div"); pvTabs.className = "pv-tabs"; pvTabs.setAttribute("role", "tablist"); pvTabs.setAttribute("aria-label", "Pick a prototype");
+  pv.querySelector(".pv-top").insertBefore(pvTabs, pv.querySelector(".pv-hint"));
+  var pvList = [];
+  function protoShow(i) {
+    var item = pvList[i], url = item[1];
+    pvTabs.innerHTML = pvList.length > 1 ? pvList.map(function (x, k) { return '<button type="button" role="tab" aria-selected="' + (k === i) + '" data-pv="' + k + '">' + esc(x[0]) + "</button>"; }).join("") : "";
+    pv.querySelector(".pv-top b").textContent = item[0] + " · Figma";
     pv.querySelector("#pv-open").href = url;
-    pv.querySelector(".pv-frame").innerHTML = '<iframe title="Prototype V1 · Figma" src="https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent(url) + '" allowfullscreen></iframe>';
+    pv.querySelector(".pv-frame").innerHTML = MOBILE.matches ? "" : '<iframe title="Prototype V1 · Figma" src="https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent(url) + '" allowfullscreen></iframe>';
+  }
+  function protoOpen(list) {
+    pvList = list;
+    if (MOBILE.matches && list.length === 1) { window.open(list[0][1], "_blank", "noopener"); return; }
+    protoShow(0);
     pv.hidden = false; pv.querySelector("[data-pv-close]").focus();
   }
+  pvTabs.addEventListener("click", function (e) { var b = e.target.closest("[data-pv]"); if (b) protoShow(+b.dataset.pv); });
   function protoClose() { pv.hidden = true; pv.querySelector(".pv-frame").innerHTML = ""; var b = main.querySelector("[data-proto]"); if (b) b.focus(); }
   pv.addEventListener("click", function (e) { if (e.target.closest("[data-pv-close]") || e.target === pv) protoClose(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pv.hidden) { e.preventDefault(); protoClose(); } });
-  main.addEventListener("click", function (e) { var b = e.target.closest("[data-proto]"); if (b && state.id && byId[state.id].proto) protoOpen(byId[state.id].proto); });
+  main.addEventListener("click", function (e) { var b = e.target.closest("[data-proto]"); if (b && state.id && byId[state.id].protos) protoOpen(byId[state.id].protos); });
   main.addEventListener("input", function (e) { if (e.target.id === "q") { state.q = e.target.value; render({ search: true }); } });
   main.addEventListener("keydown", function (e) {
     if (e.target.getAttribute("role") !== "tab" || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
