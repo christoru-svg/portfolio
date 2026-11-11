@@ -5,7 +5,8 @@ Site statique en HTML/CSS, sans dépendance ni étape de build. Hébergé sur Ve
 ## Structure
 
 ```
-index.html                        Page d'accueil
+index.html                        Page d'accueil : portfolio en app SaaS (styles et scripts intégrés à la page)
+classique/                        Ancienne page d'accueil, liée depuis « Portfolio classique »
 projet-refonte-oodrive-sign/      Étude de cas Oodrive Sign
 dotation-gift/                    Étude de cas Swile Gift
 projet-myoodrivesign/             Étude de cas myOodriveSign
@@ -19,6 +20,7 @@ assets/css/style.css              Styles (couleurs et polices en haut du fichier
 assets/js/home.js                 Animations de l'accueil (titres, étapes de la méthode, barres IA)
 assets/js/gallery.js              Galeries d'écrans et prototypes des études de cas
 assets/img/                       Images
+assets/img/saas/                  Images compressées utilisées par la page d'accueil SaaS
 assets/cv-christopher-de-paola.pdf  CV téléchargeable (accueil, section Contact et pied de page)
 ```
 

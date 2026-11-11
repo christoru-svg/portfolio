@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Christopher De Paola — Product Designer</title>
   <meta name="description" content="Product designer senior à Paris. Je conçois des produits SaaS B2B, de la recherche utilisateur à la mise en production.">
   <meta property="og:title" content="Christopher De Paola — Product Designer">
@@ -10,469 +10,1241 @@
   <meta property="og:image" content="https://christopher-de-paola.vercel.app/assets/img/oodrive-sign-card.png">
   <meta property="og:url" content="https://christopher-de-paola.vercel.app/">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://christopher-de-paola.vercel.app/">
-  <meta property="og:type" content="website">
   <link rel="alternate" hreflang="fr" href="https://christopher-de-paola.vercel.app/">
   <link rel="alternate" hreflang="en" href="https://christopher-de-paola.vercel.app/en/">
   <link rel="alternate" hreflang="x-default" href="https://christopher-de-paola.vercel.app/">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
   <script>
     (function () {
       var t;
       try { t = localStorage.getItem("theme"); } catch (e) {}
-      if (t !== "light" && t !== "dark") t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      document.documentElement.dataset.theme = t;
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
     })();
   </script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <style>html { color-scheme: light; } body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; } img { max-width: 100%; } [hidden] { display: none !important; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a SaaS landing page built like a product. Sticky nav, hero with an app window, then the usual SaaS sections, each mapped to real portfolio content. Dark first. */
+:root {
+  --bg: #0e0e14;
+  --surface: #16161f;
+  --surface-2: #1d1d29;
+  --line: #2a2a3a;
+  --fg: #ececf3;
+  --muted: #9a9ab0;
+  --accent: #a99cff;
+  --accent-ink: #14112b;
+  --ok: #5fd39a;
+  --warn: #f0c26b;
+  --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r: 10px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f7f6fb; --surface: #ffffff; --surface-2: #f0eef8; --line: #e1deee;
+    --fg: #17151f; --muted: #605c74; --accent: #5b47e0; --accent-ink: #ffffff;
+    --ok: #1d8a57; --warn: #a06a00; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f7f6fb; --surface: #ffffff; --surface-2: #f0eef8; --line: #e1deee;
+  --fg: #17151f; --muted: #605c74; --accent: #5b47e0; --accent-ink: #ffffff;
+  --ok: #1d8a57; --warn: #a06a00; color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: 88px; border-top: 1px solid var(--line); }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 400; }
+h2 { font-family: var(--display); font-size: clamp(34px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.01em; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); max-width: 60ch; font-size: 17px; }
+.head { display: grid; gap: 14px; margin-bottom: 44px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 18px; border-radius: 8px; font-weight: 500; font-size: 15px;
+  text-decoration: none; border: 1px solid var(--line); background: var(--surface);
+  transition: transform .15s ease, border-color .15s ease;
+}
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Nav */
+nav.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+nav.top .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; }
+.brand .mark { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 400 18px/1 var(--display); font-style: italic; }
+.brand .ver { font: 500 11px/1 var(--mono); color: var(--muted); border: 1px solid var(--line); padding: 3px 6px; border-radius: 5px; }
+.navlinks { display: flex; gap: 22px; margin-left: auto; font-size: 14px; color: var(--muted); }
+.navlinks a { text-decoration: none; }
+.navlinks a:hover { color: var(--fg); }
+@media (max-width: 860px) { .navlinks { display: none; } nav.top .btn { margin-left: auto; } }
+
+/* Hero */
+.hero { padding-block: 72px 40px; border-top: 0; }
+.announce {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  border: 1px solid var(--line); background: var(--surface); padding: 6px 12px 6px 6px; border-radius: 999px;
+}
+.announce b { background: var(--accent); color: var(--accent-ink); font: 500 11px/1 var(--mono); padding: 5px 8px; border-radius: 999px; letter-spacing: .04em; }
+.hero h1 {
+  font-family: var(--display); font-size: clamp(44px, 7.4vw, 92px); line-height: .98; letter-spacing: -0.02em;
+  margin: 28px 0 22px; max-width: 14ch;
+}
+.hero h1 em { color: var(--accent); }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.hero .fine { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+/* App window */
+.app {
+  margin-top: 56px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+  overflow: hidden; box-shadow: 0 30px 80px -40px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.app-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.app-bar .url { margin-left: 12px; font: 400 12px/1 var(--mono); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.app-body { display: grid; grid-template-columns: 200px 1fr; min-height: 360px; }
+.side { border-right: 1px solid var(--line); padding: 18px 12px; display: grid; align-content: start; gap: 2px; font-size: 14px; color: var(--muted); }
+.main { padding: 22px; display: grid; gap: 18px; min-width: 0; }
+.main-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.main-head h3 { font-size: 16px; }
+.chip { font: 500 11px/1 var(--mono); padding: 5px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.chip.ok { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+.chip.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.kpi { background: var(--surface-2); border-radius: var(--r); padding: 14px; display: grid; gap: 4px; min-width: 0; }
+.kpi .v { font: 500 24px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.kpi .v small { font-size: 13px; color: var(--ok); margin-left: 4px; }
+.kpi .k { font-size: 12px; color: var(--muted); line-height: 1.35; }
+.panes { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; }
+.pane { border: 1px solid var(--line); border-radius: var(--r); padding: 14px; min-width: 0; }
+.pane .t { font-size: 12px; color: var(--muted); margin-bottom: 10px; display: flex; justify-content: space-between; gap: 8px; }
+.sus svg { width: 100%; height: auto; display: block; }
+.feed { display: grid; gap: 10px; font-size: 13px; }
+.feed div { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; }
+.feed i { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; background: var(--accent); }
+.feed i.ok { background: var(--ok); } .feed i.warn { background: var(--warn); }
+.feed span { color: var(--muted); }
+.feed b { color: var(--fg); font-weight: 500; }
+.illus { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; }
+@media (max-width: 860px) {
+  .app-body { grid-template-columns: 1fr; }
+  .side { display: none; }
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .panes { grid-template-columns: 1fr; }
+}
+
+/* Logos */
+.logos { padding-block: 40px; }
+.logos .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 48px; }
+.logos p { font-size: 13px; color: var(--muted); }
+.logos .names { display: flex; flex-wrap: wrap; gap: 12px 44px; font: 400 28px/1 var(--display); color: var(--muted); }
+
+/* Features */
+.modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.module { background: var(--bg); padding: 28px; display: grid; gap: 14px; align-content: start; }
+.module .step { font: 500 12px/1 var(--mono); color: var(--muted); }
+.module p { color: var(--muted); font-size: 15px; }
+.module ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.module li { display: flex; gap: 8px; }
+.module li::before { content: "✓"; color: var(--ok); }
+.integr { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.integr span { font: 400 12px/1 var(--mono); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; color: var(--muted); }
+@media (max-width: 860px) { .modules { grid-template-columns: 1fr; } }
+
+/* Customer stories */
+.stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.story { border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: grid; gap: 14px; align-content: start; text-decoration: none; background: var(--surface); transition: border-color .15s; }
+.story:hover { border-color: var(--accent); }
+.story .client { font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.story .metric { font: 400 56px/1 var(--display); color: var(--accent); }
+.story .metric-k { font-size: 13px; color: var(--muted); margin-top: -6px; }
+.story h3 { font-size: 17px; }
+.story p { font-size: 14px; color: var(--muted); }
+.story .more { font-size: 14px; font-weight: 500; }
+@media (max-width: 860px) { .stories { grid-template-columns: 1fr; } }
+
+/* Benchmarks */
+.bench { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 620px; }
+th, td { text-align: left; padding: 16px 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td .before { color: var(--muted); text-decoration: line-through; margin-right: 8px; }
+td .after { color: var(--ok); }
+td small { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+.note { margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 70ch; }
+
+/* Plans */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.plan { border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: grid; gap: 16px; background: var(--surface); }
+.plan.reco { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.plan .pname { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.plan .price { font: 400 44px/1 var(--display); }
+.plan .price small { font: 400 14px/1 var(--body); color: var(--muted); margin-left: 6px; }
+.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 14px; color: var(--muted); }
+.plan li { display: flex; gap: 8px; }
+.plan li::before { content: "→"; color: var(--accent); }
+.badge { font: 500 11px/1 var(--mono); background: var(--accent); color: var(--accent-ink); padding: 5px 8px; border-radius: 999px; }
+@media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
+
+/* Changelog + status */
+.two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+.log { display: grid; gap: 0; border-left: 1px solid var(--line); margin-left: 6px; }
+.entry { position: relative; padding: 0 0 26px 26px; display: grid; gap: 6px; }
+.entry::before { content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.entry .when { font: 500 12px/1.4 var(--mono); color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.entry p { font-size: 14px; color: var(--muted); max-width: 55ch; }
+.status { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 24px; display: grid; gap: 18px; align-content: start; }
+.status .all { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.srow { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.srow span:first-child { color: var(--muted); }
+.srow span:last-child { text-align: right; }
+
+/* CTA */
+.final { text-align: left; }
+.final .box { border: 1px solid var(--line); border-radius: 18px; padding: clamp(28px, 6vw, 64px); background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 16%, var(--surface)), var(--surface) 60%); display: grid; gap: 20px; }
+.final h2 { max-width: 18ch; }
+.final .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+/* Prototype */
+.app { position: relative; }
+.app-body { position: relative; grid-template-columns: var(--sw, 232px) minmax(0, 1fr); height: min(760px, 86vh); min-height: 560px; }
+.side { display: flex; flex-direction: column; gap: 2px; padding: 14px 10px; background: color-mix(in srgb, var(--surface-2) 45%, var(--surface)); }
+.ws { display: flex; align-items: center; gap: 10px; padding: 6px 8px 14px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.ws .av { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 40%, var(--ok))); color: var(--accent-ink); display: grid; place-items: center; font: 600 12px/1 var(--body); flex: none; }
+.ws b { display: block; font-size: 13px; color: var(--fg); font-weight: 600; line-height: 1.2; }
+.ws span { font-size: 12px; color: var(--muted); }
+.side .lbl { font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 14px 10px 6px; color: var(--muted); }
+.side button { all: unset; box-sizing: border-box; cursor: pointer; padding: 7px 10px; border-radius: 7px; display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+.side button svg { width: 16px; height: 16px; flex: none; }
+.side button .n { margin-left: auto; font: 400 11px/1 var(--mono); }
+.side button:hover { color: var(--fg); background: var(--surface-2); }
+.side button[aria-current="true"] { background: var(--surface-2); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
+.side button:focus-visible { outline: 2px solid var(--accent); }
+.side .avail { margin-top: auto; border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 4px; font-size: 12px; color: var(--muted); background: var(--surface); }
+.side .avail b { display: flex; align-items: center; gap: 8px; color: var(--fg); font-size: 13px; font-weight: 600; }
+.main { overflow-y: auto; align-content: start; grid-auto-rows: max-content; padding: 24px 28px 32px; gap: 20px; scroll-behavior: smooth; }
+.banner.phones { display: flex; justify-content: center; align-items: flex-end; gap: 14px; padding: 18px 18px 0; background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 22%, var(--surface-2)), var(--surface-2)); }
+.banner.phones img { width: auto; height: 100%; max-width: 30%; object-fit: cover; object-position: top; border-radius: 12px 12px 0 0; box-shadow: 0 10px 30px -12px rgb(0 0 0 / .5); }
+.cover img.portrait { object-position: top; }
+.main > * { animation: fadein .2s ease; }
+@keyframes fadein { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.vh { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.vh h3 { font: 400 30px/1.1 var(--display); }
+.vh p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.search { width: 220px; max-width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); color: var(--fg); font: inherit; font-size: 13px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--surface-2); }
+.seg button { all: unset; cursor: pointer; padding: 5px 10px; font-size: 12px; border-radius: 6px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgb(0 0 0 / .15); }
+.seg button:focus-visible { outline: 2px solid var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.card { all: unset; box-sizing: border-box; cursor: pointer; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; background: var(--surface); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.card:hover, .card:focus-visible { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--accent) 70%, transparent); }
+.card:focus-visible { outline: 2px solid var(--accent); }
+.cover { position: relative; aspect-ratio: 16 / 9; background: var(--surface-2); overflow: hidden; }
+.cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.card:hover .cover img { transform: scale(1.04); }
+.cover .chip { position: absolute; top: 10px; left: 10px; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(6px); }
+.cbody { padding: 14px 16px 16px; display: grid; gap: 6px; align-content: start; }
+.cbody b { font-size: 15px; font-weight: 600; color: var(--fg); }
+.cbody .meta { font-size: 12px; color: var(--muted); }
+.cbody .metric { justify-self: start; margin-top: 6px; font: 500 12px/1 var(--mono); color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); padding: 6px 8px; border-radius: 6px; }
+.tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table.ptable { min-width: 600px; font-size: 13px; }
+.ptable th, .ptable td { padding: 10px 14px; vertical-align: middle; }
+.ptable tbody tr { cursor: pointer; }
+.ptable tbody tr:hover td { background: var(--surface-2); }
+.ptable .pn { display: flex; align-items: center; gap: 12px; }
+.ptable .pn img { width: 56px; height: 34px; object-fit: cover; border-radius: 5px; border: 1px solid var(--line); flex: none; }
+.ptable .pn b { display: block; font-weight: 500; color: var(--fg); }
+.ptable .pn span { color: var(--muted); font-size: 12px; }
+.ptable button { all: unset; cursor: pointer; }
+.ptable button:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
+.empty { padding: 28px; text-align: center; color: var(--muted); font-size: 13px; border: 1px dashed var(--line); border-radius: 12px; }
+.linkish { all: unset; cursor: pointer; color: var(--accent); }
+.linkish:hover { text-decoration: underline; }
+.linkish:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
+.feed button { all: unset; cursor: pointer; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; }
+.feed button:hover b { color: var(--accent); }
+.feed button:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
+.crumbs { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.banner { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 2.36 / 1; max-height: 260px; width: 100%; background: var(--surface-2); border: 1px solid var(--line); }
+.banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.banner button { all: unset; cursor: zoom-in; position: absolute; inset: 0; }
+.banner button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.dtitle { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.dtitle h3 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin-top: 8px; }
+.dtitle p { color: var(--muted); font-size: 14px; max-width: 64ch; margin-top: 8px; }
+.ext { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; text-decoration: none; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); white-space: nowrap; }
+.ext:hover { border-color: var(--accent); }
+.props { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.props div { padding: 12px 14px; display: grid; gap: 4px; font-size: 13px; border-right: 1px solid var(--line); min-width: 0; }
+.props div:last-child { border-right: 0; }
+.props span:first-child { font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); overflow-x: auto; position: sticky; top: -24px; background: var(--surface); z-index: 2; margin-inline: -4px; padding-inline: 4px; }
+.tabs button { all: unset; cursor: pointer; padding: 10px 12px; font-size: 13px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; display: flex; gap: 6px; align-items: center; }
+.tabs button .n { font: 400 11px/1 var(--mono); background: var(--surface-2); padding: 3px 5px; border-radius: 4px; }
+.tabs button[aria-selected="true"] { color: var(--fg); border-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); }
+.panel { display: grid; gap: 22px; font-size: 14px; min-width: 0; }
+.panel h4 { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.panel p { max-width: 64ch; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.box { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); }
+.box ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.box li { display: grid; grid-template-columns: 16px 1fr; gap: 8px; }
+.box.pb li::before { content: "×"; color: var(--warn); font-weight: 600; }
+.box.sol li::before { content: "✓"; color: var(--ok); font-weight: 600; }
+.callout { border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); padding: 14px 16px; border-radius: 12px; font-size: 14px; }
+.callout b { color: var(--accent); }
+.strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.shot { all: unset; box-sizing: border-box; cursor: zoom-in; display: grid; gap: 8px; break-inside: avoid; margin-bottom: 14px; }
+.shot .im { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--surface-2); }
+.shot img { width: 100%; display: block; transition: transform .3s ease; }
+.shot:hover img { transform: scale(1.02); }
+.shot:focus-visible .im { outline: 2px solid var(--accent); outline-offset: 2px; }
+.shot figcaption, .shot span.cap { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.strip .shot .im { aspect-ratio: 4 / 3; }
+.strip .shot img { height: 100%; object-fit: cover; object-position: top; }
+.masonry { columns: 3 220px; column-gap: 14px; }
+.phases { display: grid; gap: 0; }
+.phases div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.phases div:first-child { border-top: 0; padding-top: 0; }
+.phases .when { font: 500 12px/1.4 var(--mono); color: var(--accent); }
+.phases b { display: block; font-weight: 600; margin-bottom: 2px; }
+.phases span.d { color: var(--muted); }
+.res { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.res .kpi { padding: 18px; border: 1px solid var(--line); background: var(--surface); }
+.res .kpi .v { font: 400 34px/1 var(--display); color: var(--fg); }
+.quote { font: italic 400 22px/1.3 var(--display); border-left: 2px solid var(--accent); padding-left: 16px; max-width: 50ch; }
+.quote small { display: block; font: 400 12px/1.4 var(--body); color: var(--muted); margin-top: 6px; font-style: normal; }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+.pager button { all: unset; box-sizing: border-box; cursor: pointer; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; font-size: 13px; }
+.pager button:hover, .pager button:focus-visible { border-color: var(--accent); }
+.pager button span { font-size: 11px; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.pager .nx { text-align: right; }
+.lb { position: absolute; inset: 0; z-index: 4; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); display: grid; grid-template-rows: auto 1fr auto; padding: 14px; gap: 10px; }
+.lb[hidden] { display: none; }
+.lb-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 400 12px/1 var(--mono); color: var(--muted); }
+.lb-stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 0; }
+.lb-stage img { max-width: 100%; max-height: 100%; margin: auto; display: block; border-radius: 8px; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .6); object-fit: contain; min-height: 0; }
+.lb-img { height: 100%; min-height: 0; display: grid; place-items: center; overflow: hidden; }
+.lb-cap { text-align: center; font-size: 13px; color: var(--fg); max-width: 70ch; margin: 0 auto; }
+.ib { all: unset; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; color: var(--fg); font-size: 16px; }
+.ib:hover { border-color: var(--accent); }
+.ib:focus-visible { outline: 2px solid var(--accent); }
+@media (max-width: 860px) {
+  .app-body { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  .side { display: flex; flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 8px; gap: 4px; }
+  .side .lbl, .side .ws, .side .avail { display: none; }
+  .side button { white-space: nowrap; }
+  .main { overflow: visible; padding: 18px 16px 24px; }
+  .tabs { top: 0; }
+  .cols { grid-template-columns: 1fr; }
+  .props { grid-template-columns: 1fr 1fr; }
+  .props div:nth-child(2) { border-right: 0; }
+  .props div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .strip { grid-template-columns: 1fr 1fr; }
+  .strip .shot:nth-child(3) { display: none; }
+  .phases div { grid-template-columns: 1fr; gap: 4px; }
+  .lb { position: fixed; padding: calc(14px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
+}
+
+.app-body { transition: grid-template-columns .22s ease; }
+.app-body.collapsed { grid-template-columns: 60px minmax(0, 1fr); }
+.ws .wst { min-width: 0; flex: 1; }
+.ws .wst b, .ws .wst span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tg { all: unset; cursor: pointer; width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; color: var(--muted); flex: none; }
+.tg:hover { background: var(--surface-2); color: var(--fg); }
+.tg:focus-visible { outline: 2px solid var(--accent); }
+.tg svg { width: 16px; height: 16px; }
+.side .tx { white-space: nowrap; }
+.collapsed .side { padding-inline: 8px; overflow: hidden; }
+.collapsed .ws { justify-content: center; padding-inline: 0; }
+.collapsed .ws .av, .collapsed .ws .wst, .collapsed .side .lbl, .collapsed .side .tx, .collapsed .side .n { display: none; }
+.collapsed .side button { justify-content: center; padding: 9px 0; }
+.collapsed .side .lbl + button { margin-top: 10px; }
+.collapsed .side .avail { padding: 10px 0; display: grid; place-items: center; border: 0; background: none; }
+@media (max-width: 860px) { .tg { display: none; } .app-body.collapsed { grid-template-columns: 1fr; } .collapsed .side .tx { display: inline; } .collapsed .side .n { display: inline; } .collapsed .side button { padding: 7px 10px; } }
+
+.ws img.av { object-fit: cover; background: var(--surface-2); }
+.side .avail { display: flex; align-items: center; gap: 10px; }
+.side .avail .me { position: relative; flex: none; width: 40px; height: 40px; }
+.side .avail .me img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; display: block; border: 1px solid var(--line); }
+.side .avail .me .pulse { position: absolute; right: -1px; bottom: -1px; width: 12px; height: 12px; border: 2px solid var(--surface); }
+.side .avail .tx { white-space: normal; display: grid; gap: 2px; line-height: 1.35; }
+.side .avail .tx b { color: var(--fg); font-size: 13px; }
+.collapsed .side .avail .me, .collapsed .side .avail .me img { width: 34px; height: 34px; }
+.collapsed .side .avail .tx { display: none; }
+/* Sidebar top row + resize */
+.side .stop { display: flex; justify-content: flex-end; margin: -6px -2px 2px; }
+.collapsed .side .stop { justify-content: center; margin-inline: 0; }
+.collapsed .side .ws { display: none; }
+.rs { position: absolute; top: 0; bottom: 0; left: calc(var(--sw, 232px) - 4px); width: 8px; z-index: 3; cursor: col-resize; touch-action: none; background: transparent; }
+.collapsed .rs { left: 56px; }
+.rs:focus-visible { outline: none; background: linear-gradient(90deg, transparent 3px, var(--accent) 3px, var(--accent) 5px, transparent 5px); }
+.app-body.resizing { transition: none; user-select: none; cursor: col-resize; }
+@media (max-width: 860px) { .rs, .app-body .side .stop { display: none; } }
+/* ===== Full-screen app shell ===== */
+html, body { height: 100%; }
+body { overflow: hidden; }
+body::before { display: none; }
+.app { margin: 0; border: 0; border-radius: 0; box-shadow: none; height: 100%; background: var(--bg); overflow: hidden; }
+.app-body { height: 100%; min-height: 0; }
+.col { display: grid; grid-template-rows: auto minmax(0, 1fr); min-width: 0; min-height: 0; }
+.bar { display: flex; align-items: center; gap: 16px; padding: 10px 28px; border-bottom: 1px solid var(--line); background: var(--surface); min-height: 56px; }
+.bar-path { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.bar-brand { display: none; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; white-space: nowrap; }
+.bar-brand img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.bar-actions { margin-left: auto; display: flex; gap: 8px; flex: none; }
+.btn.sm { padding: 7px 12px; font-size: 13px; }
+button.btn { font: inherit; font-weight: 500; cursor: pointer; color: inherit; }
+button.btn.primary { color: var(--accent-ink); }
+.btn.sm { font-size: 13px; }
+.side { overflow-y: auto; overflow-x: hidden; }
+.side .foot { margin-top: auto; display: grid; gap: 8px; padding-top: 12px; }
+.side .avail { margin-top: 0; }
+.side .classic { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 7px; color: var(--muted); font-size: 14px; text-decoration: none; }
+.side .classic svg { width: 16px; height: 16px; flex: none; }
+.side .classic:hover { color: var(--fg); background: var(--surface-2); }
+.side .classic:focus-visible { outline: 2px solid var(--accent); }
+.collapsed .side .classic { justify-content: center; padding: 9px 0; }
+.side .m-only { display: none; }
+.main { padding: 32px 36px 48px; gap: 22px; }
+.main > * { width: 100%; max-width: 1120px; margin-inline: auto; }
+.main h4.sub { margin: 10px 0 -6px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.main .head { margin-bottom: 8px; }
+.main .head h2 { font-size: clamp(30px, 3.4vw, 44px); }
+.main section, .main .final { border: 0; padding: 0; }
+.main .hero { padding: 8px 0 0; border: 0; }
+.main .hero h1 { font-size: clamp(40px, 5.2vw, 76px); margin: 22px 0 18px; max-width: 15ch; }
+.main .announce { cursor: pointer; font: inherit; font-size: 13px; color: var(--muted); }
+.main .announce:hover { border-color: var(--accent); }
+.refs { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.refs > span { font-size: 13px; color: var(--muted); }
+.refs .names { display: flex; flex-wrap: wrap; gap: 10px 36px; font: 400 26px/1 var(--display); color: var(--muted); }
+.main .two { gap: 32px; }
+.main .stack { display: grid; gap: 18px; align-content: start; }
+.main .stack h4.sub { margin: 0; }
+.main .log .entry h3 { font-size: 16px; }
+.contact { display: grid; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.crow { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border-top: 1px solid var(--line); font-size: 14px; }
+.crow:first-child { border-top: 0; }
+.crow > span:first-child { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.crow .sel { user-select: all; overflow-wrap: anywhere; }
+.menu { display: grid; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.mrow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 22px 1fr auto; gap: 14px; align-items: center; padding: 14px 16px; border-top: 1px solid var(--line); color: var(--fg); }
+.mrow:first-child { border-top: 0; }
+.mrow svg { width: 20px; height: 20px; color: var(--accent); }
+.mrow span { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.mrow b { font-size: 15px; color: var(--fg); font-weight: 600; }
+.mrow i { font-style: normal; color: var(--muted); font-size: 18px; }
+.mrow:hover, .mrow:focus-visible { background: var(--surface-2); }
+.tabs { top: -32px; }
+
+.status.sbanner { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0; padding: 0; overflow: visible; height: auto; }
+.status.sbanner > * { flex: 1 1 150px; min-width: 0; padding: 16px 18px; }
+.status.sbanner .all { flex: 0 0 100%; white-space: nowrap; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.status.sbanner .all + .srow { border-left: 0; }
+.status.sbanner .srow { flex-direction: column; justify-content: flex-start; gap: 6px; border-top: 0; border-left: 1px solid var(--line); }
+.status.sbanner .srow span:first-child { font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.status.sbanner .srow span:last-child { text-align: left; }
+.main { display: flex; flex-direction: column; }
+.main > * { flex-shrink: 0; }
+@media (max-width: 1100px) { .status.sbanner .srow { flex-basis: 40%; border-bottom: 1px solid var(--line); } .status.sbanner .srow:nth-child(even) { border-left: 0; } .status.sbanner .srow:last-child { border-bottom: 0; } }
+@media (max-width: 520px) { .status.sbanner .srow { flex-basis: 100%; border-left: 0; } }
+.ws .wmark { width: 32px; height: 32px; border-radius: 9px; flex: none; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font: italic 400 21px/1 var(--display); }
+.side .avail .tx .st { font-size: 12px; color: var(--ok); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side .avail .tx .st i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); flex: none; }
+.side .avail .tx b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+a.avail { text-decoration: none; color: inherit; cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+a.avail:hover { border-color: var(--accent); }
+a.avail:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.collapsed .side a.avail:hover { background: var(--surface-2); border-radius: 10px; }
+.side .avail .tx .role { font-size: 12px; color: var(--fg); }
+.side a.avail { padding: 10px; gap: 9px; }
+.side a.avail .me, .side a.avail .me img { width: 34px; height: 34px; }
+button.avail { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; }
+.side button.avail { display: flex; align-items: center; gap: 9px; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); transition: border-color .15s ease; }
+.side button.avail:hover, .side button.avail[aria-expanded="true"] { border-color: var(--accent); }
+.side button.avail:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.side button.avail .me, .side button.avail .me img { width: 34px; height: 34px; }
+.collapsed .side button.avail { padding: 8px 0; justify-content: center; border-color: transparent; background: none; }
+.pmenu { position: fixed; z-index: 40; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 6px; box-shadow: 0 18px 50px -12px rgb(0 0 0 / .45); display: grid; gap: 2px; animation: pmin .14s ease; }
+.pmenu[hidden] { display: none; }
+@keyframes pmin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.pm-head { padding: 8px 10px 10px; margin-bottom: 4px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.pm-head b { font-size: 13px; }
+.pm-head span { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.pm-item { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--fg); }
+.pm-item svg { width: 16px; height: 16px; flex: none; color: var(--muted); }
+.pm-item:hover, .pm-item:focus-visible { background: var(--surface-2); outline: none; }
+.pm-item.primary { color: var(--accent); font-weight: 600; }
+.pm-item.primary svg { color: var(--accent); }
+.notes { display: grid; gap: 12px; }
+.post { border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; background: var(--surface); display: grid; gap: 8px; }
+.post.draft { border-style: dashed; }
+.post .nmeta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.post h3 { font: 400 22px/1.2 var(--display); }
+.post p { color: var(--muted); font-size: 14px; max-width: 64ch; }
+.passions { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.pas { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); display: grid; gap: 6px; align-content: start; }
+.pas svg { width: 26px; height: 26px; color: var(--accent); margin-bottom: 4px; }
+.pas b { font-size: 15px; }
+.pas span { font-size: 13px; color: var(--muted); }
+.pas .draftline { font-style: italic; color: var(--warn); }
+.wip { justify-self: start; display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; padding: 8px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--warn) 40%, var(--line)); color: var(--warn); font-size: 13px; }
+.wip .pulse { background: var(--warn); }
+.pas .pas-link { font-size: 13px; margin-top: 4px; }
+.pas-links { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; }
+.pas-links li { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.pas-links li span { color: var(--muted); font-size: 12px; }
+.pas .pas-tag { justify-self: start; margin-top: 4px; font: 500 11px/1 var(--mono); color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); padding: 5px 8px; border-radius: 6px; }
+.pas-links.games li { display: grid; gap: 2px; justify-content: stretch; }
+.pas-links.games li b { font: 500 10px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pas-links.games li span { font-size: 13px; color: var(--fg); }
+.pas-links.cats li b { font-weight: 500; font-size: 13px; }
+.pas-links.cats li span { font-family: var(--mono); }
+/* Mobile: bottom tab bar */
+@media (max-width: 860px) {
+  .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
+  .app-body, .app-body.collapsed { display: flex; flex-direction: column; height: auto; min-height: 0; }
+  .app-body .main { order: 1; min-height: 70vh; }
+  .app-body .side {
+    order: 2; position: sticky; bottom: 0; z-index: 3;
+    display: flex; flex-direction: row; justify-content: space-around; gap: 0;
+    padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+    border-right: 0; border-bottom: 0; border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    overflow: visible;
+  }
+  .app-body .side .ws, .app-body .side .lbl, .app-body .side .avail { display: none; }
+  .app-body .side button {
+    flex: 1; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+    min-height: 48px; padding: 4px 0; font-size: 11px; font-weight: 500; position: relative; border-radius: 10px;
+  }
+  .app-body .side button svg { width: 22px; height: 22px; }
+  .app-body .side .tx { display: inline; }
+  .app-body .side button:hover { background: none; }
+  .app-body .side button[aria-current="true"] { background: none; box-shadow: none; color: var(--accent); }
+  .app-body .side button[aria-current="true"]::before { content: ""; position: absolute; top: -7px; left: 50%; width: 24px; height: 3px; margin-left: -12px; border-radius: 0 0 3px 3px; background: var(--accent); }
+  .app-body .side button .n {
+    display: inline; position: absolute; top: 2px; left: calc(50% + 8px); margin: 0;
+    font: 600 9px/1 var(--mono); padding: 3px 5px; border-radius: 999px;
+    background: var(--surface-2); color: var(--muted); border: 1px solid var(--line);
+  }
+  .tabs { top: calc(60px + env(safe-area-inset-top, 0px)); }
+  .lb { z-index: 30; }
+}
+
+@media (max-width: 520px) {
+  nav.top .wrap { gap: 12px; }
+  .brand { white-space: nowrap; min-width: 0; }
+  .brand .ver { display: none; }
+  nav.top .btn { padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+}
+
+footer { padding-block: 32px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+/* ===== App shell, phone ===== */
+.side .sh { display: none; }
+@media (max-width: 860px) {
+  body { overflow: auto; }
+  .app { height: auto; overflow: clip; }
+  .app-body, .app-body.collapsed { height: auto; }
+  .app-body .col { order: 1; display: block; min-height: 100vh; }
+  .bar { position: sticky; top: 0; z-index: 6; padding: calc(8px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--surface) 90%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .bar-brand { display: flex; }
+  .bar-path { display: none; }
+  .bar-actions .ghost { display: none; }
+  .main { padding: 20px max(16px, env(safe-area-inset-right, 0px)) 28px max(16px, env(safe-area-inset-left, 0px)); }
+  .app-body .main { min-height: 0; }
+  .app-body .side .m-hide, .app-body .side .foot { display: none; }
+  .app-body .side .m-only { display: flex; }
+  .tabs { top: calc(56px + env(safe-area-inset-top, 0px)); }
+  .app-body .side .lg { display: none; }
+  .app-body .side .sh { display: inline; }
+  .main .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+  .refs .names { font-size: 22px; gap: 8px 22px; }
+  .grid { grid-template-columns: 1fr; }
+  .crow { grid-template-columns: 1fr auto; }
+  .crow > span:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 380px) { .bar-brand { font-size: 0; gap: 0; } }
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <header class="nav">
-    <div class="container nav__inner">
-      <a class="nav__brand" href="/">Christopher De Paola</a>
-      <nav class="nav__links" aria-label="Sections">
-        <a href="#projets">Projets</a>
-        <a href="#methode">Méthode</a>
-        <a href="#ia">IA</a>
-        <a href="#labo">Labo</a>
-        <a href="#engagement">Talks</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="nav__end">
-        <div class="nav__actions" id="nav-actions">
-          <button class="theme-toggle" type="button" aria-label="Passer en mode sombre">
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-            <span class="nav__label" aria-hidden="true">Mode sombre</span>
-          </button>
-          <a class="nav__cta" href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">LinkedIn →</a>
-          <a class="nav__lang" href="/en/" hreflang="en" lang="en"><span class="nav__short" aria-hidden="true">EN</span><span class="nav__label">English version</span></a>
+<div class="app" id="app">
+  <div class="app-body">
+    <nav class="side" id="side" aria-label="Navigation principale"></nav>
+    <div class="col">
+      <header class="bar">
+        <span class="bar-brand"><img src="/assets/img/saas/portrait-face.jpg" alt="">Christopher De Paola</span>
+        <span class="bar-path mono" id="path">accueil</span>
+        <div class="bar-actions">
+          <a class="btn sm ghost" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">CV ↓</a>
+          <button type="button" class="btn sm primary" data-view="contact">Prendre un call</button>
         </div>
-        <button class="nav__menu" type="button" aria-expanded="false" aria-controls="nav-actions" aria-label="Menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
+      </header>
+      <main class="main" id="main" aria-live="polite"></main>
+    </div>
+  </div>
+</div>
+
+<template id="tpl-hero">
+  <div class="hero">
+    <button type="button" class="announce" data-open="skill-audit"><b>NOUVEAU</b> Skill Claude d'audit ergonomique, déployé pour l'équipe design →</button>
+    <h1>Le product designer qui livre votre <em>SaaS B2B</em>, de la recherche à la prod.</h1>
+    <p class="lede">Entretiens, tests, design system et pilotage : un seul designer senior pour des parcours accessibles et mesurables. Branché sur vos équipes produit, tech et business.</p>
+    <div class="ctas">
+      <button type="button" class="btn primary" data-view="contact">Réserver un call de 30 min</button>
+      <a class="btn" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">Télécharger le CV ↓</a>
+    </div>
+    <p class="fine">Poste Senior ou Lead · CDI · Paris ou full remote</p>
+  </div>
+  <div class="refs"><span>Déjà en production chez</span><div class="names"><span>Oodrive</span><span>Swile</span><span>Groupe BPCE</span><span>LexisNexis</span></div></div>
+</template>
+
+<template id="tpl-methode">
+<div class="head">
+      <span class="eyebrow">Produit</span>
+      <h2>Trois modules, un seul flux de travail</h2>
+      <p class="lede">Chaque module marche seul, mais ils sont pensés pour s'enchaîner : du problème bien posé jusqu'à l'impact mesuré en production.</p>
+    </div>
+    <div class="modules">
+      <div class="module">
+        <span class="step">MODULE 1 · DISCOVERY</span>
+        <h3>Poser le bon problème</h3>
+        <p>Comprendre avant de concevoir.</p>
+        <ul>
+          <li>Entretiens qualitatifs et questionnaires</li>
+          <li>Audit ergonomique (Bastien &amp; Scapin, Nielsen)</li>
+          <li>Ateliers design sprint, How Might We</li>
+          <li>Analyse des usages et des données</li>
+        </ul>
+        <div class="integr"><span>Dovetail</span><span>Notion</span><span>Miro</span><span>Maze</span></div>
+      </div>
+      <div class="module">
+        <span class="step">MODULE 2 · CONCEPTION</span>
+        <h3>Co-concevoir des solutions testables</h3>
+        <p>Des parcours que l'on peut mettre devant des utilisateurs très tôt.</p>
+        <ul>
+          <li>User flows et cas nominaux</li>
+          <li>Wireframes et prototypes interactifs</li>
+          <li>Design system et composants</li>
+          <li>Alignement PM, PO, tech et business</li>
+        </ul>
+        <div class="integr"><span>Figma</span><span>FigJam</span><span>Storybook</span></div>
+      </div>
+      <div class="module">
+        <span class="step">MODULE 3 · DELIVERY</span>
+        <h3>Sécuriser la mise en prod</h3>
+        <p>Livrer par lots et mesurer l'impact à chaque étape.</p>
+        <ul>
+          <li>Tests utilisateurs (SUS, think-aloud)</li>
+          <li>Handoff produit et développement</li>
+          <li>Lotissement et priorisation de roadmap</li>
+          <li>Diffusion de la culture produit</li>
+        </ul>
+        <div class="integr"><span>Figma</span><span>Maze</span><span>Jira</span><span>Confluence</span></div>
       </div>
     </div>
-  </header>
+</template>
 
-  <main id="contenu">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div>
-          <span class="eyebrow eyebrow--line">Product designer senior · Paris</span>
-          <h1 class="hero__title">Je conçois des produits <em>SaaS B2B</em>, de la recherche utilisateur à la mise en production.</h1>
-          <p class="hero__lead">J'associe entretiens, tests et pilotage pour livrer des parcours accessibles et mesurables, en lien avec les équipes produit, tech et business.</p>
-          <div class="btns">
-            <a class="btn" href="#projets">Voir les projets</a>
-            <a class="btn btn--ghost" href="/assets/cv-christopher-de-paola.pdf" download>Télécharger mon CV <span aria-hidden="true">↓</span></a>
-          </div>
-        </div>
-        <div class="hero__photo">
-          <img src="/assets/img/portrait.png" alt="Christopher De Paola en conférence" width="508" height="607">
-        </div>
-      </div>
-      <div class="container">
-        <a class="now" href="#labo">
-          <span class="now__label"><span class="pulse" aria-hidden="true"></span>En ce moment</span>
-          <span class="now__items">
-            <span><strong>Pense-Frigo</strong> · en test avec mes premiers utilisateurs</span>
-            <span><strong>Workout Log</strong> · mon carnet de muscu pour le dos</span>
-          </span>
-          <span class="now__cta">Voir le labo <span aria-hidden="true">↓</span></span>
-        </a>
-      </div>
-    </section>
+<template id="tpl-ia">
+<div class="head">
+      <span class="eyebrow">Automatisations · propulsé par Claude</span>
+      <h2>Les benchmarks de l'IA dans mon flux</h2>
+      <p class="lede">L'IA propose, je relis et je tranche. La recherche, la stratégie et les arbitrages restent les miens.</p>
+    </div>
+    <div class="bench">
+      <table>
+        <thead><tr><th>Tâche</th><th>Étape</th><th>Avant → avec l'IA</th></tr></thead>
+        <tbody>
+          <tr><td>Synthèse de recherche utilisateur<small>L'IA fait ressortir les motifs, je construis les insights.</small></td><td>Explorer</td><td class="num"><span class="before">1 journée</span><span class="after">1 h</span></td></tr>
+          <tr><td>Wireframes de discovery<small>Je sélectionne, critique et affine les variantes.</small></td><td>Explorer</td><td class="num"><span class="before">4 h</span><span class="after">1 h</span></td></tr>
+          <tr><td>Audit ergonomique<small>Évaluation selon les 10 heuristiques de Nielsen : constats, sévérité, score global et restitution prête à présenter.</small></td><td>Fiabiliser</td><td class="num"><span class="before">1 semaine</span><span class="after">2 jours</span></td></tr>
+          <tr><td>Accessibilité<small>Règles de contraste, conformité au nouveau RGAA 5, navigation clavier, labels ARIA et specs d'accessibilité générées depuis Figma, prêtes pour le front.</small></td><td>Fiabiliser</td><td class="num"><span class="before">8 h</span><span class="after">2 h</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Les prototypes des études de cas ont été construits avec Claude et Figma Make, pour tester un parcours dès les premières itérations sans mobiliser l'équipe de développement.</p>
+</template>
 
-    <!-- Chiffres clés -->
-    <div class="stats">
-      <div class="container stats__grid">
-        <div class="stat">
-          <p class="stat__value">6 ans</p>
-          <p class="stat__label">d'expérience en product design</p>
-        </div>
-        <div class="stat">
-          <p class="stat__value">85 → 89</p>
-          <p class="stat__label">Score SUS sur 3 phases de tests (refonte Oodrive Sign)</p>
-        </div>
-        <div class="stat">
-          <p class="stat__value">33,1 M€</p>
-          <p class="stat__label">de valeur d'émission sécurisée lors d'une migration (Swile)</p>
-        </div>
-        <div class="stat">
-          <p class="stat__value">3</p>
-          <p class="stat__label">talks publics sur le design inclusif</p>
-        </div>
+<template id="tpl-apports">
+<div class="head">
+      <span class="eyebrow">Ce que j'apporte</span>
+      <h2>Ce que je peux vous apporter</h2>
+      <p class="lede">Mon plan pour les premiers mois, en trois étapes, à adapter à votre produit.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="pname"><h3>Onboarding</h3></div>
+        <div class="price">30<small>jours</small></div>
+        <ul>
+          <li>Entretiens avec PM, tech, support et sales</li>
+          <li>Audit ergonomique du parcours principal</li>
+          <li>Carte des irritants priorisée</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="pname"><h3>Growth</h3></div>
+        <div class="price">60<small>jours</small></div>
+        <ul>
+          <li>Premier lot conçu, testé et livré</li>
+          <li>Baseline SUS posée pour mesurer la suite</li>
+          <li>Premiers composants dans le design system</li>
+        </ul>
+      </div>
+      <div class="plan reco">
+        <div class="pname"><h3>Enterprise</h3><span class="badge">CDI</span></div>
+        <div class="price">90<small>jours et +</small></div>
+        <ul>
+          <li>Roadmap design lotie avec le produit</li>
+          <li>Accessibilité intégrée au processus</li>
+          <li>L'IA outillée pour toute l'équipe</li>
+        </ul>
+        <button type="button" class="btn primary" data-view="contact">Parlons-en</button>
       </div>
     </div>
+</template>
 
-    <!-- Projets -->
-    <section class="section" id="projets">
-      <div class="container">
-        <span class="eyebrow">Sélection de projets</span>
-        <h2 class="section__title">Ce que j'ai conçu et livré</h2>
-
-        <div class="projects">
-          <a class="project" href="/projet-refonte-oodrive-sign/">
-            <span class="project__num">01</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">B2B SaaS</span>
-                <span class="tag tag--accent">Lead designer</span>
-                <span class="tag">11 mois</span>
-              </div>
-              <h3 class="project__title">Refonte Oodrive Sign</h3>
-              <p class="project__desc">De l'audit ergonomique à la mise en production : refonte d'une plateforme de signature électronique et création d'un parcours de signature en 1 clic pour 85 % des utilisateurs.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/oodrive-sign-card.png" alt="" loading="lazy" width="1532" height="504"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="project" href="/dotation-gift/">
-            <span class="project__num">02</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">B2B SaaS</span>
-                <span class="tag tag--accent">Swile</span>
-                <span class="tag">4 mois</span>
-              </div>
-              <h3 class="project__title">Une nouvelle dotation cadeau</h3>
-              <p class="project__desc">Sécuriser la bascule de 33,1 M€ de clients habitués aux chèques cadeaux papier vers une offre 100 % digitale.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/gift-card.webp" alt="" loading="lazy" width="1354" height="540"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="project" href="/projet-myoodrivesign/">
-            <span class="project__num">03</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">App mobile</span>
-                <span class="tag tag--accent">Lead designer</span>
-                <span class="tag">4 mois</span>
-              </div>
-              <h3 class="project__title">myOodriveSign</h3>
-              <p class="project__desc">Donner aux signataires les plus sollicités un espace pour consulter et signer leurs documents en quelques instants depuis leur mobile.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/myoodrivesign-card.png" alt="" loading="lazy" width="1532" height="504"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="project" href="/projet-skill-audit/">
-            <span class="project__num">04</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">IA</span>
-                <span class="tag tag--accent">Claude</span>
-                <span class="tag">1 semaine</span>
-              </div>
-              <h3 class="project__title">Skill Claude d'audit ergonomique</h3>
-              <p class="project__desc">Une méthode d'audit faite à la main sur Oodrive Sign, transformée en skill Claude réutilisable et testée sur Oodrive Meet, pour toute l'équipe produit.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/skill-audit-card.png" alt="" loading="lazy" width="903" height="501"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="project" href="/projet-design-system/">
-            <span class="project__num">05</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">Design system</span>
-                <span class="tag tag--accent">Oodrive</span>
-                <span class="tag">12 mois</span>
-              </div>
-              <h3 class="project__title">Refonte du design system</h3>
-              <p class="project__desc">Convaincre la direction produit d'investir dans un design system unique, avec un plan par phases sans freeze et trois scénarios de capacité.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/design-system-card.png" alt="" loading="lazy" width="972" height="540"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="project" href="/projet-lexis-nexis/">
-            <span class="project__num">06</span>
-            <div>
-              <div class="project__tags">
-                <span class="tag">Projet de formation</span>
-                <span class="tag tag--accent">Lexis Nexis</span>
-                <span class="tag">4 mois</span>
-              </div>
-              <h3 class="project__title">Lexis 360 Intelligence</h3>
-              <p class="project__desc">Repenser l'onboarding d'un outil juridique que 88,6 % des utilisateurs ignoraient, sans perdre les experts.</p>
-            </div>
-            <div class="project__img"><img src="/assets/img/lexis-card.webp" alt="" loading="lazy" width="2048" height="667"></div>
-            <span class="project__arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
+<template id="tpl-apropos">
+  <div class="head">
+    <span class="eyebrow">À propos</span>
+    <h2>Qui je suis, ce que je cherche</h2>
+  </div>
+  <aside class="status sbanner" aria-label="Statut">
+            <div class="all"><span class="pulse"></span>Recherche active</div>
+      <div class="srow"><span>Poste</span><span>Senior ou Lead Product Designer, CDI</span></div>
+      <div class="srow"><span>Lieu</span><span>Paris ou full remote</span></div>
+      <div class="srow"><span>Contextes</span><span>SaaS B2B complexe, accessibilité, IA</span></div>
+      <div class="srow"><span>Expérience</span><span class="mono">6 ans</span></div>
+      <div class="srow"><span>Langues</span><span>Italien, langue maternelle<br>Français, bilingue<br>Anglais, avancé<br>Espagnol, avancé</span></div>
+    </aside>
+  <div class="stack">
+      <h4 class="sub">Activité récente</h4>
+      <div class="log">
+<div class="entry"><span class="when">NOV. 2026 <span class="chip ok">En usage</span></span><h3>Workout Log</h3><p>Un carnet de muscu pensé pour une hernie L5-S1. PWA conçue et codée avec Claude Code.</p></div>
+<div class="entry"><span class="when">OCT. 2026 <span class="chip warn">En test</span></span><h3>Pense-Frigo</h3><p>Scan du ticket de caisse avec l'API Claude. Guide d'entretien, questionnaire et roadmap priorisée.</p></div>
+<div class="entry"><span class="when">2026</span><h3>Skill Claude d'audit ergonomique</h3><p>Une méthode faite à la main sur Oodrive Sign, devenue un skill réutilisable par l'équipe design.</p></div>
       </div>
-    </section>
-
-    <!-- Méthode -->
-    <section class="section steps-section" id="methode">
-      <div class="container">
-        <span class="eyebrow">Méthodes</span>
-        <h2 class="section__title">Ma façon de travailler</h2>
-
-        <div class="cards cards--3 steps">
-          <article class="card">
-            <span class="card__step">01</span>
-            <h3 class="card__title">Discovery</h3>
-            <p class="card__intro">Comprendre avant de concevoir. Poser le bon problème.</p>
-            <div class="scene" data-scene="discovery" aria-hidden="true"></div>
-            <ul class="card__list">
-              <li>Interviews et entretiens qualitatifs</li>
-              <li>Questionnaires quantitatifs</li>
-              <li>Audit ergonomique (Bastien &amp; Scapin, Nielsen)</li>
-              <li>Ateliers design sprint, How Might We</li>
-              <li>Analyse des usages et données</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Dovetail · Notion · Miro · Maze</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <span class="card__step">02</span>
-            <h3 class="card__title">Conception</h3>
-            <p class="card__intro">Co-concevoir des solutions testables et centrées utilisateurs.</p>
-            <div class="scene" data-scene="conception" aria-hidden="true"></div>
-            <ul class="card__list">
-              <li>User flows et cas nominaux</li>
-              <li>Wireframes basse et haute fidélité</li>
-              <li>Prototypes interactifs</li>
-              <li>Design system et composants</li>
-              <li>Alignement PM, PO, tech et business</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Figma · FigJam · Storybook</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <span class="card__step">03</span>
-            <h3 class="card__title">Delivery</h3>
-            <p class="card__intro">Sécuriser la mise en production, mesurer l'impact.</p>
-            <div class="scene" data-scene="delivery" aria-hidden="true"></div>
-            <ul class="card__list">
-              <li>Tests utilisateurs (SUS, think-aloud)</li>
-              <li>Synthèses et livrables actionnables</li>
-              <li>Handoff produit et développement</li>
-              <li>Lotissement et priorisation de la roadmap</li>
-              <li>Diffusion de la culture produit</li>
-            </ul>
-            <div class="card__tools">
-              <p class="card__tools-label">Outils</p>
-              <p class="card__tools-list">Figma · Maze · Jira · Confluence</p>
-            </div>
-          </article>
-        </div>
+      <h4 class="sub">Talks et engagement</h4>
+      <div class="log">
+<div class="entry"><span class="when">2024</span><h3>Talk à MiXiT</h3><p>La place des personnes trans dans le digital.</p><a class="linkish" style="font-size:14px" href="https://www.youtube.com/watch?v=4w1SHoLX3Y8" target="_blank" rel="noopener">Voir le talk ↗</a></div>
+<div class="entry"><span class="when">2022</span><h3>Talk à Paris Web</h3><p>Rendre les produits digitaux plus inclusifs pour les personnes trans et non-binaires.</p><a class="linkish" style="font-size:14px" href="https://www.youtube.com/live/ym2sI8Jlu6A?t=28611" target="_blank" rel="noopener">Voir le talk ↗</a></div>
+<div class="entry"><span class="when">Recherche</span><h3>Mémoire : le TDAH au travail</h3><p>Recherche et co-conception pour adapter les environnements de travail aux personnes avec un TDAH.</p><a class="linkish" style="font-size:14px" href="https://drive.google.com/file/d/1lcy6r_JnSgoJZkBPUV_mYqgIBSa3C3lT/view" target="_blank" rel="noopener">Lire le mémoire ↗</a></div>
       </div>
-    </section>
-
-    <!-- IA -->
-    <section class="section" id="ia">
-      <div class="container">
-        <span class="eyebrow">IA &amp; automatisation</span>
-        <h2 class="section__title">L'IA pour me concentrer sur ce qui compte</h2>
-        <p class="section__lead">J'utilise l'IA, principalement Claude, à chaque étape de ma démarche : pour explorer plus vite en discovery, prototyper plus tôt en conception et fiabiliser la livraison. Elle ne remplace pas le jugement design : l'IA propose, je relis et je tranche. La recherche, la stratégie et les arbitrages restent les miens.</p>
-
-        <div class="cards cards--3">
-          <article class="card">
-            <p class="card__step">01</p>
-            <h3 class="card__title">Explorer</h3>
-            <p class="card__intro">Aller plus vite de la recherche aux premières pistes.</p>
-            <div class="card__use">
-              <h4 class="card__use-title">Synthèse de recherche utilisateur</h4>
-              <p class="card__text">L'IA traite les verbatims bruts pour faire ressortir les motifs récurrents. Je relis, requalifie et construis les insights : l'analyse reste la mienne.</p>
-              <p class="card__time">1 heure au lieu d'une journée</p>
-              <div class="gain" style="--ratio: 0.125" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
-            </div>
-            <div class="card__use">
-              <h4 class="card__use-title">Wireframes de discovery</h4>
-              <p class="card__text">À partir des insights, je génère des variantes basse fidélité. Je sélectionne, critique et affine : l'IA explore, moi je tranche.</p>
-              <p class="card__time">1 heure au lieu de 4 heures</p>
-              <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
-            </div>
-          </article>
-          <article class="card">
-            <p class="card__step">02</p>
-            <h3 class="card__title">Prototyper</h3>
-            <p class="card__intro">Tester une idée en conditions réelles, plus tôt.</p>
-            <div class="card__use">
-              <h4 class="card__use-title">Prototypes interactifs</h4>
-              <p class="card__text">Avec Claude et Figma Make, je transforme mes maquettes en prototypes cliquables pour tester un parcours avec des utilisateurs dès les premières itérations, sans mobiliser l'équipe de développement. Les prototypes des études de cas de ce portfolio ont été construits ainsi.</p>
-              <p class="card__time">Tester plus tôt, itérer plus souvent</p>
-            </div>
-          </article>
-          <article class="card">
-            <p class="card__step">03</p>
-            <h3 class="card__title">Fiabiliser</h3>
-            <p class="card__intro">Livrer des écrans contrôlés et exploitables par les devs.</p>
-            <div class="card__use">
-              <h4 class="card__use-title">Audits ergonomiques et d'accessibilité</h4>
-              <p class="card__text">Une première passe automatisée sur les parcours et les composants du design system (contraste, hiérarchie, taille de cible, labels ARIA…). Je valide et priorise, l'IA produit le rapport structuré.</p>
-              <p class="card__time">2 jours au lieu d'1 semaine</p>
-              <div class="gain" style="--ratio: 0.4" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
-            </div>
-            <div class="card__use">
-              <h4 class="card__use-title">Navigation clavier et labels ARIA</h4>
-              <p class="card__text">À partir des specs Figma, je génère les règles de navigation au clavier et les attributs ARIA de chaque composant, directement exploitables par les développeurs front.</p>
-              <p class="card__time">2 heures au lieu de 8</p>
-              <div class="gain" style="--ratio: 0.25" aria-hidden="true"><span class="gain__bar gain__bar--before"></span><span class="gain__bar gain__bar--after"></span></div>
-            </div>
-          </article>
-        </div>
+      <h4 class="sub">En dehors du design</h4>
+      <div class="passions">
+        <div class="pas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="7" width="19" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r=".9" fill="currentColor"/><circle cx="18" cy="13.5" r=".9" fill="currentColor"/></svg><b>Jeux vidéo</b><span>Surtout des jeux qui font réfléchir ou ralentir.</span><ul class="pas-links games"><li><b>Casse-tête</b><span>Rusty Lake, Strange Horticulture, Strange Antiquities</span></li><li><b>Narratif</b><span>Disco Elysium</span></li><li><b>Chill</b><span>Tiny Bookshop, Leafy Corner</span></li></ul></div>
+        <div class="pas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg><b>Tech</b><span>J'aide bénévolement de petites associations à créer leur site web.</span><ul class="pas-links"><li><a class="linkish" href="https://taotechiafrance.wixsite.com/taotechia" target="_blank" rel="noopener">Tao Te Chia France ↗</a><span>Wix</span></li><li><a class="linkish" href="https://toustesunart.com/" target="_blank" rel="noopener">Toustes un art ↗</a><span>WordPress · 2023</span></li><li><a class="linkish" href="https://centroantares.com/" target="_blank" rel="noopener">Centre culturel Antares ↗</a><span>WordPress · en cours</span></li></ul></div>
+        <div class="pas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 20V9l2-5 3 4h4l3-4 2 5v11z"/><circle cx="9.5" cy="13" r=".9" fill="currentColor"/><circle cx="14.5" cy="13" r=".9" fill="currentColor"/><path d="M11 16h2"/></svg><b>Chats</b><span>Papa de trois chats qui m'inspirent au quotidien. Ces demoiselles testent chaque interface à leur façon : un clavier sert à s'asseoir, un écran à se frotter. Une vraie leçon de robustesse.</span><ul class="pas-links cats"><li><b>La Gnometta</b><span>16 ans</span></li><li><b>Paupiette</b><span>12 ans</span></li><li><b>Madame</b><span>4 ans</span></li></ul><span class="pas-tag">Testeuses UX en chef</span></div>
+        <div class="pas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v6M12 9l-5 3M12 9l5-2M12 13l-4 7M12 13l5 6"/></svg><b>Capoeira</b><span>Professeur bénévole à Tao Te Chia France, à Fontenay-sous-Bois, deux cours par semaine.</span><a class="linkish pas-link" href="https://taotechiafrance.wixsite.com/taotechia" target="_blank" rel="noopener">Voir le site du groupe ↗</a></div>
       </div>
-    </section>
+  </div>
+</template>
 
-    <!-- Labo : projets perso -->
-    <section class="section" id="labo">
-      <div class="container">
-        <span class="eyebrow">Labo · projets perso</span>
-        <h2 class="section__title">Ce que je construis pour moi</h2>
-        <p class="section__lead">Des applis nées de problèmes que je vis au quotidien. Je les conçois et je les code avec Claude, et j'y applique la même démarche qu'au travail : observer, prototyper, tester, itérer.</p>
+<template id="tpl-notes">
+  <div class="head">
+    <span class="eyebrow">Notes</span>
+    <h2>Mes réflexions sur le design</h2>
+    <p class="lede">Accessibilité, IA, recherche utilisateur : ce que j'apprends en concevant des produits.</p>
+    <div class="wip"><span class="pulse"></span>Work in progress · les premiers articles arrivent bientôt.</div>
+  </div>
+  <div class="notes">
+    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Thème : accessibilité</span></div><h3>Article à venir</h3><p>Article en cours d'écriture, bientôt en ligne.</p></article>
+    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Thème : IA et design</span></div><h3>Article à venir</h3><p>Article en cours d'écriture, bientôt en ligne.</p></article>
+    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Thème : recherche utilisateur</span></div><h3>Article à venir</h3><p>Article en cours d'écriture, bientôt en ligne.</p></article>
+  </div>
+</template>
 
-        <div class="labs">
-          <a class="lab" href="/projet-workout-log/">
-            <div class="lab__head">
-              <span class="status"><span class="pulse" aria-hidden="true"></span>En usage</span>
-              <span class="lab__since">depuis nov. 2026</span>
-            </div>
-            <h3 class="lab__title">Workout Log<span class="lab__sub">Un carnet de muscu pensé pour une hernie L5-S1</span></h3>
-            <p class="lab__problem"><strong>Le problème :</strong> reprendre la muscu sans aggraver mon dos. Je voulais suivre les consignes de ma kiné et voir l'effet de chaque séance sur ma douleur, jusqu'au lendemain.</p>
-            <div class="lab__phones">
-              <div class="lab__phone"><img src="/assets/img/workout-log-bilan-j1.jpg" alt="Bilan du lendemain : douleur au réveil comparée à avant et juste après la séance" loading="lazy" width="780" height="1688"></div>
-              <div class="lab__phone"><img src="/assets/img/workout-log-carnet-pistes.jpg" alt="Carnet : douleur au réveil sur 8 séances et piste à surveiller" loading="lazy" width="780" height="1688"></div>
-            </div>
-            <div>
-              <p class="lab__learn-title">Ce que j'en retiens</p>
-              <ul class="card__list">
-                <li>Le bilan du lendemain matin dit si la séance était bonne, pas le ressenti pendant l'effort.</li>
-                <li>Pour une app de santé, la sauvegarde des données est une promesse dès le premier écran.</li>
-              </ul>
-            </div>
-            <div class="lab__foot">
-              <div class="lab__tags"><span class="tag tag--accent">Santé</span><span class="tag">PWA</span><span class="tag">Claude Code</span></div>
-              <span class="lab__more">Voir l'étude de cas →</span>
-            </div>
-          </a>
-
-          <a class="lab" href="/projet-pense-frigo/">
-            <div class="lab__head">
-              <span class="status status--test"><span class="pulse" aria-hidden="true"></span>En test utilisateurs</span>
-              <span class="lab__since">depuis oct. 2026</span>
-            </div>
-            <h3 class="lab__title">Pense-Frigo<span class="lab__sub">Bon jusqu'au bout</span></h3>
-            <p class="lab__problem"><strong>Le problème :</strong> je rachetais ce que j'avais déjà et je jetais ce que j'oubliais au fond du frigo. Je voulais voir d'un coup d'œil ce qui presse, sans ouvrir la porte.</p>
-            <div class="lab__phones">
-              <div class="lab__phone"><img src="/assets/img/pense-frigo-stock.jpg" alt="Stock du frigo avec l'encart « À manger en premier »" loading="lazy" width="375" height="812"></div>
-              <div class="lab__phone"><img src="/assets/img/pense-frigo-scan.jpg" alt="Scan d'un ticket de caisse : 3 produits trouvés à vérifier" loading="lazy" width="375" height="812"></div>
-            </div>
-            <div>
-              <p class="lab__learn-title">Ce que j'en retiens</p>
-              <ul class="card__list">
-                <li>Personne ne saisit ses courses à la main : le scan du ticket de caisse avec l'IA change tout.</li>
-                <li>Guide d'entretien, questionnaire et roadmap priorisée, comme pour un vrai produit.</li>
-              </ul>
-            </div>
-            <div class="lab__foot">
-              <div class="lab__tags"><span class="tag tag--accent">Quotidien</span><span class="tag">PWA</span><span class="tag">API Claude</span></div>
-              <span class="lab__more">Voir l'étude de cas →</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="takeaways">
-          <div class="takeaway"><h3>Je suis mon propre terrain</h3><p>J'utilise ces applis tous les jours, comme une diary study menée sur moi-même.</p></div>
-          <div class="takeaway"><h3>Du problème à l'appli</h3><p>Je fais tout le chemin : cadrage, maquettes, code, mise en ligne et retours testeurs.</p></div>
-          <div class="takeaway"><h3>Ce que je ramène au travail</h3><p>Une meilleure compréhension des contraintes techniques, et des prototypes plus réalistes.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Engagement -->
-    <section class="section" id="engagement">
-      <div class="container">
-        <span class="eyebrow">Engagement</span>
-        <h2 class="section__title">Inclusion &amp; accessibilité</h2>
-
-        <div class="cards cards--2 cards--tilt">
-          <article class="card">
-            <span class="tag tag--accent">Talk public</span>
-            <h3 class="card__title">La place des personnes trans dans le digital</h3>
-            <p class="card__meta">MiXiT 2024 · Paris Web 2022</p>
-            <p class="card__text">Comment rendre les produits digitaux plus inclusifs pour les personnes trans et non-binaires.</p>
-            <div class="card__links">
-              <a href="https://www.youtube.com/watch?v=4w1SHoLX3Y8" target="_blank" rel="noopener">MiXiT 2024 →</a>
-              <a href="https://www.youtube.com/live/ym2sI8Jlu6A?t=28611" target="_blank" rel="noopener">Paris Web 2022 →</a>
-            </div>
-          </article>
-          <article class="card">
-            <span class="tag tag--accent">Mémoire de recherche</span>
-            <h3 class="card__title">Adapter les environnements de travail aux personnes avec un TDAH</h3>
-            <p class="card__meta">Recherche &amp; co-conception</p>
-            <p class="card__text">Une démarche de recherche et de co-conception pour identifier des solutions d'environnement de travail adaptées aux profils TDAH.</p>
-            <div class="card__links">
-              <a href="https://drive.google.com/file/d/1lcy6r_JnSgoJZkBPUV_mYqgIBSa3C3lT/view" target="_blank" rel="noopener">Lire le mémoire →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ce que je cherche -->
-    <section class="section" id="contact">
-      <div class="container">
-        <span class="eyebrow">Ce que je cherche</span>
-        <h2 class="section__title">Mon prochain poste</h2>
-        <p class="section__lead">Je cherche un poste de Senior Product Designer en CDI, sur un produit SaaS B2B complexe, où la recherche utilisateur, l'accessibilité et l'IA font partie du travail au quotidien.</p>
-
-        <div class="seeking">
-          <div class="seeking__item">
-            <p class="seeking__label">Poste</p>
-            <p class="seeking__value">Senior Product Designer, en CDI</p>
-          </div>
-          <div class="seeking__item">
-            <p class="seeking__label">Lieu</p>
-            <p class="seeking__value">Paris ou full remote</p>
-          </div>
-          <div class="seeking__item">
-            <p class="seeking__label">Contextes</p>
-            <p class="seeking__value">SaaS B2B complexe, accessibilité, produits avec de l'IA</p>
-          </div>
-        </div>
-
-        <div class="btns seeking__cta">
-          <a class="btn" href="mailto:chris.depaola.toru@gmail.com">M'écrire un email</a>
-          <a class="btn btn--ghost" href="/assets/cv-christopher-de-paola.pdf" download>Télécharger mon CV (PDF) <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <span class="footer__brand">Christopher De Paola</span>
-      <p class="footer__quote">«&nbsp;Si nous voulons que les utilisateurs aiment nos logiciels, nous devons les concevoir pour qu'ils se comportent comme une personne aimable.&nbsp;» <span>—&nbsp;Alan&nbsp;Cooper</span></p>
-      <div class="footer__links">
-        <a href="mailto:chris.depaola.toru@gmail.com">Email</a>
-        <a href="/assets/cv-christopher-de-paola.pdf" download>CV</a>
-        <a href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">Me contacter sur LinkedIn →</a>
-      </div>
+<template id="tpl-contact">
+  <div class="final"><div class="box">
+    <span class="eyebrow">Contact</span>
+    <h2>Parlons de votre produit</h2>
+    <p class="lede">30 minutes pour parler de votre parcours le plus critique. Vous repartez avec trois pistes, même si on ne travaille pas ensemble.</p>
+    <div class="contact">
+      <div class="crow"><span>Email</span><span class="sel" id="mail">chris.depaola.toru@gmail.com</span><button type="button" class="btn sm" data-copy="chris.depaola.toru@gmail.com">Copier</button></div>
+      <div class="crow"><span>LinkedIn</span><span class="sel">christopherdepaola-design</span><a class="btn sm" href="https://www.linkedin.com/in/christopherdepaola-design/" target="_blank" rel="noopener">Ouvrir ↗</a></div>
+      <div class="crow"><span>CV</span><span class="sel">PDF, à jour</span><a class="btn sm" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">Télécharger ↓</a></div>
     </div>
-  </footer>
-  <script src="/assets/js/home.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
+    <p class="fine" id="copied" aria-live="polite"></p>
+  </div></div>
+</template>
+
+<script>
+(function () {
+  var SITE = "/";
+  var P = [
+    { id: "oodrive-sign", group: "projets", title: "Refonte Oodrive Sign", client: "Oodrive Sign", role: "Lead designer", dur: "11 mois · 2024–2025", status: "Lot 1 en prod", tone: "ok", metric: "SUS 85 → 89", url: "projet-refonte-oodrive-sign/",
+      summary: "Rendre une plateforme de signature électronique, perçue comme complexe et peu agréable, vraiment adaptée à ses utilisateurs. De l'audit à la mise en production, en trois phases de tests.",
+      key: "85 % des utilisateurs n'avaient besoin que d'un usage simple, mais tous passaient par un parcours pensé pour les cas complexes.",
+      context: "La solution n'avait pas été pilotée par une démarche produit structurée depuis plusieurs années. Les utilisateurs la trouvaient complexe et visuellement peu agréable.",
+      problem: ["Une page d'accueil sans réelle valeur ajoutée", "Un parcours de signature unique, pensé pour les cas complexes, imposé à 100 % des utilisateurs", "Des irritants accumulés sans arbitrage"],
+      solution: ["Nouvelle page d'accueil avec raccourcis vers les actions fréquentes", "Parcours de signature en 1 clic pour 85 % des utilisateurs, livré en plusieurs lots", "Parcours de signature groupée", "Refonte visuelle cohérente avec les autres produits Oodrive"],
+      phases: [["Q4 2024", "Exploration et cadrage", "Audit Nielsen, entretiens CSM et sales, design sprint, Crazy 8. Premier prototype testé : SUS 85."], ["Q1 2025", "Approfondissement", "Deuxième phase de tests : SUS 87,25. Deux fonctionnalités issues du terrain, lotissement pour Q2."], ["Q2 2025", "Lancement progressif", "Troisième phase de tests : SUS 89. Mise en production du lot 1."]],
+      results: [["85 → 89", "Score SUS sur 3 phases (85, 87,25, 89)"], ["26", "Testeurs sur les 3 phases (9, 12 puis 5)"], ["3", "Cycles de tests, plus un design sprint initial"]],
+      lead: "Introduire une culture de conception centrée utilisateur, avec une collaboration continue avec PM, PO, sales, CSM, data et devs.",
+      retro: "J'aurais mis en place plus tôt des cycles de test plus courts et plus fréquents, pour itérer plus vite dès le départ." },
+    { id: "swile", group: "projets", title: "Une nouvelle dotation cadeau", client: "Swile", role: "Product designer", dur: "4 mois", status: "Livré", tone: "ok", metric: "33,1 M€ sécurisés", url: "dotation-gift/",
+      summary: "Faire basculer 33,1 M€ de valeur d'émission des anciens clients Bimpli vers l'offre 100 % digitale Swile Gift, en rassurant des clients habitués au papier.",
+      key: "33,1 M€ de valeur d'émission à faire basculer d'une offre à l'autre sans perte.",
+      context: "Le parcours de commande des titres cadeaux avait des problèmes ergonomiques, et les clients Bimpli, habitués aux chèques papier, arrivaient sur une offre 100 % digitale.",
+      problem: ["Un parcours de commande aux problèmes ergonomiques identifiés", "Des clients habitués au papier qui migrent vers le tout digital", "Un enjeu financier fort pendant la bascule"],
+      solution: ["Un flyer papier non nominatif avec QR code, distribuable lors d'événements", "Le QR code ouvre directement la dotation dans l'app Swile", "Un onboarding et un suivi de commande repensés pour rassurer"],
+      phases: [["Phase 1", "Cadrage", "Lean Canvas, audit Bastien & Scapin, en binôme avec une PM et avec le lead tech dès le départ."], ["Phase 2", "Conception", "Ateliers cas d'usage, service blueprint, focus group avec 5 sales Gift et 1 CSM pour tester l'appétence au flyer."], ["Phase 3", "Tests et mise en prod", "Tests d'utilisabilité avec 9 clients sur Maze, itérations, lotissement, mise en production."]],
+      results: [["100 %", "Des testeurs ont réussi à commander le flyer"], ["9/10", "Ressenti global sur le parcours"], ["9/10", "Simplicité perçue"], ["10/10", "Longueur du parcours jugée adaptée"]],
+      lead: "Cadrer en binôme avec la PM et intégrer le lead tech tôt, pour traiter les contraintes techniques avant qu'elles ne bloquent la conception.",
+      retro: "Le besoin de personnaliser les messages n'est apparu qu'aux tests. Il aurait pu être anticipé dès le focus group avec les sales." },
+    { id: "myoodrivesign", group: "projets", title: "myOodriveSign", client: "Oodrive Sign", role: "Lead designer", dur: "Août – nov. 2024", status: "Livré", tone: "ok", metric: "1er espace signataire", url: "projet-myoodrivesign/",
+      summary: "Donner aux signataires les plus sollicités (CEO, dirigeants) un espace mobile pour consulter et signer leurs documents en quelques instants.",
+      key: "Le besoin est venu du terrain, des sales et des CSM, pas d'une demande produit interne.",
+      context: "Il n'existait pas d'espace signataire : on accédait aux documents uniquement par les emails de notification, pensés pour un usage sur ordinateur.",
+      problem: ["Aucun espace signataire propre", "Une cible qui signe en mobilité, entre deux réunions", "Des utilisateurs cibles peu disponibles pour des entretiens"],
+      solution: ["Le tout premier espace signataire d'Oodrive Sign, indépendant de l'email", "Une app mobile pour consulter et signer plusieurs documents très vite", "Un parcours volontairement court"],
+      phases: [["Août 2024", "Discovery et hypothèses", "Hypothèses construites à partir des retours terrain, faute d'utilisateurs disponibles."], ["Sept. – oct. 2024", "Conception et validation", "Hypothèses validées avec des bêta-testeurs, itérations avec produit, sales, devs et CSM."], ["Nov. 2024", "Derniers ajustements", "Corrections après les retours bêta. Lancement en janvier 2025."]],
+      results: [["1er", "Espace signataire d'Oodrive Sign"], ["Janv. 2025", "Lancement de l'application"]],
+      quote: "« Une innovation unique qui annonce de beaux horizons pour Oodrive Sign. » Retour client",
+      lead: "Travailler avec le terrain en continu plutôt qu'en passage de relais : c'était le principal levier face à un panel restreint.",
+      retro: "La discovery a manqué d'utilisateurs cibles : les décisions se sont surtout appuyées sur des hypothèses validées après coup." },
+    { id: "skill-audit", group: "projets", title: "Skill Claude d'audit ergonomique", client: "Oodrive (interne)", role: "Product designer", dur: "~1 semaine · 2026", status: "Utilisé par l'équipe", tone: "ok", metric: "2 j au lieu d'1 sem.", url: "projet-skill-audit/",
+      summary: "Transformer un audit heuristique fait entièrement à la main sur Oodrive Sign en un skill Claude réutilisable par l'équipe design.",
+      key: "Le premier audit était 100 % manuel : grille Figma, captures collées une à une, PowerPoint refait de zéro.",
+      context: "L'audit selon Nielsen est un outil régulier chez Oodrive, mais chaque nouvelle évaluation repartait de rien.",
+      problem: ["Grille, sévérité et score redéfinis à chaque audit", "Support de restitution refait à chaque fois", "Une méthode qui restait dans la tête d'une seule personne"],
+      solution: ["Un skill qui contient les 10 heuristiques, l'échelle de sévérité et la formule de score", "Grille Figma remplie et annotée sur les maquettes", "Rapport Word et restitution Figma Slides à la charte"],
+      phases: [["Phase 1", "Audit de référence", "Oodrive Sign, fait entièrement à la main."], ["Phase 2", "Audit Oodrive Meet", "Gabarit réutilisé, évaluation menée avec Claude, écran par écran."], ["Phase 3", "Industrialisation", "Méthode packagée en skill, chaque livrable vérifié au niveau d'un rendu manuel."]],
+      results: [["2 jours", "Au lieu d'une semaine pour un audit"], ["72/100", "Score global d'Oodrive Meet"], ["13", "Constats confirmés, dont 4 majeurs"], ["18", "Écrans audités"]],
+      lead: "Passer d'un outil personnel à un outil d'équipe, réutilisable aussi dans les agents IA de Figma.",
+      retro: "Le fichier de restitution était un catalogue de 40 mises en page génériques. La prochaine version du skill le documentera." },
+    { id: "design-system", group: "projets", title: "Refonte du design system", client: "Oodrive (interne)", role: "Designer référent DS", dur: "Q4 2025 → Q4 2026", status: "En cours", tone: "warn", metric: "-20 à 30 % TTM visé", url: "projet-design-system/",
+      summary: "Transformer un constat partagé (librairies éparpillées, beaucoup de CSS sur mesure) en un plan de refonte par phases, arbitré avec la CPO.",
+      key: "Faire accepter qu'un design system est un investissement produit, avec un coût de capacité et un retour mesurable.",
+      context: "Une librairie Figma par plateforme et une librairie front, mais sans fondations communes ni règles de contribution.",
+      problem: ["Incohérences d'un produit et d'une plateforme à l'autre", "Beaucoup d'allers-retours design / dev", "Plus de deux mois de délai sur une feature de signature à l'été 2025"],
+      solution: ["Une seule source de vérité, de Figma à Storybook", "Des fondations tokenisées", "Des composants à structure aplatie"],
+      phases: [["Q4 2025", "Audit et priorisation", "Règle : toute nouvelle feature réutilise l'existant identifié."], ["Phase 2", "Fondations", "Tokens et bases communes, avant toute feature d'interface structurante."], ["Phase 3", "Deux streams parallèles", "Composants d'un côté, documentation et contribution de l'autre."], ["Q4 2026", "Mesure et amélioration", "KPIs et retours des équipes."]],
+      results: [["1 socle", "Fondations tokenisées dans Storybook"], ["1", "Premier composant livré"], ["-20 à 30 %", "De time-to-market visé"]],
+      lead: "Trois scénarios chiffrés présentés à la CPO. Le repli vers le binôme référent s'est fait sans renégocier le projet.",
+      retro: "Je présenterais aujourd'hui le binôme référent comme socle, et la contribution distribuée comme accélérateur." },
+    { id: "lexis", group: "projets", title: "Lexis 360 Intelligence", client: "LexisNexis (formation)", role: "Product designer & Scrum Master", dur: "4 mois · 2022", status: "Prototype V2", tone: "", metric: "88,6 % ignoraient l'onboarding", url: "projet-lexis-nexis/",
+      summary: "Aider les professionnels du droit à découvrir la nouvelle version de leur outil, alors que 88,6 % ignoraient la visite guidée.",
+      key: "88,6 % des utilisateurs ne suivaient pas la visite guidée, vue comme une perte de temps.",
+      context: "Projet mené avec la formation DPN UX 2022 pour LexisNexis, sur une plateforme de plus de 16 millions de contenus juridiques.",
+      problem: ["Un onboarding massivement ignoré", "Des profils et niveaux de maîtrise très hétérogènes", "Une valeur ajoutée peu perceptible face à l'ancienne version"],
+      solution: ["Un « aha moment » pour rendre la valeur visible tout de suite", "De l'aide contextualisée tout au long du parcours", "Un onboarding avec préférences pour personnaliser les contenus"],
+      phases: [["Phase 1", "Audit et analyse", "Existant, concurrence, bonnes pratiques."], ["Phase 2", "Recherche utilisateurs", "Entretiens, questionnaire, benchmark : 4 enseignements."], ["Phase 3", "Co-création", "Ateliers avec l'équipe et le commanditaire, prototype V1."], ["Phase 4", "Tests", "Eye-tracking en laboratoire et tests à distance, itération vers la V2."]],
+      results: [["2", "Boucles d'itération"], ["6", "Testeurs, dont 3 en eye-tracking"], ["4", "Enseignements de recherche traités"]],
+      lead: "Double rôle de Scrum Master pour garder un plan clair sur quatre mois avec le commanditaire.",
+      retro: "Le projet s'est arrêté au prototype V2. Un panel plus large que 6 personnes aurait renforcé les recommandations." },
+    { id: "pense-frigo", group: "labo", title: "Pense-Frigo", client: "Projet perso", role: "Recherche, design et code", dur: "Depuis oct. 2026", status: "En test", tone: "warn", metric: "32 versions en 5 jours", url: "projet-pense-frigo/",
+      summary: "Une appli anti-gaspi qui se souvient de ce qu'il y a dans le frigo : on scanne son ticket de caisse, elle dit quoi manger en premier.",
+      key: "Le vrai frein n'est pas de savoir ce qui périme, c'est le temps qu'il faut pour remplir l'appli.",
+      context: "Le gaspillage venait des produits oubliés au fond du frigo et des produits entamés dont on ne sait plus quand ils ont été ouverts.",
+      problem: ["Les applis d'inventaire sont abandonnées car la saisie est trop longue", "Les produits ouverts ne sont pas suivis", "Le ton des concurrents est souvent anxiogène"],
+      solution: ["Scan du ticket ou photo du frigo, lus par Claude", "Un écran de vérification avant tout ajout", "Une carte « À manger en premier » au cœur de l'écran"],
+      phases: [["V1 · en cours", "Prouver la différenciation", "Scan, bouton « J'ai ouvert », DLC / DDM avec un ton rassurant."], ["V2", "Effort zéro au quotidien", "Revue de la semaine, liste de courses auto, une notification par jour maximum."], ["V3", "Le foyer", "Un frigo partagé entre les membres du foyer."]],
+      results: [["32", "Versions en 5 jours"], ["3", "Styles d'écran principal testés"], ["10", "Entretiens prévus avec des couples et colocs"]],
+      lead: "Chaque version a un critère de passage mesurable avant d'aller plus loin.",
+      retro: "Avec l'IA, la vérification fait partie de l'expérience : l'utilisateur garde toujours la main." },
+    { id: "workout-log", group: "labo", title: "Workout Log", client: "Projet perso", role: "De la DA au code", dur: "1 semaine · 2026", status: "En usage", tone: "ok", metric: "En salle 2×/semaine", url: "projet-workout-log/",
+      summary: "Un carnet de muscu adapté à une hernie discale L5-S1, autour d'un insight simple : la gêne arrive le lendemain, pas pendant l'exercice.",
+      key: "Aucun exercice n'est présenté comme « sûr » par l'app : chaque statut vient de la kiné.",
+      context: "Les apps de muscu mettent en avant le tonnage et les records. Rien n'y permet de suivre une douleur ou une consigne médicale.",
+      problem: ["Les consignes de la kiné restent sur une feuille", "Le tonnage pousse à charger, l'inverse de l'objectif", "Aucun lien entre une séance et la douleur des jours suivants"],
+      solution: ["Un bilan de 30 secondes le lendemain matin", "Une progression proposée seulement après des lendemains calmes", "Un code couleur réservé au statut kiné, une police très lisible"],
+      phases: [["Phase 1", "Cadrage", "DA, quatre écrans clés, cinq parcours, modèle de données."], ["Phase 2", "MVP", "PWA installable et utilisable hors ligne."], ["Phase 3", "Audit", "Audit Nielsen et technique, six priorités corrigées."], ["Phase 4", "Itérations d'usage", "Chaque séance réelle produit des retours."]],
+      results: [["1 semaine", "De la DA à l'app sur mon téléphone"], ["16", "Versions publiées"], ["2×", "Séances par semaine en salle"]],
+      lead: "Après une perte de données, la synchronisation cloud est devenue une promesse dès le premier écran.",
+      retro: "Pour une app de santé, la sauvegarde des données n'est pas une option de paramétrage." }
+  ];
+  var IMG = {
+    "oodrive-sign": ["oodrive-sign-hero", [["oodrive-sign-accueil-apres", "Nouvelle page d'accueil : phrase de bienvenue, périmètre et widgets raccourcis"], ["oodrive-sign-accueil-avant", "Avant : quatre tuiles de création, sans raccourci"], ["oodrive-sign-documents-apres", "Nouvelle page Mes documents : onglets, alertes cliquables, tableau personnalisable"], ["oodrive-sign-documents-avant", "Avant : filtres en colonne et tableau peu dense"], ["oodrive-sign-1clic-documents", "Parcours 1 clic : import des documents"], ["oodrive-sign-1clic-signataires", "Parcours 1 clic : signataires, message et niveau de sécurité"], ["oodrive-sign-1clic-encarts", "Parcours 1 clic : confirmation d'envoi"], ["oodrive-sign-signature-groupee", "Signature groupée : tous les documents en attente, signés en une fois"], ["oodrive-sign-audit", "Audit ergonomique : constats, recommandations et sévérité par écran"], ["oodrive-sign-priorisation", "Matrice ICE pour prioriser la roadmap 2025"]]],
+    "swile": ["gift-hero", [["gift-solution", "Prototype testé en conditions réelles auprès des clients"]]],
+    "myoodrivesign": ["myoodrivesign-hero", [["myoodrivesign-liste", "Liste des documents à traiter"], ["myoodrivesign-apercu", "Aperçu du document"], ["myoodrivesign-signature", "Acceptation avant signature"], ["myoodrivesign-empreinte", "Validation par empreinte"], ["myoodrivesign-confirmation", "Confirmation de signature"], ["myoodrivesign-retours", "Premiers retours clients partagés en interne"]]],
+    "skill-audit": ["skill-audit-hero", [["skill-audit-solution", "Le bilan chiffré : le score toujours accompagné de la répartition des constats"], ["skill-audit-grille-figma", "Grille Figma : un constat, une recommandation et une sévérité par heuristique"], ["skill-audit-rapport-word", "Rapport Word : synthèse et score en tête, détail ensuite"], ["skill-audit-fichier-skill", "Le fichier du skill : la méthode écrite noir sur blanc"]]],
+    "design-system": ["design-system-hero", [["design-system-fondations", "L'arborescence des fondations : tout part des tokens"]]],
+    "lexis": ["lexis-hero", [["lexis-solution", "Écrans du prototype Lexis 360 Intelligence"]]],
+    "pense-frigo": ["pense-frigo-stock", [["pense-frigo-stock", "La carte « À manger en premier » au cœur de l'écran"], ["pense-frigo-scan-photo", "Prendre une photo, ou coller celle d'un ticket dématérialisé"], ["pense-frigo-scan", "Scan d'un ticket : 3 produits trouvés à vérifier"], ["pense-frigo-recettes", "Recettes avec les produits qui périment bientôt"], ["pense-frigo-v1", "Itération 1 : le tableau, où ce qui presse se perd"], ["pense-frigo-v2", "Itération 2 : la liste de tâches, dates plus lisibles"], ["pense-frigo-sombre", "L'appli en mode sombre"]]],
+    "workout-log": ["workout-log-hero", [["workout-log-seance", "La séance : chrono en haut, récup entre les séries, dernière performance"], ["workout-log-bilan-j1", "Le bilan du lendemain : la douleur à froid"], ["workout-log-carnet-pistes", "La piste à surveiller : séance A, lendemains plus douloureux"], ["workout-log-bibliotheque", "La bibliothèque : statut kiné et pictogrammes par exercice"], ["workout-log-da", "Palette et typographies : le code feu réservé à la kiné"], ["workout-log-logo", "Du logo colonne vertébrale à l'haltère et ses lignes de carnet"]]]
+  };
+  var PORTRAIT = { "pense-frigo": true };
+  function src(n) { return "/assets/img/saas/" + n + ".jpg"; }
+  function cover(p) { return src(IMG[p.id][0]); }
+  function shots(p) { return IMG[p.id][1]; }
+
+  var byId = {}; P.forEach(function (p) { byId[p.id] = p; });
+  var state = { view: "accueil", id: null, tab: "apercu", q: "", layout: "grid" };
+  var appEl = document.getElementById("app");
+  var side = document.getElementById("side");
+  var main = document.getElementById("main");
+  var pathEl = document.getElementById("path");
+  var internal = false;
+  var MOBILE = window.matchMedia("(max-width: 860px)");
+  var lb = { list: [], i: 0, last: null };
+
+  var ICON = {
+    accueil: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 7.2 8 2.8l5.5 4.4V13a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1z"/><path d="M6.5 14v-4h3v4"/></svg>',
+    methode: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="4" cy="3.5" r="1.6"/><circle cx="12" cy="12.5" r="1.6"/><path d="M5.6 3.5H10a2.2 2.2 0 0 1 0 4.5H6a2.2 2.2 0 0 0 0 4.5h4.4"/></svg>',
+    ia: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.8 9.4 6.6 14.2 8 9.4 9.4 8 14.2 6.6 9.4 1.8 8 6.6 6.6z"/></svg>',
+    apports: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5.8"/><circle cx="8" cy="8" r="2.6"/></svg>',
+    apropos: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5.3" r="2.6"/><path d="M2.8 14c.6-2.7 2.7-4.2 5.2-4.2s4.6 1.5 5.2 4.2"/></svg>',
+    contact: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3.5" width="12" height="9" rx="1.6"/><path d="m2.6 4.6 5.4 4 5.4-4"/></svg>',
+    plus: '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="3.5" cy="8" r="1.3"/><circle cx="8" cy="8" r="1.3"/><circle cx="12.5" cy="8" r="1.3"/></svg>',
+    notes: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l3 3v9H4z"/><path d="M10 2v3h3M6.5 8.5h4M6.5 11h4"/></svg>',
+    classic: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2.5h4v4M13.5 2.5 8 8M12 9.5v3.3a.7.7 0 0 1-.7.7H3.2a.7.7 0 0 1-.7-.7V4.7a.7.7 0 0 1 .7-.7h3.3"/></svg>',
+    impact: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13h12M4 10v3M8 6v7M12 3v10"/></svg>',
+    projets: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1.2"/><rect x="9" y="2" width="5" height="5" rx="1.2"/><rect x="2" y="9" width="5" height="5" rx="1.2"/><rect x="9" y="9" width="5" height="5" rx="1.2"/></svg>',
+    labo: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h4M7 2v4L3.5 12.5A1 1 0 0 0 4.4 14h7.2a1 1 0 0 0 .9-1.5L9 6V2"/><path d="M5 10h6"/></svg>'
+  };
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function chip(p) { return '<span class="chip ' + p.tone + '">' + esc(p.status) + "</span>"; }
+  function group(g) { return P.filter(function (p) { return p.group === g; }); }
+
+  var collapsed = false;
+  try { collapsed = localStorage.getItem('side-collapsed') === '1'; } catch (e) {}
+  var bodyEl = document.querySelector('.app-body');
+  var TOGGLE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2.5" width="12" height="11" rx="2"/><path d="M6 2.5v11"/></svg>';
+  var LABEL = { accueil: "Accueil", projets: "Projets", labo: "Labo", methode: "Méthode", ia: "Automatisations", apports: "Ce que j'apporte", apropos: "À propos", notes: "Notes", contact: "Contact", plus: "Plus" };
+  var MORE = ["apropos", "notes", "methode", "apports", "contact", "plus"];
+  var CLASSIC = "/classique/";
+  function renderSide() {
+    var cur = state.view === "detail" ? byId[state.id].group : state.view;
+    bodyEl.classList.toggle("collapsed", collapsed);
+    function b(v, label, n, cls, current) {
+      var on = current !== undefined ? current : cur === v;
+      return '<button type="button" data-view="' + v + '"' + (cls ? ' class="' + cls + '"' : "") + ' aria-current="' + on + '"' + (collapsed ? ' title="' + label + '" aria-label="' + label + '"' : "") + ">" + ICON[v] + '<span class="tx">' + label + "</span>" + (n ? '<span class="n">' + n + "</span>" : "") + "</button>";
+    }
+    var tog = collapsed ? "Ouvrir la navigation" : "Réduire la navigation";
+    side.innerHTML = '<div class="stop"><button type="button" class="tg" data-toggle aria-expanded="' + !collapsed + '" aria-label="' + tog + '" title="' + tog + '">' + TOGGLE + "</button></div>" +
+      '<div class="ws"><span class="wmark" aria-hidden="true">C</span><div class="wst"><b>christopher.design</b><span>Espace produit · v6.0</span></div></div>' +
+      b("accueil", "Accueil") +
+      '<span class="lbl">Travail</span>' + b("projets", "Projets", group("projets").length) + b("labo", "Labo", group("labo").length) +
+      '<span class="lbl">Approche</span>' + b("methode", "Méthode", 0, "m-hide") + b("ia", "Automatisations").replace('<span class="tx">Automatisations</span>', '<span class="tx"><span class="lg">Automatisations</span><span class="sh">IA</span></span>') + b("apports", "Ce que j'apporte", 0, "m-hide") +
+      '<span class="lbl">Personnel</span>' + b("notes", "Notes", 0, "m-hide") + b("apropos", "À propos", 0, "m-hide") +
+      b("plus", "Plus", 0, "m-only", MORE.indexOf(cur) > -1) +
+      '<div class="foot"><a class="classic" href="' + CLASSIC + '"' + (collapsed ? ' title="Portfolio classique" aria-label="Portfolio classique"' : "") + ">" + ICON.classic + '<span class="tx">Portfolio classique</span></a>' +
+      '<button type="button" class="avail" data-pmenu aria-haspopup="menu" aria-expanded="false" aria-label="Christopher De Paola, Senior Product Designer, disponible pour un CDI. Ouvrir le menu"' + (collapsed ? ' title="Christopher De Paola · Senior Product Designer"' : "") + '><span class="me"><img src="/assets/img/saas/portrait-face.jpg" alt=""><span class="pulse"></span></span><span class="tx"><b>Christopher De Paola</b><span class="role">Senior Product Designer</span><span class="st">Disponible pour un CDI</span></span></button></div>';
+  }
+
+  function tpl(id) { var t = document.getElementById("tpl-" + id); return t ? t.innerHTML : ""; }
+  function viewPlus() {
+    function row(v, d) { return '<button type="button" class="mrow" data-view="' + v + '">' + ICON[v] + '<span><b>' + LABEL[v] + "</b>" + d + "</span><i>›</i></button>"; }
+    return '<div class="vh"><div><h3>Plus</h3><p>Le reste du portfolio.</p></div></div><div class="menu">' +
+      row("apropos", "Statut, langues, talks et passions") + row("notes", "Mes réflexions sur le design") + row("methode", "Discovery, conception, delivery") + row("apports", "Mon plan pour les premiers mois") + row("contact", "Email, LinkedIn et CV") +
+      '<a class="mrow" href="' + CLASSIC + '">' + ICON.classic + "<span><b>Portfolio classique</b>La version d'origine du site</span><i>↗</i></a></div>";
+  }
+
+  function card(p) {
+    return '<button type="button" class="card" data-open="' + p.id + '"><div class="cover"><img src="' + cover(p) + '" alt="" loading="lazy"' + (PORTRAIT[p.id] ? ' class="portrait"' : "") + '>' + chip(p) + '</div><div class="cbody"><b>' + esc(p.title) + '</b><span class="meta">' + esc(p.client) + " · " + esc(p.dur) + '</span><span class="metric">' + esc(p.metric) + "</span></div></button>";
+  }
+
+  function viewImpact() {
+    var bars = [[85, "LOT 1"], [87.25, "LOT 2"], [89, "LOT 3"]];
+    var svg = '<svg viewBox="0 0 320 132" role="img" aria-label="Score SUS : 85, puis 87,25, puis 89">';
+    [[90, 20], [85, 65], [80, 110]].forEach(function (g) { svg += '<line x1="30" y1="' + g[1] + '" x2="310" y2="' + g[1] + '" stroke="var(--line)"/><text x="0" y="' + (g[1] + 4) + '" fill="var(--muted)" font-size="10" font-family="JetBrains Mono, monospace">' + g[0] + "</text>"; });
+    bars.forEach(function (b, i) {
+      var x = 60 + i * 88, y = 110 - (b[0] - 80) * 9, last = i === 2;
+      svg += '<rect x="' + x + '" y="' + y + '" width="44" height="' + (110 - y) + '" rx="4" fill="' + (last ? "var(--accent)" : "var(--surface-2)") + '" stroke="' + (last ? "var(--accent)" : "var(--line)") + '"/>';
+      svg += '<text x="' + (x + 22) + '" y="' + (y - 6) + '" text-anchor="middle" fill="var(--fg)" font-size="12" font-family="JetBrains Mono, monospace">' + String(b[0]).replace(".", ",") + "</text>";
+      svg += '<text x="' + (x + 22) + '" y="127" text-anchor="middle" fill="var(--muted)" font-size="10" font-family="JetBrains Mono, monospace">' + b[1] + "</text>";
+    });
+    svg += "</svg>";
+    function feed(id, tone, text) { return '<button type="button" data-open="' + id + '"><i class="' + tone + '"></i><span><b>' + esc(byId[id].title) + "</b> " + text + "</span></button>"; }
+    return tpl("hero") + '<h4 class="sub">Impact cumulé</h4>' +
+      '<div class="kpis">' +
+      '<div class="kpi"><span class="v">89<small>+4</small></span><span class="k">Score SUS, refonte Oodrive Sign</span></div>' +
+      '<div class="kpi"><span class="v">33,1 M€</span><span class="k">Valeur d\'émission sécurisée (Swile)</span></div>' +
+      '<div class="kpi"><span class="v">85 %</span><span class="k">Utilisateurs visés par la signature en 1 clic</span></div>' +
+      '<div class="kpi"><span class="v">2 j</span><span class="k">Pour un audit, au lieu d\'une semaine</span></div></div>' +
+      '<div class="panes"><div class="pane sus"><div class="t"><span>Score SUS · Oodrive Sign</span><button type="button" class="linkish mono" data-open="oodrive-sign">Voir le projet →</button></div>' + svg + "</div>" +
+      '<div class="pane"><div class="t"><span>Activité récente</span><span class="mono">nov. 2026</span></div><div class="feed">' +
+      feed("workout-log", "ok", "passe en usage quotidien") + feed("pense-frigo", "warn", "en test avec les premiers utilisateurs") +
+      feed("skill-audit", "", "testé sur Oodrive Meet") + feed("design-system", "warn", "fondations livrées dans Storybook") +
+      "</div></div></div>" +
+      '<div><div class="vh" style="margin-bottom:12px"><h4 style="margin:0;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Projets à la une</h4></div><div class="grid">' + ["oodrive-sign", "myoodrivesign", "skill-audit"].map(function (id) { return card(byId[id]); }).join("") + "</div></div>";
+  }
+
+  function viewList(g) {
+    var q = state.q.trim().toLowerCase();
+    var rows = group(g).filter(function (p) { return !q || (p.title + " " + p.client + " " + p.role).toLowerCase().indexOf(q) > -1; });
+    var head = g === "labo"
+      ? '<div><h3>Labo</h3><p>Des applis nées de problèmes du quotidien, conçues et codées avec Claude.</p></div>'
+      : '<div><h3>Projets</h3><p>' + group("projets").length + ' études de cas, de la recherche à la mise en production.</p></div>';
+    var tools = '<div class="tools">' + (g === "projets" ? '<input class="search" id="q" type="search" placeholder="Rechercher un projet…" aria-label="Rechercher un projet" value="' + esc(state.q) + '">' : "") +
+      '<div class="seg" role="group" aria-label="Affichage"><button type="button" data-layout="grid" aria-pressed="' + (state.layout === "grid") + '">Galerie</button><button type="button" data-layout="list" aria-pressed="' + (state.layout === "list") + '">Liste</button></div></div>';
+    var body;
+    if (!rows.length) body = '<div class="empty">Aucun projet ne correspond à « ' + esc(state.q) + ' ». <button type="button" class="linkish" data-clear>Effacer la recherche</button></div>';
+    else if (state.layout === "grid") body = '<div class="grid">' + rows.map(card).join("") + "</div>";
+    else body = '<div class="tblwrap"><table class="ptable"><thead><tr><th>Projet</th><th>Client</th><th>Durée</th><th>Statut</th><th>Métrique clé</th></tr></thead><tbody>' + rows.map(function (p) {
+      return '<tr data-open="' + p.id + '"><td><div class="pn"><img src="' + cover(p) + '" alt="" loading="lazy"><div><button type="button" data-open="' + p.id + '"><b>' + esc(p.title) + "</b></button><span>" + esc(p.role) + "</span></div></div></td><td>" + esc(p.client) + '</td><td class="mono">' + esc(p.dur) + "</td><td>" + chip(p) + '</td><td class="mono">' + esc(p.metric) + "</td></tr>";
+    }).join("") + "</tbody></table></div>";
+    return '<div class="vh">' + head + tools + "</div>" + body;
+  }
+
+  function shot(p, s, i, cls) {
+    return '<button type="button" class="shot" data-shot="' + i + '"><span class="im"><img src="' + src(s[0]) + '" alt="' + esc(s[1]) + '" loading="lazy"></span><span class="cap">' + esc(s[1]) + "</span></button>";
+  }
+
+  function viewDetail() {
+    var p = byId[state.id], t = state.tab, panel, list = shots(p);
+    if (t === "apercu") {
+      panel = '<div class="callout"><b>À retenir · </b>' + esc(p.key) + "</div>" +
+        "<div><h4>Contexte</h4><p>" + esc(p.context) + "</p></div>" +
+        '<div class="cols"><div class="box pb"><h4>Problème</h4><ul>' + p.problem.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul></div><div class="box sol"><h4>Solution</h4><ul>' + p.solution.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
+        '<div><div class="vh" style="margin-bottom:10px"><h4 style="margin:0">Écrans clés</h4>' + (list.length > 3 ? '<button type="button" class="linkish" data-tab="ecrans" style="font-size:13px">Voir les ' + list.length + " écrans →</button>" : "") + '</div><div class="strip">' + list.slice(0, 3).map(function (s, i) { return shot(p, s, i); }).join("") + "</div></div>";
+    } else if (t === "ecrans") {
+      panel = '<div class="masonry">' + list.map(function (s, i) { return shot(p, s, i); }).join("") + "</div>";
+    } else if (t === "methode") {
+      panel = '<div class="phases">' + p.phases.map(function (x) { return '<div><span class="when">' + esc(x[0]) + "</span><span><b>" + esc(x[1]) + '</b><span class="d">' + esc(x[2]) + "</span></span></div>"; }).join("") + '</div><div class="callout"><b>Dimension lead · </b>' + esc(p.lead) + "</div>";
+    } else if (t === "resultats") {
+      panel = '<div class="res">' + p.results.map(function (x) { return '<div class="kpi"><span class="v">' + esc(x[0]) + '</span><span class="k">' + esc(x[1]) + "</span></div>"; }).join("") + "</div>" +
+        (p.quote ? '<p class="quote">' + esc(p.quote.replace(/ Retour client$/, "")) + "<small>Retour client, présentation de myOodriveSign</small></p>" : "");
+    } else {
+      panel = '<div class="box"><h4>Ce que je ferais différemment</h4><p>' + esc(p.retro) + "</p></div>";
+    }
+    var tabs = [["apercu", "Aperçu"], ["ecrans", "Écrans", list.length], ["methode", "Méthode"], ["resultats", "Résultats"], ["retro", "Rétro"]];
+    var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
+    return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Labo" : "Projets") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
+      (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Agrandir les écrans"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Couverture du projet ' + esc(p.title) + '"><button type="button" data-cover aria-label="Agrandir la couverture"></button></div>') +
+      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><a class="ext" href="' + SITE + p.url + '" target="_blank" rel="noopener">Étude complète ↗</a></div>' +
+      '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Rôle</span><span>" + esc(p.role) + "</span></div><div><span>Durée</span><span>" + esc(p.dur) + '</span></div><div><span>Métrique clé</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
+      '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
+      '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
+      (g.length > 1 ? '<div class="pager"><button type="button" data-open="' + prev.id + '"><span>← Précédent</span>' + esc(prev.title) + '</button><button type="button" class="nx" data-open="' + next.id + '"><span>Suivant →</span>' + esc(next.title) + "</button></div>" : "");
+  }
+
+  function render(opts) {
+    opts = opts || {};
+    renderSide();
+    var v = state.view;
+    main.innerHTML = v === "accueil" ? viewImpact() : v === "detail" ? viewDetail() : (v === "projets" || v === "labo") ? viewList(v) : v === "plus" ? viewPlus() : tpl(v);
+    pathEl.textContent = "christopher.design / " + (v === "detail" ? LABEL[byId[state.id].group] + " / " + byId[state.id].title : LABEL[v]);
+    if (opts.keepScroll) { var tb = document.getElementById("tabs"); if (tb && main.scrollTop > tb.offsetTop) main.scrollTop = tb.offsetTop - 8; }
+    else if (!opts.search) { main.scrollTop = 0; if (MOBILE.matches && opts.nav) window.scrollTo(0, 0); }
+    if (opts.search) { var q = document.getElementById("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
+    if (opts.nav) {
+      var want = v === "detail" ? "p-" + state.id : v;
+      if (location.hash.slice(1) !== want) { internal = true; location.hash = want; }
+    }
+  }
+  function go(v) { if (!LABEL[v]) return; state.view = v; state.id = null; render({ nav: true }); }
+
+  function open(id, scroll) {
+    if (!byId[id]) return;
+    state.view = "detail"; state.id = id; state.tab = "apercu";
+    render({ nav: true });
+  }
+
+  var box = document.createElement("div");
+  box.className = "lb"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Visionneuse d'images");
+  box.innerHTML = '<div class="lb-top"><span id="lbn"></span><button type="button" class="ib" data-lb="close" aria-label="Fermer">✕</button></div>' +
+    '<div class="lb-stage"><button type="button" class="ib" data-lb="prev" aria-label="Image précédente">←</button><div class="lb-img"><img id="lbimg" alt=""></div><button type="button" class="ib" data-lb="next" aria-label="Image suivante">→</button></div>' +
+    '<p class="lb-cap" id="lbcap"></p>';
+  appEl.appendChild(box);
+  function lbShow() {
+    var s = lb.list[lb.i];
+    document.getElementById("lbimg").src = src(s[0]); document.getElementById("lbimg").alt = s[1];
+    document.getElementById("lbcap").textContent = s[1];
+    document.getElementById("lbn").textContent = (lb.i + 1) + " / " + lb.list.length;
+    box.querySelectorAll('[data-lb="prev"],[data-lb="next"]').forEach(function (b) { b.style.visibility = lb.list.length > 1 ? "visible" : "hidden"; });
+  }
+  function lbOpen(list, i) { lb.list = list; lb.i = i; lb.last = document.activeElement; box.hidden = false; lbShow(); box.querySelector('[data-lb="close"]').focus(); }
+  function lbClose() { box.hidden = true; if (lb.last && lb.last.focus) lb.last.focus(); }
+  function lbStep(d) { lb.i = (lb.i + d + lb.list.length) % lb.list.length; lbShow(); }
+  box.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-lb]");
+    if (b) { var a = b.dataset.lb; if (a === "close") lbClose(); else lbStep(a === "next" ? 1 : -1); return; }
+    if (e.target === box || e.target.classList.contains("lb-img")) lbClose();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (box.hidden) return;
+    if (e.key === "Escape") { e.preventDefault(); lbClose(); }
+    else if (e.key === "ArrowRight") lbStep(1);
+    else if (e.key === "ArrowLeft") lbStep(-1);
+    else if (e.key === "Tab") {
+      var f = [].slice.call(box.querySelectorAll("button")).filter(function (b) { return b.style.visibility !== "hidden"; });
+      var i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
+  main.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-open],[data-view],[data-tab],[data-layout],[data-shot],[data-cover],[data-clear]");
+    if (!t) return;
+    if (t.dataset.open) return open(t.dataset.open);
+    if (t.dataset.view) return go(t.dataset.view);
+    if (t.dataset.tab) { state.tab = t.dataset.tab; render({ keepScroll: true }); var b = document.getElementById("tab-" + state.tab); if (b) b.focus({ preventScroll: true }); return; }
+    if (t.dataset.layout) { state.layout = t.dataset.layout; return render({ keepScroll: true }); }
+    if (t.hasAttribute("data-clear")) { state.q = ""; return render({ search: true }); }
+    var p = byId[state.id];
+    if (t.hasAttribute("data-cover")) return lbOpen([[IMG[p.id][0], "Couverture · " + p.title]].concat(shots(p)), 0);
+    if (t.dataset.shot) return lbOpen(shots(p), +t.dataset.shot);
+  });
+  side.addEventListener("click", function (e) {
+    if (e.target.closest("[data-toggle]")) {
+      collapsed = !collapsed;
+      try { localStorage.setItem("side-collapsed", collapsed ? "1" : "0"); } catch (err) {}
+      renderSide(); side.querySelector("[data-toggle]").focus(); return;
+    }
+    var t = e.target.closest("[data-view]"); if (!t) return;
+    go(t.dataset.view);
+  });
+  document.querySelector(".bar").addEventListener("click", function (e) { var t = e.target.closest("[data-view]"); if (t) go(t.dataset.view); });
+  main.addEventListener("click", function (e) {
+    var c = e.target.closest("[data-copy]"); if (!c) return;
+    var out = document.getElementById("copied"), val = c.dataset.copy;
+    function fallback() { var el = document.getElementById("mail"); var r = document.createRange(); r.selectNodeContents(el); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); if (out) out.textContent = "Adresse sélectionnée : copiez-la avec Cmd+C ou Ctrl+C."; }
+    try { navigator.clipboard.writeText(val).then(function () { if (out) out.textContent = "Adresse copiée."; c.textContent = "Copié"; }, fallback); } catch (err) { fallback(); }
+  });
+  main.addEventListener("input", function (e) { if (e.target.id === "q") { state.q = e.target.value; render({ search: true }); } });
+  main.addEventListener("keydown", function (e) {
+    if (e.target.getAttribute("role") !== "tab" || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+    var order = ["apercu", "ecrans", "methode", "resultats", "retro"], i = order.indexOf(state.tab);
+    state.tab = order[(i + (e.key === "ArrowRight" ? 1 : order.length - 1)) % order.length];
+    render({ keepScroll: true }); document.getElementById("tab-" + state.tab).focus({ preventScroll: true });
+  });
+
+  function fromHash() {
+    var h = location.hash.slice(1), was = internal; internal = false;
+    if (was) return;
+    if (h.indexOf("p-") === 0 && byId[h.slice(2)]) { if (state.view !== "detail" || state.id !== h.slice(2)) open(h.slice(2)); }
+    else if (LABEL[h] && h !== state.view) { state.view = h; state.id = null; render(); }
+  }
+
+  // Resizable sidebar (invisible handle)
+  var sw = 232;
+  try { var sv = parseInt(localStorage.getItem("side-width"), 10); if (sv >= 180 && sv <= 360) sw = sv; } catch (e) {}
+  bodyEl.style.setProperty("--sw", sw + "px");
+  var rs = document.createElement("div");
+  rs.className = "rs"; rs.tabIndex = 0;
+  rs.setAttribute("role", "separator"); rs.setAttribute("aria-orientation", "vertical");
+  rs.setAttribute("aria-label", "Redimensionner la navigation"); rs.setAttribute("aria-valuemin", "180"); rs.setAttribute("aria-valuemax", "360");
+  bodyEl.appendChild(rs);
+  function setW(w, save) {
+    if (w < 120) { if (!collapsed) { collapsed = true; renderSide(); } }
+    else {
+      if (collapsed) { collapsed = false; renderSide(); }
+      sw = Math.max(180, Math.min(360, Math.round(w)));
+      bodyEl.style.setProperty("--sw", sw + "px");
+    }
+    rs.setAttribute("aria-valuenow", collapsed ? 60 : sw);
+    if (save) { try { localStorage.setItem("side-width", String(sw)); localStorage.setItem("side-collapsed", collapsed ? "1" : "0"); } catch (e) {} }
+  }
+  rs.addEventListener("pointerdown", function (e) {
+    e.preventDefault(); rs.setPointerCapture(e.pointerId); bodyEl.classList.add("resizing");
+    var left = bodyEl.getBoundingClientRect().left;
+    var startSw = sw;
+    function mv(ev) { setW(ev.clientX - left, false); }
+    function up() { bodyEl.classList.remove("resizing"); rs.removeEventListener("pointermove", mv); rs.removeEventListener("pointerup", up); rs.removeEventListener("pointercancel", up); if (collapsed) { sw = startSw; bodyEl.style.setProperty("--sw", sw + "px"); } setW(collapsed ? 0 : sw, true); }
+    rs.addEventListener("pointermove", mv); rs.addEventListener("pointerup", up); rs.addEventListener("pointercancel", up);
+  });
+  rs.addEventListener("dblclick", function () { setW(232, true); });
+  rs.addEventListener("keydown", function (e) {
+    var step = e.shiftKey ? 40 : 16;
+    if (e.key === "ArrowRight") { e.preventDefault(); setW((collapsed ? 180 - step : sw) + step, true); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); if (!collapsed) setW(sw - step < 180 ? 0 : sw - step, true); }
+  });
+
+  // Profile menu
+  var MAILTO = "mailto:chris.depaola.toru@gmail.com?subject=" + encodeURIComponent("Prendre un call : poste de Senior Product Designer");
+  var pm = document.createElement("div");
+  pm.className = "pmenu"; pm.hidden = true; pm.setAttribute("role", "menu"); pm.setAttribute("aria-label", "Menu du profil");
+  pm.innerHTML = '<div class="pm-head"><b>Christopher De Paola</b><span>chris.depaola.toru@gmail.com</span></div>' +
+    '<a role="menuitem" class="pm-item primary" href="' + MAILTO + '">' + ICON.contact + '<span>Prendre un call</span></a>' +
+    '<button type="button" role="menuitem" class="pm-item" data-pm="copy">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8.5" height="8.5" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>' + '<span>Copier mon email</span></button>' +
+    '<a role="menuitem" class="pm-item" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13.5h10"/></svg>' + '<span>Télécharger le CV</span></a>' +
+    '<button type="button" role="menuitem" class="pm-item" data-pm="apropos">' + ICON.apropos + '<span>Voir le profil</span></button>';
+  appEl.appendChild(pm);
+  var pmBtn = null;
+  function pmItems() { return [].slice.call(pm.querySelectorAll('[role="menuitem"]')); }
+  function pmOpen(btn) {
+    pmBtn = btn; pm.hidden = false; btn.setAttribute("aria-expanded", "true");
+    var r = btn.getBoundingClientRect();
+    if (collapsed) { pm.style.left = (r.right + 10) + "px"; pm.style.bottom = (innerHeight - r.bottom) + "px"; pm.style.width = "240px"; }
+    else { pm.style.left = r.left + "px"; pm.style.bottom = (innerHeight - r.top + 8) + "px"; pm.style.width = Math.max(r.width, 230) + "px"; }
+    pmItems()[0].focus();
+  }
+  function pmClose(refocus) {
+    if (pm.hidden) return;
+    pm.hidden = true;
+    if (pmBtn) { pmBtn.setAttribute("aria-expanded", "false"); if (refocus) pmBtn.focus(); }
+  }
+  side.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pmenu]"); if (!b) return;
+    e.stopPropagation();
+    if (pm.hidden) pmOpen(b); else pmClose(true);
+  });
+  pm.addEventListener("click", function (e) {
+    var it = e.target.closest('[role="menuitem"]'); if (!it) return;
+    if (it.dataset.pm === "copy") {
+      var lab = it.querySelector("span");
+      try { navigator.clipboard.writeText("chris.depaola.toru@gmail.com").then(function () { lab.textContent = "Email copié"; setTimeout(function () { lab.textContent = "Copier mon email"; pmClose(true); }, 900); }, function () { pmClose(false); go("contact"); }); } catch (err) { pmClose(false); go("contact"); }
+      return;
+    }
+    if (it.dataset.pm === "apropos") { pmClose(false); go("apropos"); return; }
+    pmClose(false);
+  });
+  document.addEventListener("click", function (e) { if (!pm.hidden && !pm.contains(e.target)) pmClose(false); });
+  document.addEventListener("keydown", function (e) {
+    if (pm.hidden) return;
+    var items = pmItems(), i = items.indexOf(document.activeElement);
+    if (e.key === "Escape") { e.preventDefault(); pmClose(true); }
+    else if (e.key === "ArrowDown") { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+    else if (e.key === "Tab") pmClose(false);
+  });
+  window.addEventListener("resize", function () { pmClose(false); });
+  window.addEventListener("hashchange", fromHash);
+  render();
+  fromHash();
+})();
+</script>
 </body>
 </html>
