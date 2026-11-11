@@ -111,3 +111,9 @@ html.a11y-focus .focus-exit { display: inline-flex; }
 .grid.has-walker { position: relative; }
 .walker { position: absolute; z-index: 3; width: 34px; height: 34px; pointer-events: none; will-change: transform; }
 .walker svg { width: 34px; height: 34px; filter: drop-shadow(0 3px 4px rgb(0 0 0 / .25)); }
+
+/* Article publié dans Notes */
+a.post.pub { text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease; }
+a.post.pub:hover { border-color: var(--accent); transform: translateY(-2px); }
+a.post.pub:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a.post.pub .read { justify-self: start; margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--accent); }
