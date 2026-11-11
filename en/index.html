@@ -352,6 +352,39 @@ table.ptable { min-width: 600px; font-size: 13px; }
 .main:focus, .main [tabindex="-1"]:focus { outline: none; }
 .panel h4, .panel h2.lbl { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .panel p { max-width: 64ch; }
+.secs { display: grid; gap: 44px; font-size: 14px; min-width: 0; }
+.sec { display: grid; gap: 16px; min-width: 0; scroll-margin-top: 64px; }
+.sec > h2 { font: 400 28px/1.1 var(--display); letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+.sec > h2 .n { font: 400 11px/1 var(--mono); background: var(--surface-2); padding: 4px 6px; border-radius: 4px; color: var(--muted); }
+.sec p { max-width: 64ch; }
+.sec .lbl { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tabs button[aria-current="true"] { color: var(--fg); border-color: var(--accent); }
+.brief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.brief > div { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 16px; display: grid; align-content: start; gap: 8px; }
+.brief > div:first-child { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); }
+.brief span { font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.brief p { margin: 0; font-size: 14px; }
+.brief b.v { display: block; font: 400 34px/1 var(--display); color: var(--fg); margin-bottom: 6px; }
+.ba { margin: 0; display: grid; gap: 8px; }
+.ba-stage { position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface-2); }
+.ba-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.ba-before { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
+.ba-line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 2px; margin-left: -1px; background: var(--accent); pointer-events: none; }
+.ba-line::after { content: "↔"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 15px; box-shadow: 0 2px 8px rgb(0 0 0 / .3); }
+.ba-tag { position: absolute; top: 10px; font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 5px 7px; border-radius: 5px; background: rgb(0 0 0 / .65); color: #fff; pointer-events: none; }
+.ba-tag.l { left: 10px; } .ba-tag.r { right: 10px; }
+.ba input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.ba-stage:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ba figcaption { font-size: 13px; color: var(--muted); }
+.all-shots { justify-self: start; font-size: 13px; }
+@media (max-width: 860px) {
+  .brief { grid-template-columns: 1fr; }
+  .sec { scroll-margin-top: 112px; }
+  .sec > h2 { font-size: 24px; }
+  .toc { mask-image: linear-gradient(to right, #000 82%, transparent); -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); }
+  .ba-stage { aspect-ratio: 4 / 3; }
+}
+
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .box { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); }
 .box ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
@@ -967,7 +1000,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       retro: "For a health app, backing up data isn't a settings option." }
   ];
   var IMG = {
-    "oodrive-sign": ["oodrive-sign-hero", [["oodrive-sign-accueil-apres", "New home page: welcome line, scope and shortcut widgets"], ["oodrive-sign-accueil-avant", "Before: four creation tiles, no shortcuts"], ["oodrive-sign-documents-apres", "New My documents page: tabs, clickable alerts, customizable table"], ["oodrive-sign-documents-avant", "Before: filters in a column and a sparse table"], ["oodrive-sign-1clic-documents", "1-click journey: importing documents"], ["oodrive-sign-1clic-signataires", "1-click journey: signers, message and security level"], ["oodrive-sign-1clic-encarts", "1-click journey: sending confirmation"], ["oodrive-sign-signature-groupee", "Bulk signing: every pending document, signed at once"], ["oodrive-sign-audit", "UX audit: findings, recommendations and severity per screen"], ["oodrive-sign-priorisation", "ICE matrix to prioritize the 2025 roadmap", ["oodrive-sign-explo-accueil", "Unprioritized exploration: a single “Send a document for signature” entry point"], ["oodrive-sign-explo-parcours-a", "Unprioritized exploration, flow A: documents, preview and participants on one screen"]]]],
+    "oodrive-sign": ["oodrive-sign-hero", [["oodrive-sign-accueil-apres", "New home page: welcome line, scope and shortcut widgets"], ["oodrive-sign-accueil-avant", "Before: four creation tiles, no shortcuts"], ["oodrive-sign-documents-apres", "New My documents page: tabs, clickable alerts, customizable table"], ["oodrive-sign-documents-avant", "Before: filters in a column and a sparse table"], ["oodrive-sign-1clic-documents", "1-click journey: importing documents"], ["oodrive-sign-1clic-signataires", "1-click journey: signers, message and security level"], ["oodrive-sign-1clic-encarts", "1-click journey: sending confirmation"], ["oodrive-sign-signature-groupee", "Bulk signing: every pending document, signed at once"], ["oodrive-sign-audit", "UX audit: findings, recommendations and severity per screen"], ["oodrive-sign-priorisation", "ICE matrix to prioritize the 2025 roadmap"], ["oodrive-sign-explo-accueil", "Unprioritized exploration: a single “Send a document for signature” entry point"], ["oodrive-sign-explo-parcours-a", "Unprioritized exploration, flow A: documents, preview and participants on one screen"]]],
     "swile": ["gift-hero", [["gift-solution", "Prototype tested in real conditions with customers"]]],
     "myoodrivesign": ["myoodrivesign-hero", [["myoodrivesign-liste", "List of documents to process"], ["myoodrivesign-apercu", "Document preview"], ["myoodrivesign-signature", "Acceptance before signing"], ["myoodrivesign-empreinte", "Fingerprint validation"], ["myoodrivesign-confirmation", "Signing confirmation"], ["myoodrivesign-retours", "First customer feedback shared internally"]]],
     "skill-audit": ["skill-audit-hero", [["skill-audit-solution", "The scorecard: the score always shown with the breakdown of findings"], ["skill-audit-grille-figma", "Figma grid: one finding, one recommendation and one severity per heuristic"], ["skill-audit-rapport-word", "Word report: summary and score first, details after"], ["skill-audit-fichier-skill", "The skill file: the method in black and white"]]],
@@ -1099,33 +1132,73 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     return '<button type="button" class="shot" data-shot="' + i + '"><span class="im"><img src="' + src(s[0]) + '" alt="' + esc(s[1]) + '" loading="lazy"></span><span class="cap">' + esc(s[1]) + "</span></button>";
   }
 
+  var DT = {"toc": "Contents", "bref": "In brief", "ctx": "Context", "screens": "Screens", "method": "Process", "results": "Results", "retro": "Retro", "problem": "The problem", "role": "My role and the team", "result": "The outcome", "pb": "Problem", "sol": "Solution", "all": "See all {n} screens →", "before": "Before", "after": "After", "compare": "Compare before and after", "retroH": "What I would do differently"};
+  var SECS = ["bref", "contexte", "ecrans", "methode", "resultats", "retro"];
   function viewDetail() {
-    var p = byId[state.id], t = state.tab, panel, list = shots(p);
-    if (t === "apercu") {
-      panel = '<div class="callout"><b>Key takeaway · </b>' + esc(p.key) + "</div>" +
-        "<div><h2 class=lbl>Context</h2><p>" + esc(p.context) + "</p></div>" +
-        '<div class="cols"><div class="box pb"><h2 class=lbl>Problem</h2><ul>' + p.problem.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul></div><div class="box sol"><h2 class=lbl>Solution</h2><ul>' + p.solution.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
-        '<div><div class="vh" style="margin-bottom:10px"><h2 class=lbl style="margin:0">Key screens</h2>' + (list.length > 3 ? '<button type="button" class="linkish" data-tab="ecrans" style="font-size:13px">See all ' + list.length + " screens →</button>" : "") + '</div><div class="strip">' + list.slice(0, 3).map(function (s, i) { return shot(p, s, i); }).join("") + "</div></div>";
-    } else if (t === "ecrans") {
-      panel = '<div class="masonry">' + list.map(function (s, i) { return shot(p, s, i); }).join("") + "</div>";
-    } else if (t === "methode") {
-      panel = '<div class="phases">' + p.phases.map(function (x) { return '<div><span class="when">' + esc(x[0]) + "</span><span><b>" + esc(x[1]) + '</b><span class="d">' + esc(x[2]) + "</span></span></div>"; }).join("") + '</div><div class="callout"><b>Leadership · </b>' + esc(p.lead) + "</div>";
-    } else if (t === "resultats") {
-      panel = '<div class="res">' + p.results.map(function (x) { return '<div class="kpi"><span class="v">' + esc(x[0]) + '</span><span class="k">' + esc(x[1]) + "</span></div>"; }).join("") + "</div>" +
-        (p.quote ? '<p class="quote">' + esc(p.quote) + "<small>" + esc(p.quoteBy || "") + "</small></p>" : "");
-    } else {
-      panel = '<div class="box"><h2 class=lbl>What I would do differently</h2><p>' + esc(p.retro) + "</p></div>";
+    var p = byId[state.id], list = shots(p), D = DT, used = {};
+    var ba = [];
+    list.forEach(function (s, i) {
+      if (!/-avant$/.test(s[0])) return;
+      list.forEach(function (x, j) { if (x[0] === s[0].replace(/-avant$/, "-apres")) { ba.push([i, j]); used[i] = used[j] = 1; } });
+    });
+    var rest = list.map(function (s, i) { return i; }).filter(function (i) { return !used[i]; });
+    function sec(id, title, body) { return '<section class="sec" id="s-' + id + '" aria-labelledby="h-' + id + '"><h2 id="h-' + id + '">' + title + "</h2>" + body + "</section>"; }
+    function ul(a) { return "<ul>" + a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>"; }
+    function compare(pair) {
+      var b = list[pair[0]], a = list[pair[1]], name = a[1].split(/\s*:\s*/)[0];
+      return '<figure class="ba" style="--x:50%"><div class="ba-stage"><img src="' + src(a[0]) + '" alt="' + esc(a[1]) + '" loading="lazy"><img class="ba-before" src="' + src(b[0]) + '" alt="' + esc(b[1]) + '" loading="lazy"><span class="ba-line" aria-hidden="true"></span><span class="ba-tag l">' + D.before + '</span><span class="ba-tag r">' + D.after + '</span>' +
+        '<input type="range" min="0" max="100" value="50" aria-label="' + esc(D.compare + " · " + name) + '"></div><figcaption>' + esc(name) + "</figcaption></figure>";
     }
-    var tabs = [["apercu", "Overview"], ["ecrans", "Screens", list.length], ["methode", "Process"], ["resultats", "Results"], ["retro", "Retro"]];
+    var r0 = (p.results || [])[0];
+    var body =
+      sec("bref", D.bref, '<div class="brief"><div><span>' + D.problem + "</span><p>" + esc(p.key) + "</p></div><div><span>" + D.role + "</span><p><b>" + esc(p.role) + "</b> · " + esc(p.lead) + "</p></div>" +
+        (r0 ? "<div><span>" + D.result + '</span><p><b class="v">' + esc(r0[0]) + "</b>" + esc(r0[1]) + "</p></div>" : "") + "</div>") +
+      sec("contexte", D.ctx, "<p>" + esc(p.context) + '</p><div class="cols"><div class="box pb"><h3 class="lbl">' + D.pb + "</h3>" + ul(p.problem) + '</div><div class="box sol"><h3 class="lbl">' + D.sol + "</h3>" + ul(p.solution) + "</div></div>") +
+      sec("ecrans", D.screens + ' <span class="n">' + list.length + "</span>", ba.map(compare).join("") +
+        (rest.length ? '<div class="strip">' + rest.slice(0, 6).map(function (i) { return shot(p, list[i], i); }).join("") + "</div>" : "") +
+        (list.length > 1 ? '<button type="button" class="linkish all-shots" data-shot="0">' + D.all.replace("{n}", list.length) + "</button>" : "")) +
+      sec("methode", D.method, '<div class="phases">' + p.phases.map(function (x) { return '<div><span class="when">' + esc(x[0]) + "</span><span><b>" + esc(x[1]) + '</b><span class="d">' + esc(x[2]) + "</span></span></div>"; }).join("") + "</div>") +
+      sec("resultats", D.results, '<div class="res">' + (p.results || []).map(function (x) { return '<div class="kpi"><span class="v">' + esc(x[0]) + '</span><span class="k">' + esc(x[1]) + "</span></div>"; }).join("") + "</div>" +
+        (p.quote ? '<p class="quote">' + esc(p.quote) + "<small>" + esc(p.quoteBy || "") + "</small></p>" : "")) +
+      sec("retro", D.retro, '<div class="box"><h3 class="lbl">' + D.retroH + "</h3><p>" + esc(p.retro) + "</p></div>");
+    var cur = SECS.indexOf(state.tab) > -1 ? state.tab : "bref";
+    var toc = '<nav class="tabs toc" id="tabs" aria-label="' + D.toc + '">' + SECS.map(function (id) { var lab = { bref: D.bref, contexte: D.ctx, ecrans: D.screens, methode: D.method, resultats: D.results, retro: D.retro }[id]; return '<button type="button" data-sec="' + id + '"' + (id === cur ? ' aria-current="true"' : "") + ">" + lab + (id === "ecrans" ? '<span class="n">' + list.length + "</span>" : "") + "</button>"; }).join("") + "</nav>";
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Lab" : "Projects") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Enlarge the screens"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Cover of the project ' + esc(p.title) + '"><button type="button" data-cover aria-label="Enlarge the cover"></button></div>') +
       '<div class="dtitle"><div>' + chip(p) + "<h1>" + esc(p.title) + "</h1><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos[0][2] === "app" ? "▶ Try the app" : p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Role</span><span>" + esc(p.role) + "</span></div><div><span>Duration</span><span>" + esc(p.dur) + '</span></div><div><span>Key metric</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
-      '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
-      '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
+      toc + '<div class="secs">' + body + "</div>" +
       (g.length > 1 ? '<div class="pager"><button type="button" data-open="' + prev.id + '"><span>← Previous</span>' + esc(prev.title) + '</button><button type="button" class="nx" data-open="' + next.id + '"><span>Next →</span>' + esc(next.title) + "</button></div>" : "");
   }
+
+  function secEl(id) { return document.getElementById("s-" + id); }
+  function goSec(id, smooth) {
+    var el = secEl(id); if (!el) return;
+    var calm = document.documentElement.classList.contains("a11y-calm") || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ block: "start", behavior: smooth && !calm ? "smooth" : "auto" });
+    markSec(id);
+  }
+  function markSec(id) {
+    var nav = document.querySelector("#main .toc"); if (!nav) return;
+    nav.querySelectorAll("[data-sec]").forEach(function (b) { if (b.dataset.sec === id) { b.setAttribute("aria-current", "true"); var l = b.offsetLeft - 16; if (l < nav.scrollLeft || b.offsetLeft + b.offsetWidth > nav.scrollLeft + nav.clientWidth) nav.scrollTo({ left: Math.max(0, l) }); } else b.removeAttribute("aria-current"); });
+  }
+  var spyLock = 0;
+  function spy() {
+    if (state.view !== "detail" || Date.now() < spyLock) return;
+    var nav = document.querySelector("#main .toc"); if (!nav) return;
+    var lim = nav.getBoundingClientRect().bottom + 40, cur = "bref";
+    SECS.forEach(function (id) { var el = secEl(id); if (el && el.getBoundingClientRect().top <= lim) cur = id; });
+    var sc = MOBILE.matches ? document.scrollingElement : main;
+    if (sc.scrollTop + sc.clientHeight >= sc.scrollHeight - 4) {
+      var on = nav.querySelector("[aria-current]"), oe = on && secEl(on.dataset.sec), r = oe && oe.getBoundingClientRect();
+      cur = r && r.top >= nav.getBoundingClientRect().bottom - 2 && r.top < innerHeight ? on.dataset.sec : "retro";
+    }
+    markSec(cur);
+  }
+  main.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("scroll", spy, { passive: true });
+  main.addEventListener("input", function (e) { var r = e.target.closest(".ba input"); if (r) r.closest(".ba").style.setProperty("--x", r.value + "%"); });
 
   var BASE_TITLE = document.title, booted = false;
   function render(opts) {
@@ -1138,11 +1211,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     else if (!opts.search) { main.scrollTop = 0; if (MOBILE.matches && opts.nav) window.scrollTo(0, 0); }
     if (opts.search) { var q = document.getElementById("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
     if (opts.nav) {
-      var want = v === "detail" ? "p-" + state.id + (state.tab !== "apercu" ? "/" + state.tab : "") : v;
+      var want = v === "detail" ? "p-" + state.id + (state.tab && state.tab !== "bref" ? "/" + state.tab : "") : v;
       if (location.hash.slice(1) !== want) { internal = true; depth++; location.hash = want; }
     }
     document.title = v === "accueil" ? BASE_TITLE : (v === "detail" ? byId[state.id].title : LABEL[v]) + " · Christopher De Paola";
     if (booted && !opts.search && !opts.keepScroll) { var hd = main.querySelector("h1, h2"); if (hd) { hd.tabIndex = -1; hd.focus({ preventScroll: true }); } else main.focus({ preventScroll: true }); }
+    if (v === "detail" && state.tab && state.tab !== "bref" && !opts.keepScroll) {
+      var tgt = state.tab, again = function () { if (state.view === "detail" && state.tab === tgt) goSec(tgt, false); };
+      goSec(tgt, false); setTimeout(again, 350);
+      if (document.readyState !== "complete") window.addEventListener("load", again, { once: true });
+    }
     backBtn.hidden = v === "accueil";
     window.saasState = { view: v, id: state.id, tab: state.tab };
     document.dispatchEvent(new CustomEvent("saas:render", { detail: window.saasState }));
@@ -1152,7 +1230,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 
   function open(id, scroll) {
     if (!byId[id]) return;
-    state.view = "detail"; state.id = id; state.tab = "apercu";
+    state.view = "detail"; state.id = id; state.tab = "bref";
     render({ nav: true });
   }
 
@@ -1193,11 +1271,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   });
 
   main.addEventListener("click", function (e) {
-    var t = e.target.closest("[data-open],[data-view],[data-tab],[data-layout],[data-shot],[data-cover],[data-clear]");
+    var t = e.target.closest("[data-open],[data-view],[data-sec],[data-layout],[data-shot],[data-cover],[data-clear]");
     if (!t) return;
     if (t.dataset.open) return open(t.dataset.open);
     if (t.dataset.view) return go(t.dataset.view);
-    if (t.dataset.tab) { state.tab = t.dataset.tab; render({ keepScroll: true, nav: true }); var b = document.getElementById("tab-" + state.tab); if (b) b.focus({ preventScroll: true }); return; }
+    if (t.dataset.sec) { state.tab = t.dataset.sec; spyLock = Date.now() + 900; history.replaceState(null, "", "#p-" + state.id + (state.tab !== "bref" ? "/" + state.tab : "")); goSec(state.tab, true); var h = document.getElementById("h-" + state.tab); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } return; }
     if (t.dataset.layout) { state.layout = t.dataset.layout; return render({ keepScroll: true }); }
     if (t.hasAttribute("data-clear")) { state.q = ""; return render({ search: true }); }
     var p = byId[state.id];
@@ -1260,21 +1338,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pv.hidden) { e.preventDefault(); protoClose(); } });
   main.addEventListener("click", function (e) { var b = e.target.closest("[data-proto]"); if (b && state.id && byId[state.id].protos) protoOpen(byId[state.id].protos); });
   main.addEventListener("input", function (e) { if (e.target.id === "q") { state.q = e.target.value; render({ search: true }); } });
-  main.addEventListener("keydown", function (e) {
-    if (e.target.getAttribute("role") !== "tab" || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
-    var order = ["apercu", "ecrans", "methode", "resultats", "retro"], i = order.indexOf(state.tab);
-    state.tab = order[(i + (e.key === "ArrowRight" ? 1 : order.length - 1)) % order.length];
-    render({ keepScroll: true, nav: true }); document.getElementById("tab-" + state.tab).focus({ preventScroll: true });
-  });
 
   function fromHash() {
     var h = location.hash.slice(1), was = internal; internal = false;
     if (was) return;
     depth = Math.max(0, depth - 1);
-    var m = /^p-([^/]+)(?:\/(ecrans|methode|resultats|retro))?$/.exec(h);
+    var m = /^p-([^/]+)(?:\/(bref|apercu|contexte|ecrans|methode|resultats|retro))?$/.exec(h);
     if (m && byId[m[1]]) {
-      var tab = m[2] || "apercu";
-      if (state.view === "detail" && state.id === m[1]) { if (state.tab !== tab) { state.tab = tab; render({ keepScroll: true }); } }
+      var tab = !m[2] || m[2] === "apercu" ? "bref" : m[2];
+      if (state.view === "detail" && state.id === m[1]) { if (state.tab !== tab) { state.tab = tab; goSec(tab, true); } }
       else { state.view = "detail"; state.id = m[1]; state.tab = tab; render(); }
     }
     else if (LABEL[h] && h !== state.view) { state.view = h; state.id = null; render(); }
