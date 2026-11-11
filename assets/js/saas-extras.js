@@ -270,6 +270,60 @@
     }
   }
   document.addEventListener("click", function () { document.querySelectorAll(".stamp[aria-expanded=true]").forEach(function (x) { x.setAttribute("aria-expanded", "false"); }); });
+
+  /* ---------- Balade : un chat passe de temps en temps sur les cartes projet ---------- */
+  var walkTimer = null, walking = false;
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function calmNow() { return RM.matches || root.classList.contains("a11y-calm") || root.classList.contains("a11y-focus") || document.hidden; }
+  function visibleCards() {
+    var view = document.getElementById("main").getBoundingClientRect();
+    return [].slice.call(document.querySelectorAll("#main .grid .card")).filter(function (c) {
+      var r = c.getBoundingClientRect();
+      return r.top > view.top + 30 && r.bottom < view.bottom && r.width > 0;
+    });
+  }
+  function walk() {
+    if (walking || calmNow()) return schedule(20000);
+    var cards = visibleCards();
+    if (!cards.length) return schedule(12000);
+    var card = cards[Math.floor(Math.random() * cards.length)];
+    var grid = card.parentNode;
+    var kinds = ["calico", "grey", "white"], kind = kinds[Math.floor(Math.random() * 3)];
+    walking = true;
+    grid.classList.add("has-walker");
+    var cat = document.createElement("span");
+    cat.className = "walker"; cat.setAttribute("aria-hidden", "true"); cat.innerHTML = catSvg(kind);
+    var y = card.offsetTop - 30, x0 = card.offsetLeft - 10, xMid = card.offsetLeft + card.offsetWidth * 0.42, x1 = card.offsetLeft + card.offsetWidth - 26;
+    cat.style.top = y + "px"; cat.style.left = "0px";
+    grid.appendChild(cat);
+    function frames(a, b, steps) {
+      var f = [];
+      for (var i = 0; i <= steps; i++) { var t = i / steps; f.push({ transform: "translate(" + (a + (b - a) * t) + "px," + (i % 2 ? -3 : 0) + "px)" }); }
+      return f;
+    }
+    var inA = cat.animate([{ transform: "translate(" + x0 + "px, 18px)", opacity: 0 }, { transform: "translate(" + x0 + "px, 0)", opacity: 1 }], { duration: 350, fill: "forwards", easing: "ease-out" });
+    inA.onfinish = function () {
+      var w1 = cat.animate(frames(x0, xMid, 8), { duration: 1500, fill: "forwards", easing: "linear" });
+      w1.onfinish = function () {
+        cat.animate([{ transform: "translate(" + xMid + "px,0)" }, { transform: "translate(" + xMid + "px,-10px) rotate(-12deg)" }, { transform: "translate(" + xMid + "px,0)" }], { duration: 420, fill: "forwards", easing: "ease-out" });
+        card.animate([{ transform: "none" }, { transform: "rotate(-2.2deg) translate(4px,2px)" }, { transform: "rotate(1.2deg) translate(-2px,0)" }, { transform: "rotate(-.6deg)" }, { transform: "none" }], { duration: 750, delay: 220, easing: "ease-out" });
+        setTimeout(function () {
+          var w2 = cat.animate(frames(xMid, x1, 7), { duration: 1300, fill: "forwards", easing: "linear" });
+          w2.onfinish = function () {
+            var out = cat.animate([{ transform: "translate(" + x1 + "px,0)", opacity: 1 }, { transform: "translate(" + x1 + "px,18px)", opacity: 0 }], { duration: 350, fill: "forwards", easing: "ease-in" });
+            out.onfinish = function () { cat.remove(); grid.classList.remove("has-walker"); walking = false; schedule(); };
+          };
+        }, 900);
+      };
+    };
+  }
+  function schedule(ms) { clearTimeout(walkTimer); walkTimer = setTimeout(walk, ms || 25000 + Math.random() * 15000); }
+  document.addEventListener("saas:render", function (e) {
+    var v = (e.detail || {}).view;
+    clearTimeout(walkTimer);
+    if (v === "projets" || v === "labo" || v === "accueil") schedule(5000 + Math.random() * 3000);
+  });
+  if (window.saasState && ["projets", "labo", "accueil"].indexOf(window.saasState.view) > -1) schedule(6000);
   document.addEventListener("saas:render", onRender);
   if (window.saasState) onRender({ detail: window.saasState });
 })();
