@@ -75,13 +75,20 @@ html.a11y-focus .focus-exit { display: inline-flex; }
 .lb-anno:focus-visible { outline: 2px solid var(--accent); }
 
 /* ---------- Chats : tampon, chats cachés, note secrète ---------- */
-.stamp { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; padding: 4px 9px 4px 5px; border-radius: 6px; border: 1.5px dashed color-mix(in srgb, var(--ok) 70%, transparent); color: var(--ok); font: 600 11px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; transform: rotate(-2deg); vertical-align: middle; }
+.stamp { all: unset; box-sizing: border-box; position: relative; cursor: help; display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; padding: 4px 9px 4px 5px; border-radius: 6px; border: 1.5px dashed color-mix(in srgb, var(--ok) 70%, transparent); color: var(--ok); font: 600 11px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; transform: rotate(-2deg); vertical-align: middle; }
 .stamp svg { width: 18px; height: 18px; }
-.cat-hide { all: unset; cursor: pointer; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; opacity: .32; transition: opacity .2s ease, transform .2s ease; color: var(--muted); vertical-align: middle; }
-.cat-hide svg { width: 20px; height: 20px; }
-.cat-hide:hover, .cat-hide:focus-visible { opacity: 1; transform: translateY(-2px) rotate(-6deg); }
+.stamp:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stamp .tip { position: absolute; z-index: 5; left: 50%; top: calc(100% + 10px); width: 260px; max-width: calc(100vw - 32px); padding: 10px 12px; border-radius: 10px; background: var(--fg); color: var(--bg); font: 400 13px/1.5 var(--body); letter-spacing: 0; text-transform: none; transform: translateX(-50%) rotate(2deg); box-shadow: 0 14px 30px -12px rgb(0 0 0 / .5); white-space: normal; visibility: hidden; pointer-events: none; }
+.stamp .tip::before { content: ""; position: absolute; left: calc(50% - 5px); top: -5px; width: 10px; height: 10px; background: var(--fg); transform: rotate(45deg); }
+.stamp:hover .tip, .stamp:focus-visible .tip, .stamp[aria-expanded="true"] .tip { visibility: visible; }
+.cat-hide { all: unset; position: relative; cursor: pointer; display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; transition: transform .2s ease; vertical-align: middle; transform-origin: 50% 90%; animation: catpeek 7s ease-in-out infinite; }
+.cat-hide svg { width: 28px; height: 28px; filter: drop-shadow(0 2px 3px rgb(0 0 0 / .18)); }
+.cat-hide:hover, .cat-hide:focus-visible { transform: translateY(-3px) rotate(-8deg); animation: none; }
 .cat-hide:focus-visible { outline: 2px solid var(--accent); }
-.cat-hide.found { opacity: .9; color: var(--accent); }
+.cat-hide.found { animation: none; }
+.cat-hide.found::after { content: "✓"; position: absolute; right: 0; bottom: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--ok); color: #fff; font: 700 9px/14px var(--body); text-align: center; }
+@keyframes catpeek { 0%, 86%, 100% { transform: none; } 89% { transform: rotate(-10deg) translateY(-2px); } 92% { transform: rotate(8deg); } 95% { transform: rotate(-4deg); } }
+@media (prefers-reduced-motion: reduce) { .cat-hide { animation: none; } }
 .refs .cat-hide { margin-left: auto; }
 .cat-hint { display: block; margin-top: 6px; font-size: 12px; color: var(--accent); font-style: italic; }
 .empty .cat-empty { display: block; width: 44px; height: 44px; margin: 0 auto 8px; }
