@@ -15,6 +15,7 @@
     reset: "Reset all", exitFocus: "Exit focus mode",
     annos: function (n) { return n + (n > 1 ? " notes" : " note"); }, showAnnos: "Notes",
     stamp: "Approved by La Gnometta",
+    stampTip: "La Gnometta, 16, calico cat and chief UX tester at home, approves every project shipped to production.",
     hiding: "A cat is hiding here", found: function (name, n) { return "You found " + name + " (" + n + "/3)"; },
     hint: "Psst: they're hiding somewhere in the app.",
     secretTitle: "Secret note unlocked",
@@ -30,6 +31,7 @@
     reset: "Tout réinitialiser", exitFocus: "Quitter le mode focus",
     annos: function (n) { return n + (n > 1 ? " annotations" : " annotation"); }, showAnnos: "Annotations",
     stamp: "Validé par La Gnometta",
+    stampTip: "La Gnometta, 16 ans, calico et testeuse UX en chef à la maison, valide chaque projet livré en production.",
     hiding: "Un chat se cache ici", found: function (name, n) { return "Tu as trouvé " + name + " (" + n + "/3)"; },
     hint: "Psst : elles se cachent quelque part dans l'app.",
     secretTitle: "Note secrète débloquée",
@@ -252,7 +254,10 @@
     if (d.view === "detail") {
       var chip = document.querySelector("#main .dtitle .chip.ok");
       if (chip && !chip.parentNode.querySelector(".stamp")) {
-        var s = document.createElement("span"); s.className = "stamp"; s.innerHTML = catSvg("calico") + T.stamp;
+        var s = document.createElement("button"); s.type = "button"; s.className = "stamp"; s.setAttribute("aria-expanded", "false");
+        s.innerHTML = catSvg("calico") + T.stamp + '<span class="tip" role="tooltip" id="stamp-tip">' + T.stampTip + "</span>";
+        s.setAttribute("aria-describedby", "stamp-tip");
+        s.addEventListener("click", function (ev) { ev.stopPropagation(); s.setAttribute("aria-expanded", String(s.getAttribute("aria-expanded") !== "true")); });
         chip.insertAdjacentElement("afterend", s);
       }
     }
@@ -264,6 +269,7 @@
       }
     }
   }
+  document.addEventListener("click", function () { document.querySelectorAll(".stamp[aria-expanded=true]").forEach(function (x) { x.setAttribute("aria-expanded", "false"); }); });
   document.addEventListener("saas:render", onRender);
   if (window.saasState) onRender({ detail: window.saasState });
 })();
