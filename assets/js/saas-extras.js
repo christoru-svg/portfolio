@@ -20,7 +20,8 @@
     explain: function (n) { return n === 3 ? "That's all three of my cats. A secret note is unlocking…" : "My three cats are hiding in this portfolio. Find all of them to unlock a secret note: " + (3 - n) + " left."; },
     hint: "Psst: they're hiding somewhere in the app.",
     secretTitle: "Secret note unlocked",
-    secretBody: "Well done, you found La Gnometta, Paupiette and Madame. Curiosity is the first quality in user research. Since you made it this far, we should talk.",
+    secretBody: "La Gnometta (16), Paupiette (12) and Madame (4) are my three cats, the chief UX testers at home. You found all of them: curiosity is the first quality in user research. Since you made it this far, we should talk.",
+    years: function (n) { return n + " years"; },
     call: "Book a call", close: "Close"
   } : {
     comfort: "Confort de lecture", intro: "Adaptez l'affichage à votre façon de lire. Vos choix sont gardés sur cet appareil.",
@@ -37,7 +38,8 @@
     explain: function (n) { return n === 3 ? "Ce sont mes trois chats, tu les as toutes. Une note secrète se débloque…" : "Mes trois chats se cachent dans ce portfolio. Trouve-les toutes pour débloquer une note secrète : encore " + (3 - n) + "."; },
     hint: "Psst : elles se cachent quelque part dans l'app.",
     secretTitle: "Note secrète débloquée",
-    secretBody: "Bravo, tu as retrouvé La Gnometta, Paupiette et Madame. La curiosité, c'est la première qualité en recherche utilisateur. Puisque tu es allé·e jusqu'ici, on devrait en parler.",
+    secretBody: "La Gnometta (16 ans), Paupiette (12 ans) et Madame (4 ans) sont mes trois chats, les testeuses UX en chef de la maison. Tu les as toutes retrouvées : la curiosité, c'est la première qualité en recherche utilisateur. Puisque tu es allé·e jusqu'ici, on devrait en parler.",
+    years: function (n) { return n + " ans"; },
     call: "Discutons", close: "Fermer"
   };
   var root = document.documentElement;
@@ -130,7 +132,7 @@
   }
   var secret = document.createElement("div");
   secret.className = "secret"; secret.hidden = true; secret.setAttribute("role", "dialog"); secret.setAttribute("aria-modal", "true"); secret.setAttribute("aria-labelledby", "secret-title");
-  secret.innerHTML = '<div class="secret-card"><div class="secret-cats">' + catSvg("calico") + catSvg("grey") + catSvg("white") + "</div>" +
+  secret.innerHTML = '<div class="secret-card"><div class="secret-cats">' + [["calico", "La Gnometta", 16], ["grey", "Paupiette", 12], ["white", "Madame", 4]].map(function (c) { return "<figure>" + catSvg(c[0]) + "<figcaption><b>" + c[1] + "</b>" + T.years(c[2]) + "</figcaption></figure>"; }).join("") + "</div>" +
     '<h2 id="secret-title">' + T.secretTitle + "</h2><p>" + T.secretBody + '</p><div class="secret-actions"><button type="button" class="btn primary" data-secret="call">' + T.call + '</button><button type="button" class="btn" data-secret="close">' + T.close + "</button></div></div>";
   document.body.appendChild(secret);
   function closeSecret() { secret.hidden = true; }
