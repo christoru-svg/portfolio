@@ -15,7 +15,7 @@ projet-design-system/             Étude de cas refonte du design system
 projet-lexis-nexis/               Étude de cas Lexis 360
 projet-workout-log/               Étude de cas Workout Log (app personnelle)
 projet-pense-frigo/               Étude de cas Pense-Frigo (app personnelle, section Labo)
-en/                               Version anglaise (même structure : en/index.html, en/projet-…/)
+en/                               Version anglaise (même structure : en/index.html en app SaaS, en/classique/, en/projet-…/)
 assets/css/style.css              Styles (couleurs et polices en haut du fichier)
 assets/js/home.js                 Animations de l'accueil (titres, étapes de la méthode, barres IA)
 assets/js/gallery.js              Galeries d'écrans et prototypes des études de cas
@@ -71,3 +71,9 @@ Les endroits marqués `À ajouter` dans le code :
 - `projet-design-system/index.html` : le taux d'adoption et le gain de time-to-market mesuré, et le paragraphe « Ce que je ferais différemment » à reformuler avec tes mots
 
 Les mêmes commentaires sont présents dans les pages de `en/`.
+
+## Accueil en app SaaS
+
+- `index.html` (FR) et `en/index.html` (EN) contiennent chacun leurs textes, leurs styles et leur script. Une modification de texte se fait donc dans les deux fichiers.
+- Le bouton clair / sombre enregistre le choix sous la même clé (`theme`) que le portfolio classique.
+- Le bouton FR / EN garde la vue ouverte (par exemple `#p-swile`) en changeant de langue.

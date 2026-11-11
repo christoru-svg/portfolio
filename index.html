@@ -546,6 +546,14 @@ button.avail { all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
 .pas-links.games li span { font-size: 13px; color: var(--fg); }
 .pas-links.cats li b { font-weight: 500; font-size: 13px; }
 .pas-links.cats li span { font-family: var(--mono); }
+/* Theme toggle + language */
+.bar-actions { align-items: center; }
+.lang { display: inline-grid; place-items: center; min-width: 34px; height: 32px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--line); font: 500 12px/1 var(--mono); letter-spacing: .04em; color: var(--muted); text-decoration: none; }
+.lang:hover { color: var(--fg); border-color: var(--accent); }
+.themetg { all: unset; box-sizing: border-box; cursor: pointer; width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); }
+.themetg:hover { color: var(--fg); border-color: var(--accent); }
+.themetg svg { width: 16px; height: 16px; }
+.lang:focus-visible, .themetg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -624,6 +632,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
         <span class="bar-brand"><img src="/assets/img/saas/portrait-face.jpg" alt="">Christopher De Paola</span>
         <span class="bar-path mono" id="path">accueil</span>
         <div class="bar-actions">
+          <a class="lang" href="/en/" data-lang hreflang="en" lang="en" aria-label="English version">EN</a>
+          <button type="button" class="themetg" data-theme-toggle aria-label="Passer en mode sombre"></button>
           <a class="btn sm ghost" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">CV ↓</a>
           <button type="button" class="btn sm primary" data-view="contact">Prendre un call</button>
         </div>
@@ -818,6 +828,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 <script>
 (function () {
   var SITE = "/";
+  var TXT = { toLight: "Passer en mode clair", toDark: "Passer en mode sombre" };
   var P = [
     { id: "oodrive-sign", group: "projets", title: "Refonte Oodrive Sign", client: "Oodrive Sign", role: "Lead designer", dur: "11 mois · 2024–2025", status: "Lot 1 en prod", tone: "ok", metric: "SUS 85 → 89", url: "projet-refonte-oodrive-sign/",
       summary: "Rendre une plateforme de signature électronique, perçue comme complexe et peu agréable, vraiment adaptée à ses utilisateurs. De l'audit à la mise en production, en trois phases de tests.",
@@ -1051,7 +1062,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Labo" : "Projets") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Agrandir les écrans"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Couverture du projet ' + esc(p.title) + '"><button type="button" data-cover aria-label="Agrandir la couverture"></button></div>') +
-      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><a class="ext" href="' + SITE + p.url + '" target="_blank" rel="noopener">Étude complète ↗</a></div>' +
+      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><a class="ext" href="' + SITE + p.url + '">Étude complète →</a></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Rôle</span><span>" + esc(p.role) + "</span></div><div><span>Durée</span><span>" + esc(p.dur) + '</span></div><div><span>Métrique clé</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
       '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
       '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
@@ -1241,6 +1252,29 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     else if (e.key === "Tab") pmClose(false);
   });
   window.addEventListener("resize", function () { pmClose(false); });
+
+  // Theme toggle + language switch
+  var SUN = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg>';
+  var MOON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z"/></svg>';
+  var DARKQ = window.matchMedia("(prefers-color-scheme: dark)");
+  var themeBtn = document.querySelector("[data-theme-toggle]");
+  function curTheme() { var t = document.documentElement.dataset.theme; return t === "light" || t === "dark" ? t : (DARKQ.matches ? "dark" : "light"); }
+  function paintTheme() {
+    var dark = curTheme() === "dark";
+    themeBtn.innerHTML = dark ? SUN : MOON;
+    var label = dark ? TXT.toLight : TXT.toDark;
+    themeBtn.setAttribute("aria-label", label); themeBtn.title = label;
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = curTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    paintTheme();
+  });
+  if (DARKQ.addEventListener) DARKQ.addEventListener("change", paintTheme);
+  paintTheme();
+  var langLink = document.querySelector("[data-lang]");
+  langLink.addEventListener("click", function (e) { e.preventDefault(); location.href = langLink.getAttribute("href") + location.hash; });
   window.addEventListener("hashchange", fromHash);
   render();
   fromHash();
