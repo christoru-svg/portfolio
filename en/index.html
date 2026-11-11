@@ -587,6 +587,18 @@ a.bar-brand { text-decoration: none; color: inherit; border-radius: 999px; paddi
 .back:hover { background: var(--surface-2); }
 .back:focus-visible { outline: 2px solid var(--accent); }
 @media (max-width: 860px) { .bar.sub .bar-brand { display: none; } .back { margin-left: -6px; font-size: 14px; } }
+/* Prototype Figma */
+.dacts { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+button.ext { font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--fg); }
+.ext.primary-ext { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.ext.primary-ext:hover { filter: brightness(1.08); }
+.pview { position: fixed; inset: 0; z-index: 30; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 10px; padding: 14px; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); }
+.pview[hidden] { display: none; }
+.pv-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pv-top b { font-size: 15px; }
+.pv-hint { font-size: 13px; color: var(--muted); margin-right: auto; }
+.pv-frame { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.pv-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -916,7 +928,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       results: [["1 base", "Tokenized foundations in Storybook"], ["1", "First component shipped"], ["20–30%", "Faster time-to-market targeted"]],
       lead: "Three costed scenarios presented to the CPO. Falling back to the designer–developer pair happened without renegotiating the project.",
       retro: "Today I would present the designer–developer pair as the base, and distributed contribution as an accelerator." },
-    { id: "lexis", group: "projets", title: "Lexis 360 Intelligence", client: "LexisNexis (training)", role: "Product designer & Scrum Master", dur: "4 months · 2022", status: "Prototype V2", tone: "", metric: "88.6% skipped onboarding", url: "projet-lexis-nexis/",
+    { id: "lexis", group: "projets", title: "Lexis 360 Intelligence", client: "LexisNexis (training)", role: "Product designer & Scrum Master", dur: "4 months · 2022", status: "Prototype V2", tone: "", proto: "https://www.figma.com/proto/TwwM6UOx8cGHFI3fciiQyX/Tests-utilisateurs?node-id=228-18741&scaling=min-zoom&page-id=9%3A7183&starting-point-node-id=228%3A18741&show-proto-sidebar=1", metric: "88.6% skipped onboarding", url: "projet-lexis-nexis/",
       summary: "Help legal professionals discover the new version of their tool, when 88.6% skipped the guided tour.",
       key: "88.6% of users skipped the guided tour, seen as a waste of time.",
       context: "A project run with the DPN UX 2022 training program for LexisNexis, on a platform with over 16 million legal documents. On the client side, 5 stakeholders: UX lead, product managers and product designers.",
@@ -1102,7 +1114,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Lab" : "Projects") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Enlarge the screens"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Cover of the project ' + esc(p.title) + '"><button type="button" data-cover aria-label="Enlarge the cover"></button></div>') +
-      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><a class="ext" href="' + SITE + p.url + '">Full case study →</a></div>' +
+      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.proto ? '<button type="button" class="ext primary-ext" data-proto>▶ Try prototype V1</button>' : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Role</span><span>" + esc(p.role) + "</span></div><div><span>Duration</span><span>" + esc(p.dur) + '</span></div><div><span>Key metric</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
       '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
       '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
@@ -1206,6 +1218,21 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     function fallback() { var el = document.getElementById("mail"); var r = document.createRange(); r.selectNodeContents(el); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); if (out) out.textContent = "Address selected: copy it with Cmd+C or Ctrl+C."; }
     try { navigator.clipboard.writeText(val).then(function () { if (out) out.textContent = "Address copied."; c.textContent = "Copied"; }, fallback); } catch (err) { fallback(); }
   });
+  var pv = document.createElement("div");
+  pv.className = "pview"; pv.hidden = true;
+  pv.setAttribute("role", "dialog"); pv.setAttribute("aria-modal", "true"); pv.setAttribute("aria-label", "Prototype V1 · Figma");
+  pv.innerHTML = '<div class="pv-top"><b>Prototype V1 · Figma</b><span class="pv-hint">Click inside the prototype to move forward. It may take a few seconds to load.</span><a class="ext" id="pv-open" target="_blank" rel="noopener">Open in Figma ↗</a><button type="button" class="ib" data-pv-close aria-label="Close">✕</button></div><div class="pv-frame"></div>';
+  appEl.appendChild(pv);
+  function protoOpen(url) {
+    if (MOBILE.matches) { window.open(url, "_blank", "noopener"); return; }
+    pv.querySelector("#pv-open").href = url;
+    pv.querySelector(".pv-frame").innerHTML = '<iframe title="Prototype V1 · Figma" src="https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent(url) + '" allowfullscreen></iframe>';
+    pv.hidden = false; pv.querySelector("[data-pv-close]").focus();
+  }
+  function protoClose() { pv.hidden = true; pv.querySelector(".pv-frame").innerHTML = ""; var b = main.querySelector("[data-proto]"); if (b) b.focus(); }
+  pv.addEventListener("click", function (e) { if (e.target.closest("[data-pv-close]") || e.target === pv) protoClose(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pv.hidden) { e.preventDefault(); protoClose(); } });
+  main.addEventListener("click", function (e) { var b = e.target.closest("[data-proto]"); if (b && state.id && byId[state.id].proto) protoOpen(byId[state.id].proto); });
   main.addEventListener("input", function (e) { if (e.target.id === "q") { state.q = e.target.value; render({ search: true }); } });
   main.addEventListener("keydown", function (e) {
     if (e.target.getAttribute("role") !== "tab" || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
