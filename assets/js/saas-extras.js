@@ -260,6 +260,8 @@
   /* ---------- Après chaque rendu de vue ---------- */
   function onRender(e) {
     var d = e.detail || {};
+    var today = document.querySelector("#main [data-today]");
+    if (today && !today.textContent) { var t = new Date().toLocaleDateString(EN ? "en-GB" : "fr-FR", { weekday: "long", day: "numeric", month: "long" }); today.textContent = t.charAt(0).toUpperCase() + t.slice(1); }
     var empty = document.querySelector("#main .empty");
     if (empty && !empty.querySelector(".cat-empty")) empty.insertAdjacentHTML("afterbegin", catSvg("calico").replace("<svg ", '<svg class="cat-empty" '));
     placeCats(d.view);
