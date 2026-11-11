@@ -116,6 +116,19 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav__back { font-size: 13px; font-weight: 500; color: var(--muted); }
 .nav__back:hover { color: var(--ink); }
 .nav__end { display: flex; align-items: center; gap: 20px; }
+.nav__actions { display: flex; align-items: center; gap: 20px; }
+.nav__cta--menu { display: none; }
+.nav__label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.nav__menu {
+  display: none; place-items: center; width: 36px; height: 32px; padding: 0;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: transparent; color: var(--ink); cursor: pointer;
+}
+.nav__menu svg { width: 18px; height: 18px; }
+.nav__menu[aria-expanded="true"] { background: var(--subtle); }
 .nav__lang {
   font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--muted);
   padding: 3px 8px; border: 1px solid var(--border); border-radius: 6px;
@@ -672,8 +685,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   :root { --gutter: 16px; }
   .nav__links { display: none; }
   .nav__brand { white-space: nowrap; }
-  .nav__end { gap: 12px; }
-  .nav__back { white-space: nowrap; }
+
+  /* Menu mobile : thème, langue, LinkedIn (et retour sur les études de cas) */
+  .nav__inner { position: relative; }
+  .nav__menu { display: grid; }
+  .nav__actions {
+    display: none; position: absolute; top: calc(100% + 8px); right: var(--gutter); z-index: 60;
+    min-width: 220px; flex-direction: column; align-items: stretch; gap: 2px; padding: 6px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+  .nav__actions.is-open { display: flex; }
+  .nav .nav__actions > * {
+    display: flex; align-items: center; justify-content: flex-start; gap: 10px;
+    width: 100%; height: auto; padding: 10px 12px;
+    border: 0; border-radius: 8px; background: none;
+    font: inherit; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--ink);
+  }
+  .nav .nav__actions > *:hover { background: var(--subtle); }
+  .nav .nav__actions > .nav__cta { color: var(--accent); font-weight: 600; }
+  .nav__actions .nav__label { position: static; width: auto; height: auto; clip: auto; overflow: visible; }
+  .nav__actions .nav__short { display: none; }
+  .nav__actions .nav__cta--menu { display: flex; }
   .hero { padding: 40px 0 48px; }
   .hero__grid { grid-template-columns: 1fr; gap: 32px; }
   .hero__photo { width: 160px; order: -1; }
@@ -705,11 +738,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   .gallery--2, .gallery--3 { grid-template-columns: 1fr; }
   .gallery--phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .others__grid { grid-template-columns: 1fr; }
-}
-
-/* Petits téléphones : le lien retour reste dans le pied de page */
-@media (max-width: 420px) {
-  .nav__back { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
