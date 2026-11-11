@@ -174,6 +174,14 @@
       [18, 95, "« Ça tire » marque une gêne sur une série, sans quitter l'exercice.", "“Ça tire” (it pulls) flags discomfort on a set without leaving the exercise."],
       [68, 95, "Un seul gros bouton, utilisable téléphone posé sur un banc.", "One big button, usable with the phone resting on a bench."]
     ],
+    "pense-frigo-stock-v3": [
+      [44, 17, "Un ton rassurant : l'appli dit ce qui presse, ou que rien ne presse.", "A reassuring tone: the app says what's urgent, or that nothing is."],
+      [50, 33, "Le prochain produit à surveiller reste visible, même quand tout va bien.", "The next product to watch stays visible, even when everything is fine."]
+    ],
+    "pense-frigo-ajouter": [
+      [56, 46, "La photo du frigo et le scan du ticket passent en premier : ce sont les saisies en un geste.", "The fridge photo and receipt scan come first: they're the one-gesture inputs."],
+      [56, 92, "La saisie à la main arrive en dernier : c'est elle qui fait abandonner les applis d'inventaire.", "Manual entry comes last: it's what makes people give up on inventory apps."]
+    ],
     "pense-frigo-scan": [
       [62, 30, "Les dates sont présentées comme des estimations : l'IA propose, l'utilisateur garde la main.", "Dates are shown as estimates: AI suggests, the user stays in control."],
       [12, 63, "Rien n'est ajouté sans vérification : les libellés de ticket sont abrégés et changent selon les enseignes.", "Nothing is added without review: receipt labels are abbreviated and vary by store."],
