@@ -15,7 +15,7 @@
     reset: "Reset all", exitFocus: "Exit focus mode",
     annos: function (n) { return n + (n > 1 ? " notes" : " note"); }, showAnnos: "Notes",
     stamp: "Approved by La Gnometta",
-    stampTip: "La Gnometta, 16, calico cat and chief UX tester at home, approves every project shipped to production.",
+    stampTip: "A little wink: La Gnometta, 16, my calico cat, is chief UX tester at home. This stamp only appears on projects shipped to production. My two other cats, Paupiette and Madame, are hiding elsewhere on the site. Can you find them?",
     hiding: "A cat is hiding here", found: function (name, n) { return "You found " + name + "! (" + n + "/3)"; }, again: function (name, n) { return name + " is already found (" + n + "/3)"; },
     explain: function (n) { return n === 3 ? "That's all three of my cats. A secret note is unlocking…" : "My three cats are hiding in this portfolio. Find all of them to unlock a secret note: " + (3 - n) + " left."; },
     hint: "Psst: they're hiding somewhere in the app.",
@@ -33,7 +33,7 @@
     reset: "Tout réinitialiser", exitFocus: "Quitter le mode focus",
     annos: function (n) { return n + (n > 1 ? " annotations" : " annotation"); }, showAnnos: "Annotations",
     stamp: "Validé par La Gnometta",
-    stampTip: "La Gnometta, 16 ans, calico et testeuse UX en chef à la maison, valide chaque projet livré en production.",
+    stampTip: "Un petit clin d'œil : La Gnometta, 16 ans, ma chatte calico, est la testeuse UX en chef à la maison. Ce tampon n'apparaît que sur les projets livrés en production. Mes deux autres chats, Paupiette et Madame, se cachent ailleurs sur le site. Saurez-vous les retrouver ?",
     hiding: "Un chat se cache ici", found: function (name, n) { return "Tu as trouvé " + name + " ! (" + n + "/3)"; }, again: function (name, n) { return name + " est déjà trouvée (" + n + "/3)"; },
     explain: function (n) { return n === 3 ? "Ce sont mes trois chats, tu les as toutes. Une note secrète se débloque…" : "Mes trois chats se cachent dans ce portfolio. Trouve-les toutes pour débloquer une note secrète : encore " + (3 - n) + "."; },
     hint: "Psst : elles se cachent quelque part dans l'app.",
@@ -267,13 +267,13 @@
     placeCats(d.view);
     badgeShots();
     if (d.view === "detail") {
-      var chip = document.querySelector("#main .dtitle .chip.ok"), top = document.querySelector("#main .crumbs");
-      if (chip && top && !top.querySelector(".stamp")) {
+      var chip = document.querySelector("#main .dtitle .chip.ok"), top = document.querySelector("#main .dtitle h1");
+      if (chip && top && !top.parentNode.querySelector(".stamp")) {
         var s = document.createElement("button"); s.type = "button"; s.className = "stamp"; s.setAttribute("aria-expanded", "false");
         s.innerHTML = catSvg("calico") + T.stamp + '<span class="tip" role="tooltip" id="stamp-tip">' + T.stampTip + "</span>";
         s.setAttribute("aria-describedby", "stamp-tip");
         s.addEventListener("click", function (ev) { ev.stopPropagation(); s.setAttribute("aria-expanded", String(s.getAttribute("aria-expanded") !== "true")); });
-        top.appendChild(s);
+        top.insertAdjacentElement("afterend", s);
       }
     }
     if (d.view === "apropos") {
