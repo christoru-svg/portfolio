@@ -604,6 +604,10 @@ button.ext { font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; 
 .pv-tabs button[aria-selected="true"] { border-color: var(--accent); color: var(--accent); }
 .pv-tabs button:focus-visible { outline: 2px solid var(--accent); }
 @media (max-width: 860px) { .pview { grid-template-rows: auto; align-content: start; } .pv-frame { display: none; } .pv-hint { display: none; } }
+/* App en ligne dans un cadre de téléphone */
+.pview { justify-items: stretch; }
+.pv-frame.phone { justify-self: center; height: 100%; max-height: 860px; aspect-ratio: 390 / 844; max-width: 100%; border: 10px solid #111216; border-radius: 40px; background: #111216; box-shadow: 0 30px 70px -30px rgb(0 0 0 / .6); }
+.pv-frame.phone iframe { border-radius: 30px; background: #fff; }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -944,7 +948,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       quote: "“Simple”, “fast”, “intuitive”, “personalized”.", quoteBy: "How testers described the journey (translated from French)",
       lead: "A dual role as Scrum Master to keep a clear plan over four months with the client, up to a 3-release roadmap tracked with KPIs.",
       retro: "The project stopped at prototype V2. A panel larger than 6 people would have strengthened the recommendations. Testing also revealed navigation issues beyond onboarding, which called for a broader audit." },
-    { id: "pense-frigo", group: "labo", title: "Pense-Frigo", client: "Side project", role: "Research, design and code", dur: "Since Oct 2026", status: "In testing", tone: "warn", metric: "32 versions in 5 days", url: "projet-pense-frigo/",
+    { id: "pense-frigo", protos: [["The live app", "https://christoru-svg.github.io/mamie-gio/", "app"]], group: "labo", title: "Pense-Frigo", client: "Side project", role: "Research, design and code", dur: "Since Oct 2026", status: "In testing", tone: "warn", metric: "32 versions in 5 days", url: "projet-pense-frigo/",
       summary: "An anti-waste app that remembers what's in your fridge: scan your receipt, and it tells you what to eat first.",
       key: "The real barrier isn't knowing what's about to expire, it's the time it takes to fill in the app.",
       context: "Waste came from products forgotten at the back of the fridge, and opened products whose opening date nobody remembers.",
@@ -954,7 +958,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       results: [["32", "Versions in 5 days"], ["3", "Main screen styles tested"], ["10", "Interviews planned with couples and flatmates"]],
       lead: "Each version has a measurable exit criterion before moving on.",
       retro: "With AI, checking is part of the experience: the user always stays in control." },
-    { id: "workout-log", group: "labo", title: "Workout Log", client: "Side project", role: "From art direction to code", dur: "1 week · 2026", status: "In use", tone: "ok", metric: "At the gym 2×/week", url: "projet-workout-log/",
+    { id: "workout-log", protos: [["The live app", "https://christoru-svg.github.io/workoutlog/", "app"]], group: "labo", title: "Workout Log", client: "Side project", role: "From art direction to code", dur: "1 week · 2026", status: "In use", tone: "ok", metric: "At the gym 2×/week", url: "projet-workout-log/",
       summary: "A strength-training log adapted to an L5-S1 disc herniation, built on a simple insight: the pain comes the next day, not during the exercise.",
       key: "The app never presents an exercise as “safe”: every status comes from the physiotherapist.",
       context: "Training apps highlight volume and personal records. None of them let you track pain or a medical instruction.",
@@ -1119,7 +1123,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Lab" : "Projects") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Enlarge the screens"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Cover of the project ' + esc(p.title) + '"><button type="button" data-cover aria-label="Enlarge the cover"></button></div>') +
-      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
+      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos[0][2] === "app" ? "▶ Try the app" : p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Role</span><span>" + esc(p.role) + "</span></div><div><span>Duration</span><span>" + esc(p.dur) + '</span></div><div><span>Key metric</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
       '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
       '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
@@ -1234,9 +1238,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   function protoShow(i) {
     var item = pvList[i], url = item[1];
     pvTabs.innerHTML = pvList.length > 1 ? pvList.map(function (x, k) { return '<button type="button" role="tab" aria-selected="' + (k === i) + '" data-pv="' + k + '">' + esc(x[0]) + "</button>"; }).join("") : "";
-    pv.querySelector(".pv-top b").textContent = item[0] + " · Figma";
-    pv.querySelector("#pv-open").href = url;
-    pv.querySelector(".pv-frame").innerHTML = MOBILE.matches ? "" : '<iframe title="Prototype V1 · Figma" src="https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent(url) + '" allowfullscreen></iframe>';
+    var isApp = item[2] === "app";
+    pv.querySelector(".pv-top b").textContent = item[0] + (isApp ? "" : " · Figma");
+    var op = pv.querySelector("#pv-open"); op.href = url;
+    if (!op.dataset.figma) op.dataset.figma = op.textContent;
+    op.textContent = isApp ? "Open the app ↗" : op.dataset.figma;
+    var hint = pv.querySelector(".pv-hint"); if (!hint.dataset.figma) hint.dataset.figma = hint.textContent;
+    hint.textContent = isApp ? "This is the real app, live: what you try stays in your browser." : hint.dataset.figma;
+    var fr = pv.querySelector(".pv-frame"); fr.classList.toggle("phone", isApp);
+    fr.innerHTML = MOBILE.matches ? "" : isApp ? '<iframe title="' + esc(item[0]) + '" src="' + url + '" allow="camera; clipboard-read; clipboard-write"></iframe>' : '<iframe title="Prototype V1 · Figma" src="https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent(url) + '" allowfullscreen></iframe>';
   }
   function protoOpen(list) {
     pvList = list;
