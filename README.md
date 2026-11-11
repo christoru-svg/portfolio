@@ -77,3 +77,6 @@ Les mêmes commentaires sont présents dans les pages de `en/`.
 - `index.html` (FR) et `en/index.html` (EN) contiennent chacun leurs textes, leurs styles et leur script. Une modification de texte se fait donc dans les deux fichiers.
 - Le bouton clair / sombre enregistre le choix sous la même clé (`theme`) que le portfolio classique.
 - Le bouton FR / EN garde la vue ouverte (par exemple `#p-swile`) en changeant de langue.
+- `assets/js/saas-extras.js` et `assets/css/saas-extras.css`, partagés par les deux langues : panneau « Confort de lecture » (police Lexend, texte plus grand, contraste, animations réduites, mode focus), annotations façon commentaires Figma sur certains écrans (liste `ANNOS` : positions en % et textes FR / EN), chats cachés et note secrète.
+- `assets/img/saas/monogram.svg` : le monogramme, aussi utilisé comme icône d'onglet de l'app.
+- `404.html` : page d'erreur, servie automatiquement par Vercel.
