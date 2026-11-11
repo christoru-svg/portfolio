@@ -106,3 +106,8 @@ html.a11y-focus .focus-exit { display: inline-flex; }
 
 /* Intertitres alignés sur la colonne de contenu */
 .main h4.sub { margin-left: auto; margin-right: auto; }
+
+/* Balade d'un chat sur les cartes projet */
+.grid.has-walker { position: relative; }
+.walker { position: absolute; z-index: 3; width: 34px; height: 34px; pointer-events: none; will-change: transform; }
+.walker svg { width: 34px; height: 34px; filter: drop-shadow(0 3px 4px rgb(0 0 0 / .25)); }
