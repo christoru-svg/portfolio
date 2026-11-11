@@ -52,7 +52,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap">
 <style>
 /* Layout: a SaaS landing page built like a product. Sticky nav, hero with an app window, then the usual SaaS sections, each mapped to real portfolio content. Dark first. */
 :root {
@@ -691,7 +691,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <button type="button" class="themetg comfort" data-comfort><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="2.8" r="1.4"/><path d="M3 5.5c1.6.5 3.3.8 5 .8s3.4-.3 5-.8M8 6.3V9.5M8 9.5l-2.2 4.7M8 9.5l2.2 4.7"/></svg></button>
           <button type="button" class="themetg" data-theme-toggle aria-label="Passer en mode sombre"></button>
           <a class="btn sm ghost" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">CV ↓</a>
-          <button type="button" class="btn sm primary" data-view="contact">Prendre un call</button>
+          <button type="button" class="btn sm primary" data-view="contact">Discutons</button>
         </div>
       </header>
       <main class="main" id="main" aria-live="polite"></main>
@@ -705,7 +705,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <h1>Le product designer qui livre votre <em>SaaS B2B</em>, de la recherche à la prod.</h1>
     <p class="lede">Entretiens, tests, design system et pilotage : un seul designer senior pour des parcours accessibles et mesurables. Branché sur vos équipes produit, tech et business.</p>
     <div class="ctas">
-      <button type="button" class="btn primary" data-view="contact">Réserver un call de 30 min</button>
+      <button type="button" class="btn primary" data-view="contact">Discutons</button>
       <a class="btn" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">Télécharger le CV ↓</a>
     </div>
     <p class="fine">Poste Senior ou Lead · CDI · Paris ou full remote</p>
@@ -854,16 +854,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 </template>
 
 <template id="tpl-notes">
-  <div class="head">
-    <span class="eyebrow">Notes</span>
-    <h2>Mes réflexions sur le design</h2>
-    <p class="lede">Accessibilité, IA, recherche utilisateur : ce que j'apprends en concevant des produits.</p>
-    <div class="wip"><span class="pulse"></span>Work in progress · d'autres articles arrivent bientôt.</div>
-  </div>
-  <div class="notes">
-    <a class="post pub" href="https://medium.com/@christopher.de-paola/great-women-in-human-center-design-109a6a56a30d" target="_blank" rel="noopener" hreflang="en"><div class="nmeta"><span class="chip ok">Publié</span><span class="mono">27 déc. 2021 · 7 min · Medium · en anglais</span></div><h3 lang="en">Great women in Human Centered Design</h3><p>Les femmes représentent plus de la moitié des designers, mais seulement 11 % des postes de direction du secteur, et restent peu visibles. Un article pour mettre en lumière celles qui ont façonné le design centré humain : Carine Lallemand, Susan Weinschenk, Bella Martin, Pauline Thomas…</p><span class="read">Lire sur Medium ↗</span></a>
-    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Thème : IA et design</span></div><h3>Article à venir</h3><p>Article en cours d'écriture, bientôt en ligne.</p></article>
-    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Thème : recherche utilisateur</span></div><h3>Article à venir</h3><p>Article en cours d'écriture, bientôt en ligne.</p></article>
+  <div class="journal">
+    <header class="j-head">
+      <span class="j-eyebrow">Journal de bord</span>
+      <h2>Mes réflexions sur le design</h2>
+      <p>Accessibilité, IA, recherche utilisateur : ce que j'apprends en concevant des produits, noté au fil des pages.</p>
+      <svg class="j-doodle j-star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l3.6 10.4L34 15l-8.3 6.6L28.6 32 20 25.8 11.4 32l2.9-10.4L6 15l10.4-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </header>
+    <ol class="j-entries">
+      <li class="j-entry"><a href="https://medium.com/@christopher.de-paola/la-valeur-de-ralentir-f75c0e401984" target="_blank" rel="noopener"><span class="j-tape" aria-hidden="true"></span><span class="j-date">nov. 2026</span><span class="j-meta">8 min de lecture · Medium</span><h3>La valeur de ralentir</h3><p>L'IA nous fait produire plus vite, mais produire n'est pas comprendre. Une réflexion sur la roue du hamster, notre « syndrome de Diogène numérique » et ce que l'on fait vraiment du temps gagné : savoir quand ralentir devient une compétence.</p><span class="j-read">Lire sur Medium →</span></a></li>
+      <li class="j-entry"><a href="https://medium.com/@christopher.de-paola/great-women-in-human-center-design-109a6a56a30d" target="_blank" rel="noopener" hreflang="en"><span class="j-tape" aria-hidden="true"></span><span class="j-date">27 déc. 2021</span><span class="j-meta">7 min de lecture · Medium · en anglais</span><h3 lang="en">Great women in Human Centered Design</h3><p>Les femmes représentent plus de la moitié des designers, mais seulement 11 % des postes de direction du secteur, et restent peu visibles. Un article pour mettre en lumière celles qui ont façonné le design centré humain : Carine Lallemand, Susan Weinschenk, Bella Martin, Pauline Thomas…</p><span class="j-read">Lire sur Medium →</span></a></li>
+    </ol>
+    <p class="j-next"><svg class="j-doodle j-arrow" viewBox="0 0 80 40" aria-hidden="true"><path d="M4 30c14-18 34-22 58-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M54 10l9 8-11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>À suivre… d'autres pages s'écrivent.</p>
   </div>
 </template>
 
@@ -1311,11 +1313,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   });
 
   // Profile menu
-  var MAILTO = "mailto:chris.depaola.toru@gmail.com?subject=" + encodeURIComponent("Prendre un call : poste de Senior Product Designer");
+  var MAILTO = "mailto:chris.depaola.toru@gmail.com?subject=" + encodeURIComponent("Discutons : poste de Senior Product Designer");
   var pm = document.createElement("div");
   pm.className = "pmenu"; pm.hidden = true; pm.setAttribute("role", "menu"); pm.setAttribute("aria-label", "Menu du profil");
   pm.innerHTML = '<div class="pm-head"><b>Christopher De Paola</b><span>chris.depaola.toru@gmail.com</span></div>' +
-    '<a role="menuitem" class="pm-item primary" href="' + MAILTO + '">' + ICON.contact + '<span>Prendre un call</span></a>' +
+    '<a role="menuitem" class="pm-item primary" href="' + MAILTO + '">' + ICON.contact + '<span>Discutons</span></a>' +
     '<button type="button" role="menuitem" class="pm-item" data-pm="copy">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8.5" height="8.5" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>' + '<span>Copier mon email</span></button>' +
     '<a role="menuitem" class="pm-item" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13.5h10"/></svg>' + '<span>Télécharger le CV</span></a>' +
     '<button type="button" role="menuitem" class="pm-item" data-pm="apropos">' + ICON.apropos + '<span>Voir le profil</span></button>';

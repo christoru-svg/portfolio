@@ -52,7 +52,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap">
 <style>
 /* Layout: a SaaS landing page built like a product. Sticky nav, hero with an app window, then the usual SaaS sections, each mapped to real portfolio content. Dark first. */
 :root {
@@ -854,16 +854,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 </template>
 
 <template id="tpl-notes">
-  <div class="head">
-    <span class="eyebrow">Notes</span>
-    <h2>My thoughts on design</h2>
-    <p class="lede">Accessibility, AI, user research: what I learn while designing products.</p>
-    <div class="wip"><span class="pulse"></span>Work in progress · more articles are coming soon.</div>
-  </div>
-  <div class="notes">
-    <a class="post pub" href="https://medium.com/@christopher.de-paola/great-women-in-human-center-design-109a6a56a30d" target="_blank" rel="noopener"><div class="nmeta"><span class="chip ok">Published</span><span class="mono">Dec 27, 2021 · 7 min · Medium</span></div><h3>Great women in Human Centered Design</h3><p>Women make up more than half of designers, yet hold only 11% of leadership roles in the industry, and remain hard to see. An article to highlight those who shaped human-centered design: Carine Lallemand, Susan Weinschenk, Bella Martin, Pauline Thomas…</p><span class="read">Read on Medium ↗</span></a>
-    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Topic: AI and design</span></div><h3>Upcoming article</h3><p>Being written, online soon.</p></article>
-    <article class="post draft"><div class="nmeta"><span class="chip warn">Work in progress</span><span class="mono">Topic: user research</span></div><h3>Upcoming article</h3><p>Being written, online soon.</p></article>
+  <div class="journal">
+    <header class="j-head">
+      <span class="j-eyebrow">Logbook</span>
+      <h2>My thoughts on design</h2>
+      <p>Accessibility, AI, user research: what I learn while designing products, written down page after page.</p>
+      <svg class="j-doodle j-star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l3.6 10.4L34 15l-8.3 6.6L28.6 32 20 25.8 11.4 32l2.9-10.4L6 15l10.4-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </header>
+    <ol class="j-entries">
+      <li class="j-entry"><a href="https://medium.com/@christopher.de-paola/la-valeur-de-ralentir-f75c0e401984" target="_blank" rel="noopener" hreflang="fr"><span class="j-tape" aria-hidden="true"></span><span class="j-date">Nov 2026</span><span class="j-meta">8 min read · Medium · in French</span><h3 lang="fr">La valeur de ralentir</h3><p>“The value of slowing down”. AI makes us produce faster, but producing isn't understanding. A reflection on the hamster wheel, our “digital hoarding”, and what we actually do with the time we save: knowing when to slow down is becoming a skill.</p><span class="j-read">Read on Medium →</span></a></li>
+      <li class="j-entry"><a href="https://medium.com/@christopher.de-paola/great-women-in-human-center-design-109a6a56a30d" target="_blank" rel="noopener"><span class="j-tape" aria-hidden="true"></span><span class="j-date">Dec 27, 2021</span><span class="j-meta">7 min read · Medium</span><h3>Great women in Human Centered Design</h3><p>Women make up more than half of designers, yet hold only 11% of leadership roles in the industry, and remain hard to see. An article to highlight those who shaped human-centered design: Carine Lallemand, Susan Weinschenk, Bella Martin, Pauline Thomas…</p><span class="j-read">Read on Medium →</span></a></li>
+    </ol>
+    <p class="j-next"><svg class="j-doodle j-arrow" viewBox="0 0 80 40" aria-hidden="true"><path d="M4 30c14-18 34-22 58-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M54 10l9 8-11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>To be continued… more pages are being written.</p>
   </div>
 </template>
 
