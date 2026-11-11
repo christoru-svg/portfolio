@@ -33,7 +33,7 @@
     reset: "Tout réinitialiser", exitFocus: "Quitter le mode focus",
     annos: function (n) { return n + (n > 1 ? " annotations" : " annotation"); }, showAnnos: "Annotations",
     stamp: "Validé par La Gnometta",
-    stampTip: "La Gnometta, 16 ans, ma chatte calico, est la testeuse UX en chef à la maison. Mes deux autres chats, Paupiette et Madame, se cachent ailleurs sur le site. Saurez-vous les retrouver ?",
+    stampTip: "La Gnometta, 16 ans, mon chat calico, est la testeuse UX en chef à la maison. Mes deux autres chats, Paupiette et Madame, se cachent ailleurs sur le site. Saurez-vous les retrouver ?",
     hiding: "Un chat se cache ici", found: function (name, n) { return "Tu as trouvé " + name + " ! (" + n + "/3)"; }, again: function (name, n) { return name + " est déjà trouvée (" + n + "/3)"; },
     explain: function (n) { return n === 3 ? "Ce sont mes trois chats, tu les as toutes. Une note secrète se débloque…" : "Mes trois chats se cachent dans ce portfolio. Trouve-les toutes pour débloquer une note secrète : encore " + (3 - n) + "."; },
     hint: "Psst : elles se cachent quelque part dans l'app.",
