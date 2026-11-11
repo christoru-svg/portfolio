@@ -985,9 +985,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   function tpl(id) { var t = document.getElementById("tpl-" + id); return t ? t.innerHTML : ""; }
   function viewPlus() {
     function row(v, d) { return '<button type="button" class="mrow" data-view="' + v + '">' + ICON[v] + '<span><b>' + LABEL[v] + "</b>" + d + "</span><i>›</i></button>"; }
-    return '<div class="vh"><div><h3>More</h3><p>The rest of the portfolio.</p></div></div><div class="menu">' +
-      row("apropos", "Status, languages, talks and passions") + row("notes", "My thoughts on design") + row("methode", "Discovery, design, delivery") + row("apports", "My plan for the first months") + row("contact", "Email, LinkedIn and resume") +
-      '<a class="mrow" href="' + CLASSIC + '">' + ICON.classic + "<span><b>Classic portfolio</b>The original version of the site</span><i>↗</i></a></div>";
+    return '<div class="vh"><div><h3>More</h3><p>The rest of the portfolio.</p></div></div>' +
+      '<h4 class="sub">Professional</h4><div class="menu">' + row("methode", "Discovery, design, delivery") + row("apports", "My plan for the first months") + row("contact", "Email, LinkedIn and resume") + "</div>" +
+      '<h4 class="sub">Personal</h4><div class="menu">' + row("apropos", "Status, languages, talks and passions") + row("notes", "My thoughts on design") + "</div>" +
+      '<div class="menu"><a class="mrow" href="' + CLASSIC + '">' + ICON.classic + "<span><b>Classic portfolio</b>The original version of the site</span><i>↗</i></a></div>";
   }
 
   function card(p) {
