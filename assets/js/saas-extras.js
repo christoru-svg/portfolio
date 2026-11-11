@@ -101,12 +101,22 @@
         '<path d="M13 15.5c2.4.2 4.6 1.6 5.3 3.8.2.6.1 1.2-.1 1.7H13z" fill="#e0893b"/><path d="M6.8 17.2c.9-.6 2.2-.7 3.1.1.6.6.6 1.6.2 2.5L9 21H7c-.6-1.2-.7-2.6-.2-3.8z" fill="#2c2420"/>' +
         '<circle cx="10.6" cy="13.2" r=".9" fill="#3a2f2a"/><circle cx="15.4" cy="13.2" r=".9" fill="#3a2f2a"/><path d="M12.3 15.2h1.4L13 16z" fill="#c9776f"/></svg>';
     }
+    var face = '<circle cx="10.6" cy="13.2" r=".9" fill="#3a2f2a"/><circle cx="15.4" cy="13.2" r=".9" fill="#3a2f2a"/><path d="M12.3 15.2h1.4L13 16z" fill="#c9776f"/>';
+    if (kind === "white") {
+      return '<svg viewBox="0 0 26 26" aria-hidden="true"><path d="' + body + '" fill="#fcfbf8" stroke="#3a2f2a" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<path d="M8.6 7l1.6 1.6c-.6.3-1.1.6-1.5 1z" fill="#efc2bd"/><path d="M17.4 7l-1.6 1.6c.6.3 1.1.6 1.5 1z" fill="#efc2bd"/>' + face + '</svg>';
+    }
+    if (kind === "grey") {
+      return '<svg viewBox="0 0 26 26" aria-hidden="true"><path d="' + body + '" fill="#8e9097" stroke="#2f3136" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<ellipse cx="13" cy="15.7" rx="2.3" ry="1.6" fill="#f6f5f2"/><ellipse cx="9.6" cy="20.4" rx="1.7" ry=".9" fill="#f6f5f2"/><ellipse cx="16.4" cy="20.4" rx="1.7" ry=".9" fill="#f6f5f2"/>' +
+        face + '</svg>';
+    }
     return '<svg viewBox="0 0 26 26" aria-hidden="true"><path d="' + body + '" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10.6" cy="13.2" r=".9" fill="currentColor"/><circle cx="15.4" cy="13.2" r=".9" fill="currentColor"/><path d="M12.3 15.2h1.4L13 16z" fill="currentColor"/></svg>';
   }
   var CATS = [
     { id: "gnometta", name: "La Gnometta", kind: "calico", view: "accueil", where: ".refs" },
-    { id: "paupiette", name: "Paupiette", kind: "line", view: "notes", where: ".head" },
-    { id: "madame", name: "Madame", kind: "line", view: "projets", where: ".tools" }
+    { id: "paupiette", name: "Paupiette", kind: "grey", view: "notes", where: ".head" },
+    { id: "madame", name: "Madame", kind: "white", view: "projets", where: ".tools" }
   ];
   var found = store("cats-found") || [];
   function toast(html) {
@@ -116,7 +126,7 @@
   }
   var secret = document.createElement("div");
   secret.className = "secret"; secret.hidden = true; secret.setAttribute("role", "dialog"); secret.setAttribute("aria-modal", "true"); secret.setAttribute("aria-labelledby", "secret-title");
-  secret.innerHTML = '<div class="secret-card"><div class="secret-cats">' + catSvg("calico") + '<span style="color:var(--accent)">' + catSvg("line") + catSvg("line") + "</span></div>" +
+  secret.innerHTML = '<div class="secret-card"><div class="secret-cats">' + catSvg("calico") + catSvg("grey") + catSvg("white") + "</div>" +
     '<h2 id="secret-title">' + T.secretTitle + "</h2><p>" + T.secretBody + '</p><div class="secret-actions"><button type="button" class="btn primary" data-secret="call">' + T.call + '</button><button type="button" class="btn" data-secret="close">' + T.close + "</button></div></div>";
   document.body.appendChild(secret);
   function closeSecret() { secret.hidden = true; }
@@ -129,7 +139,7 @@
   function onCat(cat, btn) {
     if (found.indexOf(cat.id) === -1) { found.push(cat.id); store("cats-found", found); }
     btn.classList.add("found");
-    toast(catSvg(cat.kind === "calico" ? "calico" : "line") + "<span>" + T.found(cat.name, found.length) + "</span>");
+    toast(catSvg(cat.kind) + "<span>" + T.found(cat.name, found.length) + "</span>");
     if (found.length === 3) setTimeout(function () { secret.hidden = false; secret.querySelector("[data-secret=call]").focus(); }, 700);
   }
   function placeCats(view) {
