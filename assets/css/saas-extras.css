@@ -80,9 +80,9 @@ html.a11y-focus .focus-exit { display: inline-flex; }
 .stamp:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .stamp .tip { position: absolute; z-index: 5; left: 50%; top: calc(100% + 10px); width: 260px; max-width: calc(100vw - 32px); padding: 10px 12px; border-radius: 10px; background: var(--fg); color: var(--bg); font: 400 13px/1.5 var(--body); letter-spacing: 0; text-transform: none; transform: translateX(-50%) rotate(2deg); box-shadow: 0 14px 30px -12px rgb(0 0 0 / .5); white-space: normal; visibility: hidden; pointer-events: none; }
 .stamp .tip::before { content: ""; position: absolute; left: calc(50% - 5px); top: -5px; width: 10px; height: 10px; background: var(--fg); transform: rotate(45deg); }
-.sec .stamp { justify-self: end; margin-left: 0; transform: rotate(-3deg); }
-.sec .stamp .tip { top: auto; bottom: calc(100% + 10px); left: auto; right: 0; transform: rotate(2deg); }
-.sec .stamp .tip::before { top: auto; bottom: -5px; left: auto; right: 28px; }
+.crumbs .stamp { margin-left: auto; }
+.crumbs .stamp .tip { left: auto; right: 0; transform: rotate(2deg); }
+.crumbs .stamp .tip::before { left: auto; right: 28px; }
 .stamp:hover .tip, .stamp:focus-visible .tip, .stamp[aria-expanded="true"] .tip { visibility: visible; }
 .cat-hide { all: unset; position: relative; cursor: pointer; display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; transition: transform .2s ease; vertical-align: middle; transform-origin: 50% 90%; animation: catpeek 7s ease-in-out infinite; }
 .cat-hide svg { width: 28px; height: 28px; filter: drop-shadow(0 2px 3px rgb(0 0 0 / .18)); }

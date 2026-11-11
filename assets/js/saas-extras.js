@@ -267,13 +267,13 @@
     placeCats(d.view);
     badgeShots();
     if (d.view === "detail") {
-      var chip = document.querySelector("#main .dtitle .chip.ok"), retro = document.querySelector("#main #s-retro");
-      if (chip && retro && !retro.querySelector(".stamp")) {
+      var chip = document.querySelector("#main .dtitle .chip.ok"), top = document.querySelector("#main .crumbs");
+      if (chip && top && !top.querySelector(".stamp")) {
         var s = document.createElement("button"); s.type = "button"; s.className = "stamp"; s.setAttribute("aria-expanded", "false");
         s.innerHTML = catSvg("calico") + T.stamp + '<span class="tip" role="tooltip" id="stamp-tip">' + T.stampTip + "</span>";
         s.setAttribute("aria-describedby", "stamp-tip");
         s.addEventListener("click", function (ev) { ev.stopPropagation(); s.setAttribute("aria-expanded", String(s.getAttribute("aria-expanded") !== "true")); });
-        retro.appendChild(s);
+        top.appendChild(s);
       }
     }
     if (d.view === "apropos") {
