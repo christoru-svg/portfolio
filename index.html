@@ -569,6 +569,11 @@ button.avail { all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
 .themetg:hover { color: var(--fg); border-color: var(--accent); }
 .themetg svg { width: 16px; height: 16px; }
 .lang:focus-visible, .themetg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Identity links to home */
+a.ws { text-decoration: none; color: inherit; border-radius: 10px; transition: background .15s ease; }
+a.ws:hover { background: var(--surface-2); }
+a.ws:focus-visible, a.bar-brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a.bar-brand { text-decoration: none; color: inherit; border-radius: 999px; padding-right: 6px; }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -644,7 +649,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <nav class="side" id="side" aria-label="Navigation principale"></nav>
     <div class="col">
       <header class="bar">
-        <span class="bar-brand"><img src="/assets/img/saas/portrait-face.jpg" alt="">Christopher De Paola</span>
+        <a class="bar-brand" href="#accueil" data-view="accueil" aria-label="Christopher De Paola, accueil"><img src="/assets/img/saas/portrait-face.jpg" alt="">Christopher De Paola</a>
         <span class="bar-path mono" id="path">accueil</span>
         <div class="bar-actions">
           <a class="lang" href="/en/" data-lang hreflang="en" lang="en" aria-label="English version">EN</a>
@@ -987,7 +992,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     }
     var tog = collapsed ? "Ouvrir la navigation" : "Réduire la navigation";
     side.innerHTML = '<div class="stop"><button type="button" class="tg" data-toggle aria-expanded="' + !collapsed + '" aria-label="' + tog + '" title="' + tog + '">' + TOGGLE + "</button></div>" +
-      '<div class="ws"><span class="wmark" aria-hidden="true">C</span><div class="wst"><b>christopher.design</b><span>Espace produit · v6.0</span></div></div>' +
+      '<a class="ws" href="#accueil" data-view="accueil" title="Accueil"><span class="wmark" aria-hidden="true">C</span><div class="wst"><b>christopher.design</b><span>Espace produit · v6.0</span></div></a>' +
       b("accueil", "Accueil") +
       '<span class="lbl">Travail</span>' + b("projets", "Projets", group("projets").length) + b("labo", "Labo", group("labo").length) +
       '<span class="lbl">Approche</span>' + b("methode", "Méthode", 0, "m-hide") + b("ia", "Automatisations").replace('<span class="tx">Automatisations</span>', '<span class="tx"><span class="lg">Automatisations</span><span class="sh">IA</span></span>') + b("apports", "Ce que j'apporte", 0, "m-hide") +
@@ -1161,9 +1166,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       renderSide(); side.querySelector("[data-toggle]").focus(); return;
     }
     var t = e.target.closest("[data-view]"); if (!t) return;
-    go(t.dataset.view);
+    e.preventDefault(); go(t.dataset.view);
   });
-  document.querySelector(".bar").addEventListener("click", function (e) { var t = e.target.closest("[data-view]"); if (t) go(t.dataset.view); });
+  document.querySelector(".bar").addEventListener("click", function (e) { var t = e.target.closest("[data-view]"); if (t) { e.preventDefault(); go(t.dataset.view); } });
   main.addEventListener("click", function (e) {
     var c = e.target.closest("[data-copy]"); if (!c) return;
     var out = document.getElementById("copied"), val = c.dataset.copy;
