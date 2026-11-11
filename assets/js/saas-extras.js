@@ -16,7 +16,8 @@
     annos: function (n) { return n + (n > 1 ? " notes" : " note"); }, showAnnos: "Notes",
     stamp: "Approved by La Gnometta",
     stampTip: "La Gnometta, 16, calico cat and chief UX tester at home, approves every project shipped to production.",
-    hiding: "A cat is hiding here", found: function (name, n) { return "You found " + name + " (" + n + "/3)"; },
+    hiding: "A cat is hiding here", found: function (name, n) { return "You found " + name + "! (" + n + "/3)"; }, again: function (name, n) { return name + " is already found (" + n + "/3)"; },
+    explain: function (n) { return n === 3 ? "That's all three of my cats. A secret note is unlocking…" : "My three cats are hiding in this portfolio. Find all of them to unlock a secret note: " + (3 - n) + " left."; },
     hint: "Psst: they're hiding somewhere in the app.",
     secretTitle: "Secret note unlocked",
     secretBody: "Well done, you found La Gnometta, Paupiette and Madame. Curiosity is the first quality in user research. Since you made it this far, we should talk.",
@@ -32,7 +33,8 @@
     annos: function (n) { return n + (n > 1 ? " annotations" : " annotation"); }, showAnnos: "Annotations",
     stamp: "Validé par La Gnometta",
     stampTip: "La Gnometta, 16 ans, calico et testeuse UX en chef à la maison, valide chaque projet livré en production.",
-    hiding: "Un chat se cache ici", found: function (name, n) { return "Tu as trouvé " + name + " (" + n + "/3)"; },
+    hiding: "Un chat se cache ici", found: function (name, n) { return "Tu as trouvé " + name + " ! (" + n + "/3)"; }, again: function (name, n) { return name + " est déjà trouvée (" + n + "/3)"; },
+    explain: function (n) { return n === 3 ? "Ce sont mes trois chats, tu les as toutes. Une note secrète se débloque…" : "Mes trois chats se cachent dans ce portfolio. Trouve-les toutes pour débloquer une note secrète : encore " + (3 - n) + "."; },
     hint: "Psst : elles se cachent quelque part dans l'app.",
     secretTitle: "Note secrète débloquée",
     secretBody: "Bravo, tu as retrouvé La Gnometta, Paupiette et Madame. La curiosité, c'est la première qualité en recherche utilisateur. Puisque tu es allé·e jusqu'ici, on devrait en parler.",
@@ -117,14 +119,14 @@
   }
   var CATS = [
     { id: "gnometta", name: "La Gnometta", kind: "calico", view: "accueil", where: ".refs" },
-    { id: "paupiette", name: "Paupiette", kind: "grey", view: "notes", where: ".head" },
+    { id: "paupiette", name: "Paupiette", kind: "grey", view: "notes", where: ".j-head" },
     { id: "madame", name: "Madame", kind: "white", view: "projets", where: ".tools" }
   ];
   var found = store("cats-found") || [];
-  function toast(html) {
+  function toast(html, ms) {
     var old = document.querySelector(".toast"); if (old) old.remove();
     var t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.innerHTML = html;
-    document.body.appendChild(t); setTimeout(function () { t.remove(); }, 2600);
+    document.body.appendChild(t); setTimeout(function () { t.remove(); }, ms || 2600);
   }
   var secret = document.createElement("div");
   secret.className = "secret"; secret.hidden = true; secret.setAttribute("role", "dialog"); secret.setAttribute("aria-modal", "true"); secret.setAttribute("aria-labelledby", "secret-title");
@@ -139,9 +141,10 @@
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !secret.hidden) closeSecret(); });
   function onCat(cat, btn) {
-    if (found.indexOf(cat.id) === -1) { found.push(cat.id); store("cats-found", found); }
+    var already = found.indexOf(cat.id) > -1;
+    if (!already) { found.push(cat.id); store("cats-found", found); }
     btn.classList.add("found");
-    toast(catSvg(cat.kind) + "<span>" + T.found(cat.name, found.length) + "</span>");
+    toast(catSvg(cat.kind) + "<span><b>" + (already ? T.again(cat.name, found.length) : T.found(cat.name, found.length)) + "</b><small>" + T.explain(found.length) + "</small></span>", 6000);
     if (found.length === 3) setTimeout(function () { secret.hidden = false; secret.querySelector("[data-secret=call]").focus(); }, 700);
   }
   function placeCats(view) {
