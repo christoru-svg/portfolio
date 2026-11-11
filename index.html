@@ -691,7 +691,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <button type="button" class="themetg comfort" data-comfort><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="2.8" r="1.4"/><path d="M3 5.5c1.6.5 3.3.8 5 .8s3.4-.3 5-.8M8 6.3V9.5M8 9.5l-2.2 4.7M8 9.5l2.2 4.7"/></svg></button>
           <button type="button" class="themetg" data-theme-toggle aria-label="Passer en mode sombre"></button>
           <a class="btn sm ghost" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">CV ↓</a>
-          <button type="button" class="btn sm primary" data-view="contact">Prendre un call</button>
+          <button type="button" class="btn sm primary" data-view="contact">Discutons</button>
         </div>
       </header>
       <main class="main" id="main" aria-live="polite"></main>
@@ -705,7 +705,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <h1>Le product designer qui livre votre <em>SaaS B2B</em>, de la recherche à la prod.</h1>
     <p class="lede">Entretiens, tests, design system et pilotage : un seul designer senior pour des parcours accessibles et mesurables. Branché sur vos équipes produit, tech et business.</p>
     <div class="ctas">
-      <button type="button" class="btn primary" data-view="contact">Réserver un call de 30 min</button>
+      <button type="button" class="btn primary" data-view="contact">Discutons</button>
       <a class="btn" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">Télécharger le CV ↓</a>
     </div>
     <p class="fine">Poste Senior ou Lead · CDI · Paris ou full remote</p>
@@ -1313,11 +1313,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   });
 
   // Profile menu
-  var MAILTO = "mailto:chris.depaola.toru@gmail.com?subject=" + encodeURIComponent("Prendre un call : poste de Senior Product Designer");
+  var MAILTO = "mailto:chris.depaola.toru@gmail.com?subject=" + encodeURIComponent("Discutons : poste de Senior Product Designer");
   var pm = document.createElement("div");
   pm.className = "pmenu"; pm.hidden = true; pm.setAttribute("role", "menu"); pm.setAttribute("aria-label", "Menu du profil");
   pm.innerHTML = '<div class="pm-head"><b>Christopher De Paola</b><span>chris.depaola.toru@gmail.com</span></div>' +
-    '<a role="menuitem" class="pm-item primary" href="' + MAILTO + '">' + ICON.contact + '<span>Prendre un call</span></a>' +
+    '<a role="menuitem" class="pm-item primary" href="' + MAILTO + '">' + ICON.contact + '<span>Discutons</span></a>' +
     '<button type="button" role="menuitem" class="pm-item" data-pm="copy">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8.5" height="8.5" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>' + '<span>Copier mon email</span></button>' +
     '<a role="menuitem" class="pm-item" href="/assets/cv-christopher-de-paola.pdf" target="_blank" rel="noopener">' + '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13.5h10"/></svg>' + '<span>Télécharger le CV</span></a>' +
     '<button type="button" role="menuitem" class="pm-item" data-pm="apropos">' + ICON.apropos + '<span>Voir le profil</span></button>';

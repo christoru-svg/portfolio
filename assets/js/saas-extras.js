@@ -38,7 +38,7 @@
     hint: "Psst : elles se cachent quelque part dans l'app.",
     secretTitle: "Note secrète débloquée",
     secretBody: "Bravo, tu as retrouvé La Gnometta, Paupiette et Madame. La curiosité, c'est la première qualité en recherche utilisateur. Puisque tu es allé·e jusqu'ici, on devrait en parler.",
-    call: "Prendre un call", close: "Fermer"
+    call: "Discutons", close: "Fermer"
   };
   var root = document.documentElement;
   function store(key, val) { try { if (val === undefined) return JSON.parse(localStorage.getItem(key) || "null"); localStorage.setItem(key, JSON.stringify(val)); } catch (e) { return null; } }
