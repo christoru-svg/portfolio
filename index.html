@@ -574,6 +574,13 @@ a.ws { text-decoration: none; color: inherit; border-radius: 10px; transition: b
 a.ws:hover { background: var(--surface-2); }
 a.ws:focus-visible, a.bar-brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 a.bar-brand { text-decoration: none; color: inherit; border-radius: 999px; padding-right: 6px; }
+/* Back link */
+.back { all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px 6px 6px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--fg); flex: none; }
+.back[hidden] { display: none; }
+.back svg { width: 16px; height: 16px; }
+.back:hover { background: var(--surface-2); }
+.back:focus-visible { outline: 2px solid var(--accent); }
+@media (max-width: 860px) { .bar.sub .bar-brand { display: none; } .back { margin-left: -6px; font-size: 14px; } }
 /* Mobile: bottom tab bar */
 @media (max-width: 860px) {
   .app { overflow: clip; scroll-margin-top: calc(68px + env(safe-area-inset-top, 0px)); }
@@ -649,6 +656,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <nav class="side" id="side" aria-label="Navigation principale"></nav>
     <div class="col">
       <header class="bar">
+        <button type="button" class="back" data-back hidden><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg><span>Retour</span></button>
         <a class="bar-brand" href="#accueil" data-view="accueil" aria-label="Christopher De Paola, accueil"><img src="/assets/img/saas/portrait-face.jpg" alt="">Christopher De Paola</a>
         <span class="bar-path mono" id="path">accueil</span>
         <div class="bar-actions">
@@ -954,6 +962,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   var main = document.getElementById("main");
   var pathEl = document.getElementById("path");
   var internal = false;
+  var depth = 0;
+  var backBtn = document.querySelector("[data-back]");
+  var barEl = document.querySelector(".bar");
   var MOBILE = window.matchMedia("(max-width: 860px)");
   var lb = { list: [], i: 0, last: null };
 
@@ -1101,8 +1112,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     if (opts.search) { var q = document.getElementById("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
     if (opts.nav) {
       var want = v === "detail" ? "p-" + state.id : v;
-      if (location.hash.slice(1) !== want) { internal = true; location.hash = want; }
+      if (location.hash.slice(1) !== want) { internal = true; depth++; location.hash = want; }
     }
+    backBtn.hidden = v === "accueil";
+    barEl.classList.toggle("sub", v !== "accueil");
   }
   function go(v) { if (!LABEL[v]) return; state.view = v; state.id = null; render({ nav: true }); }
 
@@ -1168,6 +1181,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var t = e.target.closest("[data-view]"); if (!t) return;
     e.preventDefault(); go(t.dataset.view);
   });
+  function back() {
+    var v = state.view;
+    if (depth > 0) { history.back(); return; }
+    var target = v === "detail" ? byId[state.id].group : (MOBILE.matches && MORE.indexOf(v) > -1 && v !== "plus") ? "plus" : "accueil";
+    go(target);
+  }
+  backBtn.addEventListener("click", back);
   document.querySelector(".bar").addEventListener("click", function (e) { var t = e.target.closest("[data-view]"); if (t) { e.preventDefault(); go(t.dataset.view); } });
   main.addEventListener("click", function (e) {
     var c = e.target.closest("[data-copy]"); if (!c) return;
@@ -1186,8 +1206,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   function fromHash() {
     var h = location.hash.slice(1), was = internal; internal = false;
     if (was) return;
+    depth = Math.max(0, depth - 1);
     if (h.indexOf("p-") === 0 && byId[h.slice(2)]) { if (state.view !== "detail" || state.id !== h.slice(2)) open(h.slice(2)); }
     else if (LABEL[h] && h !== state.view) { state.view = h; state.id = null; render(); }
+    else if (!h && state.view !== "accueil") { state.view = "accueil"; state.id = null; render(); }
   }
 
   // Resizable sidebar (invisible handle)
