@@ -335,7 +335,7 @@ table.ptable { min-width: 600px; font-size: 13px; }
 .banner button { all: unset; cursor: zoom-in; position: absolute; inset: 0; }
 .banner button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .dtitle { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
-.dtitle h3 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin-top: 8px; }
+.dtitle h1 { font: 400 clamp(28px, 3.6vw, 40px)/1.05 var(--display); margin-top: 8px; }
 .dtitle p { color: var(--muted); font-size: 14px; max-width: 64ch; margin-top: 8px; }
 .ext { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; text-decoration: none; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); white-space: nowrap; }
 .ext:hover { border-color: var(--accent); }
@@ -349,7 +349,8 @@ table.ptable { min-width: 600px; font-size: 13px; }
 .tabs button[aria-selected="true"] { color: var(--fg); border-color: var(--accent); }
 .tabs button:focus-visible { outline: 2px solid var(--accent); }
 .panel { display: grid; gap: 22px; font-size: 14px; min-width: 0; }
-.panel h4 { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.main:focus, .main [tabindex="-1"]:focus { outline: none; }
+.panel h4, .panel h2.lbl { margin: 0 0 8px; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .panel p { max-width: 64ch; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .box { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); }
@@ -694,7 +695,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <button type="button" class="btn sm primary" data-view="contact">Book a call</button>
         </div>
       </header>
-      <main class="main" id="main" aria-live="polite"></main>
+      <main class="main" id="main" tabindex="-1"></main>
     </div>
   </div>
 </div>
@@ -1102,9 +1103,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     var p = byId[state.id], t = state.tab, panel, list = shots(p);
     if (t === "apercu") {
       panel = '<div class="callout"><b>Key takeaway · </b>' + esc(p.key) + "</div>" +
-        "<div><h4>Context</h4><p>" + esc(p.context) + "</p></div>" +
-        '<div class="cols"><div class="box pb"><h4>Problem</h4><ul>' + p.problem.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul></div><div class="box sol"><h4>Solution</h4><ul>' + p.solution.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
-        '<div><div class="vh" style="margin-bottom:10px"><h4 style="margin:0">Key screens</h4>' + (list.length > 3 ? '<button type="button" class="linkish" data-tab="ecrans" style="font-size:13px">See all ' + list.length + " screens →</button>" : "") + '</div><div class="strip">' + list.slice(0, 3).map(function (s, i) { return shot(p, s, i); }).join("") + "</div></div>";
+        "<div><h2 class=lbl>Context</h2><p>" + esc(p.context) + "</p></div>" +
+        '<div class="cols"><div class="box pb"><h2 class=lbl>Problem</h2><ul>' + p.problem.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul></div><div class="box sol"><h2 class=lbl>Solution</h2><ul>' + p.solution.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
+        '<div><div class="vh" style="margin-bottom:10px"><h2 class=lbl style="margin:0">Key screens</h2>' + (list.length > 3 ? '<button type="button" class="linkish" data-tab="ecrans" style="font-size:13px">See all ' + list.length + " screens →</button>" : "") + '</div><div class="strip">' + list.slice(0, 3).map(function (s, i) { return shot(p, s, i); }).join("") + "</div></div>";
     } else if (t === "ecrans") {
       panel = '<div class="masonry">' + list.map(function (s, i) { return shot(p, s, i); }).join("") + "</div>";
     } else if (t === "methode") {
@@ -1113,19 +1114,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       panel = '<div class="res">' + p.results.map(function (x) { return '<div class="kpi"><span class="v">' + esc(x[0]) + '</span><span class="k">' + esc(x[1]) + "</span></div>"; }).join("") + "</div>" +
         (p.quote ? '<p class="quote">' + esc(p.quote) + "<small>" + esc(p.quoteBy || "") + "</small></p>" : "");
     } else {
-      panel = '<div class="box"><h4>What I would do differently</h4><p>' + esc(p.retro) + "</p></div>";
+      panel = '<div class="box"><h2 class=lbl>What I would do differently</h2><p>' + esc(p.retro) + "</p></div>";
     }
     var tabs = [["apercu", "Overview"], ["ecrans", "Screens", list.length], ["methode", "Process"], ["resultats", "Results"], ["retro", "Retro"]];
     var g = group(p.group), k = g.indexOf(p), prev = g[(k - 1 + g.length) % g.length], next = g[(k + 1) % g.length];
     return '<div class="crumbs"><button type="button" class="linkish" data-view="' + p.group + '">' + (p.group === "labo" ? "Lab" : "Projects") + "</button><span>/</span><span>" + esc(p.title) + "</span></div>" +
       (PORTRAIT[p.id] ? '<div class="banner phones">' + list.slice(0, 3).map(function (x) { return '<img src="' + src(x[0]) + '" alt="">'; }).join("") + '<button type="button" data-shot="0" aria-label="Enlarge the screens"></button></div>' : '<div class="banner"><img src="' + cover(p) + '" alt="Cover of the project ' + esc(p.title) + '"><button type="button" data-cover aria-label="Enlarge the cover"></button></div>') +
-      '<div class="dtitle"><div>' + chip(p) + "<h3>" + esc(p.title) + "</h3><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos[0][2] === "app" ? "▶ Try the app" : p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
+      '<div class="dtitle"><div>' + chip(p) + "<h1>" + esc(p.title) + "</h1><p>" + esc(p.summary) + '</p></div><div class="dacts">' + (p.protos ? '<button type="button" class="ext primary-ext" data-proto>' + (p.protos[0][2] === "app" ? "▶ Try the app" : p.protos.length > 1 ? "▶ Try the prototypes (" + p.protos.length + ")" : "▶ Try the prototype") + "</button>" : "") + '<a class="ext" href="' + SITE + p.url + '">Full case study →</a></div></div>' +
       '<div class="props"><div><span>Client</span><span>' + esc(p.client) + "</span></div><div><span>Role</span><span>" + esc(p.role) + "</span></div><div><span>Duration</span><span>" + esc(p.dur) + '</span></div><div><span>Key metric</span><span class="mono">' + esc(p.metric) + "</span></div></div>" +
       '<div class="tabs" role="tablist" id="tabs">' + tabs.map(function (x) { return '<button type="button" role="tab" id="tab-' + x[0] + '" aria-selected="' + (t === x[0]) + '" data-tab="' + x[0] + '">' + x[1] + (x[2] ? '<span class="n">' + x[2] + "</span>" : "") + "</button>"; }).join("") + "</div>" +
       '<div class="panel" role="tabpanel" aria-labelledby="tab-' + t + '">' + panel + "</div>" +
       (g.length > 1 ? '<div class="pager"><button type="button" data-open="' + prev.id + '"><span>← Previous</span>' + esc(prev.title) + '</button><button type="button" class="nx" data-open="' + next.id + '"><span>Next →</span>' + esc(next.title) + "</button></div>" : "");
   }
 
+  var BASE_TITLE = document.title, booted = false;
   function render(opts) {
     opts = opts || {};
     renderSide();
@@ -1136,9 +1138,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     else if (!opts.search) { main.scrollTop = 0; if (MOBILE.matches && opts.nav) window.scrollTo(0, 0); }
     if (opts.search) { var q = document.getElementById("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
     if (opts.nav) {
-      var want = v === "detail" ? "p-" + state.id : v;
+      var want = v === "detail" ? "p-" + state.id + (state.tab !== "apercu" ? "/" + state.tab : "") : v;
       if (location.hash.slice(1) !== want) { internal = true; depth++; location.hash = want; }
     }
+    document.title = v === "accueil" ? BASE_TITLE : (v === "detail" ? byId[state.id].title : LABEL[v]) + " · Christopher De Paola";
+    if (booted && !opts.search && !opts.keepScroll) { var hd = main.querySelector("h1, h2"); if (hd) { hd.tabIndex = -1; hd.focus({ preventScroll: true }); } else main.focus({ preventScroll: true }); }
     backBtn.hidden = v === "accueil";
     window.saasState = { view: v, id: state.id, tab: state.tab };
     document.dispatchEvent(new CustomEvent("saas:render", { detail: window.saasState }));
@@ -1193,7 +1197,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     if (!t) return;
     if (t.dataset.open) return open(t.dataset.open);
     if (t.dataset.view) return go(t.dataset.view);
-    if (t.dataset.tab) { state.tab = t.dataset.tab; render({ keepScroll: true }); var b = document.getElementById("tab-" + state.tab); if (b) b.focus({ preventScroll: true }); return; }
+    if (t.dataset.tab) { state.tab = t.dataset.tab; render({ keepScroll: true, nav: true }); var b = document.getElementById("tab-" + state.tab); if (b) b.focus({ preventScroll: true }); return; }
     if (t.dataset.layout) { state.layout = t.dataset.layout; return render({ keepScroll: true }); }
     if (t.hasAttribute("data-clear")) { state.q = ""; return render({ search: true }); }
     var p = byId[state.id];
@@ -1260,14 +1264,19 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     if (e.target.getAttribute("role") !== "tab" || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
     var order = ["apercu", "ecrans", "methode", "resultats", "retro"], i = order.indexOf(state.tab);
     state.tab = order[(i + (e.key === "ArrowRight" ? 1 : order.length - 1)) % order.length];
-    render({ keepScroll: true }); document.getElementById("tab-" + state.tab).focus({ preventScroll: true });
+    render({ keepScroll: true, nav: true }); document.getElementById("tab-" + state.tab).focus({ preventScroll: true });
   });
 
   function fromHash() {
     var h = location.hash.slice(1), was = internal; internal = false;
     if (was) return;
     depth = Math.max(0, depth - 1);
-    if (h.indexOf("p-") === 0 && byId[h.slice(2)]) { if (state.view !== "detail" || state.id !== h.slice(2)) open(h.slice(2)); }
+    var m = /^p-([^/]+)(?:\/(ecrans|methode|resultats|retro))?$/.exec(h);
+    if (m && byId[m[1]]) {
+      var tab = m[2] || "apercu";
+      if (state.view === "detail" && state.id === m[1]) { if (state.tab !== tab) { state.tab = tab; render({ keepScroll: true }); } }
+      else { state.view = "detail"; state.id = m[1]; state.tab = tab; render(); }
+    }
     else if (LABEL[h] && h !== state.view) { state.view = h; state.id = null; render(); }
     else if (!h && state.view !== "accueil") { state.view = "accueil"; state.id = null; render(); }
   }
@@ -1381,6 +1390,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   window.addEventListener("hashchange", fromHash);
   render();
   fromHash();
+  booted = true;
 })();
 </script>
 <script src="/assets/js/saas-extras.js"></script>
