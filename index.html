@@ -28,7 +28,22 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <style>html { color-scheme: light; } body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; } img { max-width: 100%; } [hidden] { display: none !important; }</style>
+  <style>html { color-scheme: light; } body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; } img { max-width: 100%; } [hidden] { display: none !important; }/* Phone: NEW pill + AI cards */
+@media (max-width: 860px) {
+  .main .announce { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 10px; text-align: left; border-radius: 14px; padding: 10px 14px 10px 10px; line-height: 1.45; }
+  .main .announce b { flex: none; margin-top: 1px; }
+  .bench { overflow: visible; border: 0; border-radius: 0; }
+  .bench table { min-width: 0; display: block; }
+  .bench thead { display: none; }
+  .bench tbody { display: grid; gap: 12px; }
+  .bench tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--surface); }
+  .bench td { display: block; padding: 0; border: 0; }
+  .bench td:first-child { grid-column: 1 / -1; font-weight: 600; font-size: 15px; }
+  .bench td:first-child small { font-weight: 400; }
+  .bench td:nth-child(2) { justify-self: start; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); padding: 6px 8px; border-radius: 6px; }
+  .bench td.num { justify-self: end; font-size: 14px; }
+}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
